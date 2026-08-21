@@ -688,7 +688,7 @@ textarea {
 }
 
 .footer-legal p {
-    font-size: var(--text-xs);
+    font-size: clamp(0.85rem, 1.2vw, 0.95rem);
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.7;
     white-space: nowrap;
@@ -1311,9 +1311,11 @@ textarea {
         /* handled natively by var(--text-hero) */
     }
 
-    .footer-info p,
-    .footer-legal p {
+    .footer-info p {
         font-size: var(--text-xs);
+    }
+    .footer-legal p {
+        font-size: clamp(0.8rem, 1.2vw, 0.9rem);
     }
 }
 
