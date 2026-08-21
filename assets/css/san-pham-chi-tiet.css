@@ -1,0 +1,463 @@
+/* =============================================
+   san-pham-chi-tiet.css - Trang Chi tiết Sản phẩm
+   ============================================= */
+
+/* Banner nhỏ */
+.page-banner {
+    height: clamp(200px, 30vw, 300px);
+    min-height: unset;
+    max-height: unset;
+}
+
+/* =============================================
+   Breadcrumb / Back
+   ============================================= */
+.chi-tiet-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 20px);
+    padding: clamp(20px, 4vw, 40px) clamp(16px, 8vw, 150px) clamp(12px, 2vw, 20px) 190px;
+    flex-wrap: wrap;
+}
+
+.chi-tiet-back {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+}
+
+.chi-tiet-back:hover {
+    opacity: 0.7;
+}
+
+.chi-tiet-back .arrow-circle svg {
+    width: clamp(85px, 12vw, 135px);
+    height: auto;
+}
+
+.chi-tiet-category {
+    font-family: 'Noto Serif Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 350;
+    color: #1a1a1a;
+    letter-spacing: 2px;
+    transform: scaleX(0.75);
+    transform-origin: left center;
+    display: inline-block;
+}
+
+/* =============================================
+   Section chi tiết
+   ============================================= */
+.chi-tiet-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: clamp(16px, 3vw, 20px) clamp(20px, 5vw, 80px) clamp(48px, 8vw, 120px);
+}
+
+.chi-tiet-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: clamp(24px, 5vw, 60px);
+    flex-wrap: wrap;
+}
+
+/* =============================================
+   Gallery
+   ============================================= */
+.chi-tiet-gallery {
+    flex: 0 0 clamp(318px, 38vw, 498px);
+    width: clamp(318px, 38vw, 498px);
+    min-width: 0;
+}
+
+.chi-tiet-main-img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 0.86 / 1;
+    background: transparent;
+    border: 1px solid #228B22;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px 12px 0;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.chi-tiet-main-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.chi-tiet-main-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.45s ease;
+}
+
+.chi-tiet-main-track img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: none;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+.chi-tiet-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: opacity 0.2s;
+}
+
+.chi-tiet-nav:hover {
+    opacity: 0.7;
+}
+
+.chi-tiet-nav-prev {
+    left: 8px;
+}
+
+.chi-tiet-nav-next {
+    right: 8px;
+}
+
+.nav-dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #B1D136;
+}
+
+.chi-tiet-thumbnails {
+    display: flex;
+    gap: 14px;
+    margin-top: 15px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.chi-tiet-thumb {
+    width: 155px;
+    height: 120px;
+    object-fit: cover;
+    border: 1px solid #d7d694;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    flex: 0 0 155px;
+    background: transparent;
+}
+
+.chi-tiet-thumb:hover,
+.chi-tiet-thumb.active {
+    opacity: 1;
+    border-color: #d7d694;
+    transform: translateY(-1px);
+}
+
+/* =============================================
+   Info panel
+   ============================================= */
+.chi-tiet-info {
+    flex: 1 1 420px;
+    min-width: 0;
+    padding-right: clamp(0px, 4vw, 30px);
+    padding-top: 8px;
+}
+
+.chi-tiet-name {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.3rem, 2.4vw, 2rem);
+    font-weight: 600;
+    color: #2E563F;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.chi-tiet-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.8rem, 1.4vw, 1rem);
+    font-weight: 800;
+    color: #2E563F;
+    margin-bottom: 18px;
+}
+
+.chi-tiet-divider {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(15, 15, 15, 0.8);
+    margin-bottom: 16px;
+}
+
+/* Table */
+.chi-tiet-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.chi-tiet-table td {
+    padding: 4px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.75rem, 1.2vw, 0.85rem);
+    vertical-align: top;
+    line-height: 1.7;
+}
+
+.chi-tiet-label {
+    color: #2E563F;
+    font-weight: 900;
+    width: clamp(120px, 20vw, 170px);
+    white-space: nowrap;
+    padding-right: clamp(8px, 2vw, 16px);
+}
+
+.chi-tiet-value {
+    color: #2E563F;
+    font-weight: 400;
+    word-break: break-word;
+}
+
+.chi-tiet-divider-down {
+    width: 100%;
+    height: 1px;
+    background-color: #0b0a0a;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.chi-tiet-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+/* =============================================
+   Responsive — 1024px
+   ============================================= */
+@media (max-width: 1024px) {
+    .chi-tiet-section {
+        padding: clamp(14px, 2vw, 18px) clamp(16px, 5vw, 60px) clamp(40px, 6vw, 80px);
+    }
+
+    .chi-tiet-breadcrumb {
+        padding: 20px 20px 12px;
+    }
+
+    .chi-tiet-info {
+        padding-right: clamp(0px, 3vw, 40px);
+    }
+
+    .chi-tiet-thumbnails {
+        padding: 0 8px;
+        box-sizing: border-box;
+    }
+}
+
+/* =============================================
+   Responsive — 768px
+   ============================================= */
+@media (max-width: 768px) {
+    .chi-tiet-container {
+        flex-direction: column;
+    }
+
+    .chi-tiet-gallery {
+        flex: none;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .chi-tiet-main-img {
+        padding: 18px 12px 12px;
+    }
+
+    .chi-tiet-thumbnails {
+        gap: 8px;
+        justify-content: space-between;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
+
+    .chi-tiet-thumb {
+        flex: 1 1 0;
+        width: auto;
+        height: 90px;
+        box-sizing: border-box;
+    }
+
+    .chi-tiet-info {
+        padding-right: 0;
+        width: 100%;
+    }
+
+    .chi-tiet-label {
+        white-space: normal;
+        width: auto;
+        min-width: 110px;
+    }
+
+    .chi-tiet-breadcrumb {
+        padding: 16px 16px 8px;
+        gap: 10px;
+    }
+
+    .chi-tiet-back .arrow-circle svg {
+        width: clamp(70px, 18vw, 100px);
+    }
+
+    .chi-tiet-category {
+        font-family: 'Noto Serif Display', serif;
+        font-size: clamp(2.1rem, 7vw, 3rem);
+        font-weight: 300;
+        color: #1F652D !important;
+        line-height: 1.05;
+        display: inline-block;
+        transform: scaleX(0.8);
+        transform-origin: left center;
+    }
+}
+
+/* =============================================
+   Responsive — 600px
+   ============================================= */
+@media (max-width: 600px) {
+    .chi-tiet-main-img {
+        padding: clamp(28px, 5vw, 48px) 16px;
+    }
+
+    .chi-tiet-gallery {
+        max-width: 100%;
+    }
+
+    .chi-tiet-name {
+        font-size: clamp(1.05rem, 4.5vw, 1.3rem);
+    }
+
+    .chi-tiet-subtitle {
+        font-size: clamp(0.78rem, 3vw, 0.9rem);
+    }
+
+    .chi-tiet-breadcrumb {
+        gap: 8px;
+        padding: 14px 14px 6px;
+    }
+}
+
+/* =============================================
+   Responsive — 480px
+   ============================================= */
+@media (max-width: 480px) {
+    .chi-tiet-section {
+        padding: 12px 16px 40px;
+    }
+
+    .chi-tiet-table {
+        display: block;
+    }
+
+    .chi-tiet-table tbody {
+        display: block;
+    }
+
+    .chi-tiet-table tr {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 8px;
+        padding-bottom: 4px;
+    }
+
+    .chi-tiet-table td {
+        width: 100%;
+        padding: 1px 0;
+    }
+
+    .chi-tiet-label {
+        font-weight: 700;
+        font-size: 0.72rem;
+        color: #1a5c30;
+    }
+
+    .chi-tiet-actions {
+        justify-content: flex-start;
+    }
+}
+
+/* =============================================
+   Responsive — 375px
+   ============================================= */
+@media (max-width: 375px) {
+    .chi-tiet-breadcrumb {
+        padding: 10px 12px 4px;
+    }
+
+    .chi-tiet-category {
+        font-size: clamp(0.95rem, 5vw, 1.2rem);
+        letter-spacing: 1px;
+    }
+
+    .chi-tiet-back .arrow-circle svg {
+        width: clamp(50px, 14vw, 80px);
+    }
+
+    .chi-tiet-name {
+        font-size: 1rem;
+    }
+}
+
+/* =============================================
+   Responsive — 320px
+   ============================================= */
+@media (max-width: 320px) {
+    .chi-tiet-section {
+        padding: 8px 12px 32px;
+    }
+
+    .chi-tiet-thumb {
+        width: clamp(44px, 13vw, 60px);
+        height: clamp(38px, 11vw, 52px);
+    }
+}
+/* FIX CHỮ CHÈ ĐEN TRANG CHI TIẾT */
+.chi-tiet-breadcrumb .chi-tiet-category {
+    font-family: 'Noto Serif Display', serif !important;
+    font-size: clamp(3.5rem, 4.8vw, 4.2rem) !important;
+    font-weight: 300 !important;
+    font-style: normal !important;
+    color: #1F652D !important;
+    line-height: 1.05 !important;
+    display: inline-block !important;
+    transform: scaleX(0.7) !important;
+    transform-origin: left center !important;
+}
+
+/* Touch targets — gallery arrows (touch screens only) */
+@media (hover: none) and (pointer: coarse) {
+    .chi-tiet-nav {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+}
