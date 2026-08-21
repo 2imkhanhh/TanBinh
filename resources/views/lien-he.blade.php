@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Liên hệ Công ty TNHH Xuất Nhập Khẩu Chè Tân Bình - Đặt hàng chè đen, chè xanh xuất khẩu.">
+    <title>Liên hệ - Tân Bình Tea</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif+Display:ital,opsz,wght@0,6..36,400;0,6..36,500;0,6..36,600;0,6..36,700;1,6..36,400;1,6..36,500;1,6..36,600;1,6..36,700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/lien-he.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="/" class="logo" id="logo">
+                <img src="assets/images/common/logo.png" alt="Tân Bình Tea Logo">
+                <span class="logo-text">TAN BINH TEA</span>
+            </a>
+            <nav class="nav" id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link" id="nav-home">Trang chủ</a></li>
+                    <li><a href="/gioi-thieu" class="nav-link" id="nav-about">Giới thiệu</a></li>
+                    <li><a href="/san-pham" class="nav-link" id="nav-products">Sản phẩm</a></li>
+                    <li><a href="/lien-he" class="nav-link active" id="nav-contact">Liên hệ</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/blog" class="nav-link" id="nav-blog">Blog</a>
+                        <ul class="blog-dropdown">
+                            <li><a href="/blog" class="blog-dropdown-link">Hình ảnh</a></li>
+                            <li><a href="/blog-tin-tuc" class="blog-dropdown-link">Tin tức</a></li>
+                            <li><a href="/blog-khac" class="blog-dropdown-link">Khác</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="lang-switch" id="lang-switch">
+                <a href="#" class="lang-link active">VN</a>
+                <span>/</span>
+                <a href="#" class="lang-link">EN</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner" id="page-banner">
+        <div class="page-banner-bg">
+            <img src="assets/images/home/hero-tea-banner.png" alt="Búp chè xanh">
+        </div>
+        <div class="page-banner-content">
+            <h1 class="page-banner-title">LIÊN HỆ</h1>
+            <img src="assets/images/common/deco-vector-divider.png" alt="" class="page-banner-vector">
+            <p class="page-banner-desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+        </div>
+    </section>
+
+    <!-- Liên hệ Section -->
+    <section class="contact" id="lien-he">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 class="contact-title">Liên hệ</h2>
+                <h3 class="contact-company">CÔNG TY TNHH CHÈ TÂN BÌNH</h3>
+                <ul class="contact-details">
+                    <li>
+                        <span class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="8" cy="8" r="7.5" stroke="#1B5E20"/>
+                                <circle cx="8" cy="8" r="2" fill="#1B5E20"/>
+                            </svg>
+                        </span>
+                        <span style="white-space: nowrap;">Xóm Tân Bình, Xã Võ Miếu, Huyện Thanh Sơn, Tỉnh Phú Thọ</span>
+                    </li>
+                    <li>
+                        <span class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="8" cy="8" r="7.5" stroke="#1B5E20"/>
+                                <line x1="2" y1="8" x2="14" y2="8" stroke="#1B5E20" stroke-width="0.8"/>
+                                <line x1="8" y1="2" x2="8" y2="14" stroke="#1B5E20" stroke-width="0.8"/>
+                                <ellipse cx="8" cy="8" rx="3" ry="6" stroke="#1B5E20" stroke-width="0.8"/>
+                            </svg>
+                        </span>
+                        <span><a href="https://tanbinhteacoltd.com/" target="_blank">tanbinhteacoltd.com</a></span>
+                    </li>
+                    <li>
+                        <span class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="3" width="12" height="10" rx="1" stroke="#1B5E20" stroke-width="0.8"/>
+                                <path d="M2 5L8 9L14 5" stroke="#1B5E20" stroke-width="0.8"/>
+                            </svg>
+                        </span>
+                        <span><a href="mailto:tanbinhteacompany@gmail.com">tanbinhteacompany@gmail.com</a></span>
+                    </li>
+                    <li>
+                        <span class="contact-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.5 2.5C3.5 2.5 4.5 2 5.5 2C6 2 6.5 2.5 6.5 3.5C6.5 4.5 5.5 6 5 6.5C4.5 7 6 9.5 7.5 10.5C8.5 11 10 10 10.5 9.5C11 9 12 9 12.5 9.5C13 10 14 11 14 11.5C14 12 13.5 13.5 12 13.5C10.5 13.5 7.5 13 5 10.5C2.5 8 2 5 2 3.5C2 2.5 3.5 2.5 3.5 2.5Z" stroke="#1B5E20" stroke-width="0.8"/>
+                            </svg>
+                        </span>
+                        <span><a href="tel:+84986843666">(+84) 986 843 666</a></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-form-wrapper">
+                <form class="contact-form" id="contact-form">
+                    <input type="text" placeholder="Họ tên" id="input-name" required>
+                    <input type="email" placeholder="Email" id="input-email" required>
+                    <input type="tel" placeholder="Số điện thoại" id="input-phone">
+                    <textarea placeholder="Lời nhắn" id="input-message" rows="5"></textarea>
+                    <button type="submit" class="btn-submit" id="btn-submit">GỬI</button>
+                </form>
+            </div>
+        </div>
+        <div class="contact-leaf-decoration">
+            <img src="assets/images/common/leaf-deco-small.png" alt="Lá trà trang trí nhỏ" class="leaf-horizontal-top">
+            <img src="assets/images/common/leaf-deco-large.png" alt="Lá trà trang trí lớn" class="leaf-horizontal">
+        </div>
+    </section>
+
+    <!-- Lá trang trí trước bản đồ -->
+    <div class="contact-bottom-row">
+        <div class="contact-bottom-leaf-decoration">
+            <img src="assets/images/common/leaf-deco-small.png" alt="" class="leaf-horizontal-top">
+            <img src="assets/images/common/leaf-deco-large.png" alt="" class="leaf-horizontal">
+        </div>
+    </div>
+
+    <!-- Bản đồ -->
+    <section class="map-section">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.8!2d105.07613128296941!3d21.161940695684375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31347d952a2ea13d%3A0x3d1528d039367989!2zVsO1IE1p4bq_dSwgVGhhbmggU8ahbiwgUGjDuiBUaOG7jQ!5e0!3m2!1svi!2s!4v1786446008842!5m2!1svi!2s"
+            width="100%"
+            height="450"
+            style="border:0; display:block;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            title="Bản đồ Công ty TNHH Chè Tân Bình"
+            id="map-iframe">
+        </iframe>
+        <div class="map-zoom-controls">
+            <button class="map-zoom-btn" id="map-zoom-in" aria-label="Phóng to">+</button>
+            <div class="map-zoom-divider"></div>
+            <button class="map-zoom-btn" id="map-zoom-out" aria-label="Thu nhỏ">−</button>
+        </div>
+    </section>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scroll-top" aria-label="Lên đầu trang">
+        <svg width="24" height="54" viewBox="0 0 24 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="11.5" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="12" cy="12" r="11.5" stroke="#108140" stroke-width="0.5"/>
+            <path d="M7 14L12 7L17 14" stroke="#108140" stroke-width="0.5"/>
+            <path d="M12 7V54" stroke="#108140" stroke-width="0.5"/>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="site-footer">
+        <div class="footer-bg-leaf">
+            <img src="assets/images/common/leaf-footer-bg.png" alt="" class="footer-leaf-img">
+        </div>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="assets/images/common/logo.png" alt="Tân Bình Tea Logo" class="footer-logo-img">
+                <span class="footer-logo-text">TAN BINH TEA</span>
+            </div>
+            <div class="footer-info">
+                <p>Xóm Tân Bình, Xã Võ Miếu, Huyện Thanh Sơn, Tỉnh Phú Thọ</p>
+                <p>tanbinhteacoltd.com</p>
+                <p>tanbinhteacompany@gmail.com</p>
+                <p>(+84) 986 843 666</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-legal">
+                    <p>MST 2601039326</p>
+                    <p>được Sở KH và ĐT Tỉnh Phú Thọ cấp ngày 03/02/2020</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="YouTube" class="social-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="4" width="20" height="16" rx="4" stroke="white" stroke-width="1.5"/>
+                            <path d="M10 9L15 12L10 15V9Z" fill="white"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook" class="social-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="3" stroke="white" stroke-width="1.5"/>
+                            <path d="M13 21V13H15.5L16 10H13V8.5C13 7.5 13.5 7 14.5 7H16V4.5C16 4.5 15 4 13.5 4C11 4 10 5.5 10 8V10H8V13H10V21" stroke="white" stroke-width="1.5"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="social-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5"/>
+                            <circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="white"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Zoom controls cho bản đồ
+        let mapZoom = 3724.8;
+        const iframe = document.getElementById('map-iframe');
+        const baseUrl = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d';
+        const baseSuffix = '!2d105.07613128296941!3d21.161940695684375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31347d952a2ea13d%3A0x3d1528d039367989!2zVsO1IE1p4bq_dSwgVGhhbmggU8ahbiwgUGjDuiBUaOG7jQ!5e0!3m2!1svi!2s!4v1786446008842!5m2!1svi!2s';
+
+        document.getElementById('map-zoom-in').addEventListener('click', function() {
+            mapZoom = mapZoom * 0.5;
+            if (iframe) iframe.src = baseUrl + mapZoom + baseSuffix;
+        });
+
+        document.getElementById('map-zoom-out').addEventListener('click', function() {
+            mapZoom = mapZoom * 2;
+            if (iframe) iframe.src = baseUrl + mapZoom + baseSuffix;
+        });
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

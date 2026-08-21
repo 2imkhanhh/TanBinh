@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chi tiết sản phẩm chè Tân Bình Tea.">
+    <title>Chi tiết sản phẩm - Tân Bình Tea</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif+Display:ital,opsz,wght@0,6..36,400;0,6..36,500;0,6..36,600;0,6..36,700;1,6..36,400;1,6..36,500;1,6..36,600;1,6..36,700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/san-pham-chi-tiet.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-container">
+            <a href="/" class="logo" id="logo">
+                <img src="assets/images/common/logo.png" alt="Tân Bình Tea Logo">
+                <span class="logo-text">TAN BINH TEA</span>
+            </a>
+            <nav class="nav" id="main-nav">
+                <ul class="nav-list">
+                    <li><a href="/" class="nav-link" id="nav-home">Trang chủ</a></li>
+                    <li><a href="/gioi-thieu" class="nav-link" id="nav-about">Giới thiệu</a></li>
+                    <li><a href="/san-pham" class="nav-link active" id="nav-products">Sản phẩm</a></li>
+                    <li><a href="/lien-he" class="nav-link" id="nav-contact">Liên hệ</a></li>
+                    <li class="nav-item-dropdown">
+                        <a href="/blog" class="nav-link" id="nav-blog">Blog</a>
+                        <ul class="blog-dropdown">
+                            <li><a href="/blog" class="blog-dropdown-link">Hình ảnh</a></li>
+                            <li><a href="/blog-tin-tuc" class="blog-dropdown-link">Tin tức</a></li>
+                            <li><a href="/blog-khac" class="blog-dropdown-link">Khác</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="lang-switch" id="lang-switch">
+                <a href="#" class="lang-link active">VN</a>
+                <span>/</span>
+                <a href="#" class="lang-link">EN</a>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner" id="page-banner">
+        <div class="page-banner-bg">
+            <img src="assets/images/common/banner-tea-field.png" alt="Đồi chè Việt Nam">
+        </div>
+    </section>
+
+    <!-- Breadcrumb / Back -->
+    <div class="chi-tiet-breadcrumb">
+        <a href="/san-pham" class="chi-tiet-back">
+            <span class="arrow-circle">
+                <svg width="120" height="36" viewBox="-35 0 90 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="11.5" stroke="#108140" stroke-width="0.5" />
+                    <path d="M12 6L6 12L12 18" stroke="#108140" stroke-width="0.5" />
+                    <path d="M54 12H6" stroke="#108140" stroke-width="0.5" />
+                </svg>
+            </span>
+        </a>
+        <h2 class="chi-tiet-category">CHÈ ĐEN</h2>
+    </div>
+
+    <!-- Chi tiết sản phẩm -->
+    <section class="chi-tiet-section">
+        <div class="chi-tiet-container">
+
+            <!-- Cột trái: ảnh -->
+            <div class="chi-tiet-gallery">
+                <div class="chi-tiet-main-img">
+                    <div class="chi-tiet-main-slider">
+                        <div class="chi-tiet-main-track">
+                            <img src="assets/images/products/product-black-tea-pekoe.png" alt="Vietnam Black Tea: Pekoe" id="main-product-img">
+                            <img src="assets/images/products/product-tea-generic.png" alt="Vietnam Black Tea: chi tiết" class="gallery-slide">
+                            <img src="assets/images/products/product-black-tea-pekoe.png" alt="Vietnam Black Tea: phom" class="gallery-slide">
+                        </div>
+                    </div>
+                    <button class="chi-tiet-nav chi-tiet-nav-prev" aria-label="Ảnh trước">
+                        <span class="nav-dot"></span>
+                    </button>
+                    <button class="chi-tiet-nav chi-tiet-nav-next" aria-label="Ảnh sau">
+                        <span class="nav-dot"></span>
+                    </button>
+                </div>
+                <div class="chi-tiet-thumbnails">
+                    <img src="assets/images/products/product-black-tea-pekoe.png" alt="Ảnh 1" class="chi-tiet-thumb active">
+                    <img src="assets/images/products/product-tea-generic.png" alt="Ảnh 2" class="chi-tiet-thumb">
+                    <img src="assets/images/products/product-black-tea-pekoe.png" alt="Ảnh 3" class="chi-tiet-thumb">
+                </div>
+            </div>
+
+            <!-- Cột phải: thông tin -->
+            <div class="chi-tiet-info">
+                <h1 class="chi-tiet-name">Vietnam Black Tea: Pekoe</h1>
+                <p class="chi-tiet-subtitle">Chi tiết sản phẩm</p>
+                <div class="chi-tiet-divider"></div>
+                <table class="chi-tiet-table">
+                    <tbody>
+                        <tr>
+                            <td class="chi-tiet-label">Loại sản phẩm:</td>
+                            <td class="chi-tiet-value">Chè đen</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Kiểu:</td>
+                            <td class="chi-tiet-value">Chính thống</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Độ tuổi:</td>
+                            <td class="chi-tiet-value">1-2 tuổi</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Phong cách:</td>
+                            <td class="chi-tiet-value">Đồ uống trà</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Loại xử lý:</td>
+                            <td class="chi-tiet-value">Nguyên</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Bao bì:</td>
+                            <td class="chi-tiet-value">Túi, Hộp, Số lượng lớn, Đóng gói quà tặng, Gói chân không</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Đặc sản:</td>
+                            <td class="chi-tiet-value">Trà sức khỏe, Trà hữu cơ, Trà giảm béo, Trà xanh</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Lớp:</td>
+                            <td class="chi-tiet-value">Chất lượng cao</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Thời hạn sử dụng:</td>
+                            <td class="chi-tiet-value">3 năm</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Trọng lượng:</td>
+                            <td class="chi-tiet-value">40</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Nơi xuất xứ:</td>
+                            <td class="chi-tiet-value">vùng núi cao Việt Nam</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Tên thương hiệu:</td>
+                            <td class="chi-tiet-value">Trà Nam Giang</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Số mô hình:</td>
+                            <td class="chi-tiet-value">NGGBPS</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Điều khoản thanh toán:</td>
+                            <td class="chi-tiet-value">đặt cọc 30%, số dư so với biên sao tải liệu được quét</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Lợi thế:</td>
+                            <td class="chi-tiet-value">Nhà máy</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Nguồn gốc lá trà:</td>
+                            <td class="chi-tiet-value">Đồn điền trà hữu cơ Việt Nam</td>
+                        </tr>
+                        <tr>
+                            <td class="chi-tiet-label">Chất liệu:</td>
+                            <td class="chi-tiet-value">Lá trà xanh tươi</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="chi-tiet-divider-down"></div>
+                <div class="chi-tiet-actions">
+                    <a href="/lien-he" class="btn-lien-he">LIÊN HỆ</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scroll-top" aria-label="Lên đầu trang">
+        <svg width="24" height="54" viewBox="0 0 24 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="11.5" fill="rgba(255,255,255,0.3)"/>
+            <circle cx="12" cy="12" r="11.5" stroke="#108140" stroke-width="0.5" />
+            <path d="M7 14L12 7L17 14" stroke="#108140" stroke-width="0.5" />
+            <path d="M12 7V54" stroke="#108140" stroke-width="0.5" />
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="site-footer">
+        <div class="footer-bg-leaf">
+            <img src="assets/images/common/leaf-footer-bg.png" alt="" class="footer-leaf-img">
+        </div>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="assets/images/common/logo.png" alt="Tân Bình Tea Logo" class="footer-logo-img">
+                <span class="footer-logo-text">TAN BINH TEA</span>
+            </div>
+            <div class="footer-info">
+                <p>Xóm Tân Bình, Xã Võ Miếu, Huyện Thanh Sơn, Tỉnh Phú Thọ</p>
+                <p>tanbinhteacoltd.com</p>
+                <p>tanbinhteacompany@gmail.com</p>
+                <p>(+84) 986 843 666</p>
+            </div>
+            <div class="footer-right">
+                <div class="footer-legal">
+                    <p>MST 2601039326</p>
+                    <p>được Sở KH và ĐT Tỉnh Phú Thọ cấp ngày 03/02/2020</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" aria-label="YouTube" class="social-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="4" width="20" height="16" rx="4" stroke="white" stroke-width="1.5" />
+                            <path d="M10 9L15 12L10 15V9Z" fill="white" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook" class="social-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="3" stroke="white" stroke-width="1.5" />
+                            <path
+                                d="M13 21V13H15.5L16 10H13V8.5C13 7.5 13.5 7 14.5 7H16V4.5C16 4.5 15 4 13.5 4C11 4 10 5.5 10 8V10H8V13H10V21"
+                                stroke="white" stroke-width="1.5" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="social-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5" />
+                            <circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5" />
+                            <circle cx="17.5" cy="6.5" r="1" fill="white" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+
+</html>

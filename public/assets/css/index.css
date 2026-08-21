@@ -1,0 +1,727 @@
+/* =============================================
+   index.css - Trang chủ
+   ============================================= */
+
+/* =============================================
+   Hero Section
+   ============================================= */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 500px;
+    max-height: 900px;
+    overflow: hidden;
+    margin-top: var(--header-height);
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    will-change: transform;
+}
+
+.hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px clamp(16px, 5vw, 60px) 0;
+}
+
+.hero-title {
+    font-family: 'Noto Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 350;
+    color: var(--white);
+    letter-spacing: 0;
+    line-height: 1.12;
+    margin-bottom: clamp(24px, 4vw, 42px);
+    text-align: center;
+    transform: scaleY(1.6);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* =============================================
+   Giới thiệu Section
+   ============================================= */
+.intro {
+    padding: clamp(60px, 8vw, 100px) 0 clamp(40px, 6vw, 60px);
+    background-color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    gap: clamp(20px, 4vw, 40px);
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+.intro-left {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.intro-image {
+    width: min(calc(50vw + 80px), 75vw);
+    margin-left: clamp(20px, 8vw, 100px);
+    margin-bottom: 42px;
+    overflow: hidden;
+}
+
+.intro-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.intro-image:hover img {
+    transform: scale(1.03);
+}
+
+.intro-text-block {
+    width: min(calc(50vw + 80px), 75vw);
+    margin-left: clamp(20px, 8vw, 100px);
+    padding-right: clamp(16px, 3vw, 40px);
+}
+
+.intro-title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: #108140;
+    margin-bottom: 16px;
+}
+
+.intro-desc {
+    font-size: clamp(0.8rem, 1.3vw, 0.85rem);
+    line-height: 1.8;
+    color: #108140;
+}
+
+.intro-right {
+    flex: 0 0 auto;
+    width: clamp(160px, 20vw, 280px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+}
+
+/* Lá trang trí intro — decorative only, hide on small screens */
+.intro-leaf-decoration {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: clamp(200px, 35vw, 480px);
+    height: clamp(400px, 55vw, 600px);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.leaf-vertical-top {
+    position: absolute;
+    width: clamp(60px, 9vw, 110px);
+    height: auto;
+    right: 0;
+    top: 40px;
+}
+
+.leaf-vertical-down {
+    position: absolute;
+    width: min(500px, 38vw);
+    height: auto;
+    right: 0;
+    top: clamp(120px, 18vw, 215px);
+}
+
+#btn-xem-them-intro {
+    margin-top: clamp(430px, 50vw, 720px);
+    padding-right: clamp(20px, 12vw, 180px);
+}
+
+/* =============================================
+   Liên hệ Section (index)
+   ============================================= */
+.contact {
+    padding: clamp(50px, 8vw, 80px) 0 30px;
+    background-color: var(--white);
+    position: relative;
+    overflow: visible;
+}
+
+.contact-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 clamp(16px, 4vw, 40px);
+    display: flex;
+    gap: clamp(24px, 5vw, 60px);
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    flex: 1 1 260px;
+    min-width: 0;
+}
+
+.contact-title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.contact-company {
+    font-size: clamp(0.78rem, 1.3vw, 0.9rem);
+    font-weight: 700;
+    color: var(--green-primary);
+    text-transform: uppercase;
+    margin-bottom: 7px;
+    letter-spacing: 0.5px;
+}
+
+.contact-details li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 2px;
+    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
+    color: var(--text-body);
+    line-height: 1.6;
+}
+
+.contact-details li a {
+    color: var(--text-body);
+    transition: color 0.2s ease;
+    word-break: break-all;
+}
+
+.contact-details li a:hover {
+    color: var(--green-primary);
+}
+
+.contact-icon {
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+.contact-form-wrapper {
+    flex: 0 0 min(560px, 100%);
+    border: 1px solid #108140;
+    border-radius: 12px;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.contact-form {
+    padding: clamp(24px, 4vw, 45px) clamp(16px, 3vw, 30px) clamp(32px, 6vw, 60px) clamp(16px, 2.5vw, 20px);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px 16px;
+    background-color: var(--input-bg);
+    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
+    color: var(--text-body);
+    border: none;
+    margin-bottom: 10px;
+    transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background-color: #dcdcdc;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #999;
+    font-size: clamp(0.75rem, 1.2vw, 0.82rem);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 200px;
+    border-bottom: none;
+}
+
+.contact-form .btn-submit {
+    align-self: flex-end;
+    margin-top: 5px;
+    padding: 6px 20px;
+    background-color: #108140;
+    color: var(--white);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    border: 1px solid #108140;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.contact-form .btn-submit:hover {
+    background-color: var(--green-dark);
+    box-shadow: 0 2px 8px rgba(62, 183, 70, 0.3);
+}
+
+/* Lá trang trí liên hệ — decorative absolute, pointer-events none */
+.contact-leaf-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: clamp(160px, 40vw, 500px);
+    pointer-events: none;
+    opacity: 0.85;
+    overflow: hidden;
+}
+
+.contact-leaf-decoration .leaf-horizontal {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: clamp(160px, 35vw, 470px);
+    height: auto;
+}
+
+.contact-leaf-decoration .leaf-horizontal-top {
+    position: absolute;
+    bottom: clamp(40px, 5vw, 60px);
+    left: 0;
+    width: clamp(50px, 7vw, 90px);
+    height: auto;
+}
+
+/* =============================================
+   Responsive — 1200px
+   ============================================= */
+@media (max-width: 1200px) {
+    .intro-image {
+        width: min(calc(50vw + 60px), 72vw);
+    }
+
+    .intro-text-block {
+        width: min(calc(50vw + 60px), 72vw);
+    }
+}
+
+/* =============================================
+   Responsive — 1024px
+   ============================================= */
+@media (max-width: 1024px) {
+    .contact-container {
+        flex-direction: column;
+    }
+
+    .contact-form-wrapper {
+        flex: none;
+        width: 100%;
+    }
+
+    .intro-leaf-decoration {
+        width: clamp(160px, 28vw, 360px);
+    }
+
+    .intro-image {
+        width: min(calc(55vw + 40px), 80vw);
+        margin-left: clamp(16px, 5vw, 60px);
+    }
+
+    .intro-text-block {
+        width: min(calc(55vw + 40px), 80vw);
+        margin-left: clamp(16px, 5vw, 60px);
+    }
+}
+
+/* =============================================
+   Responsive — Tablet landscape (900px)
+   ============================================= */
+@media (max-width: 900px) {
+    .hero-title {
+        font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+    }
+
+    .contact-container {
+        gap: clamp(16px, 3vw, 32px);
+    }
+}
+
+/* =============================================
+   Responsive — 768px
+   ============================================= */
+@media (max-width: 768px) {
+    /* Hero */
+    .hero {
+        min-height: 380px;
+        max-height: 620px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.4rem, 5.5vw, 2rem);
+        letter-spacing: 1px;
+        margin-bottom: 18px;
+        transform: scaleY(1.4);
+    }
+
+    .hero-desc {
+        font-size: clamp(0.72rem, 2.8vw, 0.82rem);
+        max-width: min(340px, 88vw);
+    }
+
+    /* Intro */
+    .intro {
+        padding: 36px 0 28px;
+    }
+
+    .intro-container {
+        flex-direction: column;
+        padding: 0 16px;
+        gap: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .intro-left,
+    .intro-right {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .intro-image {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .intro-image img {
+        height: auto;
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .intro-text-block {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        padding-right: 0;
+        margin-top: 20px;
+    }
+
+    .intro-right {
+        width: 100%;
+        max-width: 100%;
+        align-items: flex-start;
+        padding: 0;
+    }
+
+    .intro-leaf-decoration {
+        display: none;
+    }
+
+    #btn-xem-them-intro {
+        margin-top: 20px;
+        padding-right: 0;
+    }
+
+    /* Contact */
+    .contact {
+        padding: 36px 0 56px;
+    }
+
+    .contact-container {
+        padding: 0 16px;
+        gap: 20px;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .contact-form-wrapper {
+        width: 100%;
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .contact-leaf-decoration {
+        width: min(220px, 55vw);
+    }
+}
+
+/* =============================================
+   Responsive — 600px
+   ============================================= */
+@media (max-width: 600px) {
+    .hero {
+        min-height: 340px;
+        max-height: 560px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.2rem, 6vw, 1.7rem);
+        transform: scaleY(1.35);
+        margin-bottom: 14px;
+    }
+
+    .hero-desc {
+        font-size: clamp(0.68rem, 3vw, 0.78rem);
+        max-width: min(300px, 90vw);
+    }
+
+    .hero-content {
+        padding: 32px 14px 0;
+    }
+}
+
+/* =============================================
+   Responsive — 480px
+   ============================================= */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 300px;
+        max-height: 520px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.1rem, 6.5vw, 1.5rem);
+        transform: scaleY(1.3);
+        margin-bottom: 12px;
+    }
+
+    .hero-desc {
+        font-size: 0.7rem;
+        max-width: min(280px, 92vw);
+        line-height: 1.7;
+    }
+
+    .hero-content {
+        padding: 28px 12px 0;
+    }
+
+    .intro {
+        padding: 28px 0 20px;
+    }
+
+    .intro-image img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .contact {
+        padding: 28px 0 40px;
+    }
+
+    .contact-leaf-decoration {
+        display: block;
+        width: min(200px, 48vw);
+        opacity: 0.8;
+    }
+
+    .contact-form {
+        padding: 20px 14px 32px;
+    }
+
+    .xem-them-link {
+        font-size: 0.8rem;
+        gap: 8px;
+    }
+
+    .arrow-circle svg {
+        width: 80px;
+    }
+}
+
+/* =============================================
+   Responsive — 375px
+   ============================================= */
+@media (max-width: 375px) {
+    .hero {
+        min-height: 280px;
+    }
+
+    .hero-title {
+        font-size: clamp(1rem, 7vw, 1.3rem);
+        transform: scaleY(1.25);
+    }
+
+    .hero-desc {
+        font-size: 0.68rem;
+        max-width: 90vw;
+    }
+
+    .contact-container {
+        padding: 0 12px;
+    }
+
+    .contact-form-wrapper {
+        border-radius: 8px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.78rem;
+        padding: 8px 12px;
+    }
+}
+
+/* =============================================
+   Responsive — 320px
+   ============================================= */
+@media (max-width: 320px) {
+    .hero {
+        min-height: 260px;
+    }
+
+    .hero-title {
+        font-size: 0.95rem;
+        transform: scaleY(1.2);
+        letter-spacing: 0;
+    }
+
+    .hero-desc {
+        font-size: 0.65rem;
+        max-width: 92vw;
+    }
+
+    .intro-title {
+        font-size: 1.1rem;
+    }
+
+    .intro-desc {
+        font-size: 0.75rem;
+    }
+
+    .contact-title {
+        font-size: 1.1rem;
+    }
+
+    .contact-details li {
+        font-size: 0.72rem;
+    }
+}
+
+/* =============================================
+   Lá trang trí trước footer — giống lien-he
+   ============================================= */
+.contact-bottom-row {
+    display: flex;
+    align-items: flex-end;
+    padding: 0;
+    margin-top: -10px;
+    position: relative;
+    top: -0px;
+    min-height: 120px;
+    overflow: visible;
+}
+
+.contact-bottom-leaf-decoration {
+    position: relative;
+    height: clamp(80px, 12vw, 160px);
+    width: clamp(160px, 30vw, 400px);
+    flex-shrink: 0;
+    pointer-events: none;
+    opacity: 0.85;
+}
+
+.contact-bottom-leaf-decoration .leaf-horizontal {
+    position: absolute;
+    bottom: clamp(-40px, calc(-6vw - 20px), -100px);
+    left: 0;
+    width: clamp(300px, 80vw, 650px);
+    height: auto;
+    transform: rotate(4deg);
+}
+
+.contact-bottom-leaf-decoration .leaf-horizontal-top {
+    position: absolute;
+    bottom: clamp(20px, calc(5vw + 20px), 30px);
+    left: 0;
+    width: clamp(40px, 6vw, 90px);
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .contact-bottom-row {
+        display: none;
+    }
+}
+
+
+/* Touch targets — contact form (touch screens only) */
+@media (hover: none) and (pointer: coarse) {
+    .contact-form input,
+    .contact-form textarea {
+        min-height: 44px;
+        font-size: 16px;   /* stops iOS Safari zooming in on focus */
+    }
+
+    .contact-form textarea {
+        min-height: 110px;
+    }
+
+    .contact-form .btn-submit {
+        min-height: 44px;
+        min-width: 96px;
+        padding: 10px 24px;
+    }
+}
+
+/* =============================================
+   Contact block — stacked layout width guard
+   In column direction the flex children were
+   sized to their content (align-items:flex-start),
+   so the long e-mail address pushed the block
+   wider than the viewport on small phones.
+   ============================================= */
+@media (max-width: 768px) {
+    .contact-container {
+        align-items: stretch;
+    }
+
+    .contact-info,
+    .contact-form-wrapper {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .contact-details,
+    .contact-details li {
+        min-width: 0;
+    }
+
+    .contact-details li a,
+    .contact-details li span {
+        min-width: 0;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+}

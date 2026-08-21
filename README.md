@@ -1,75 +1,59 @@
-# Tân Bình Tea — Website
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Website giới thiệu Công ty TNHH Xuất Nhập Khẩu Chè Tân Bình.
-Thuần HTML/CSS/JS, không cần build tool — mở `index.html` bằng trình duyệt là chạy.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-## Cấu trúc thư mục
+## About Laravel
 
-```
-TanBinh-project/
-├── index.html                  Trang chủ
-├── gioi-thieu.html             Giới thiệu
-├── san-pham.html               Danh sách sản phẩm
-├── san-pham-chi-tiet.html      Chi tiết sản phẩm
-├── blog.html                   Blog — Hình ảnh
-├── blog-tin-tuc.html           Blog — Tin tức
-├── blog-khac.html              Blog — Khác
-├── lien-he.html                Liên hệ
-│
-└── assets/
-    ├── css/
-    │   ├── style.css               Dùng chung: reset, biến màu, header,
-    │   │                           nav, footer, animation, breakpoints
-    │   ├── index.css               Riêng trang chủ (dùng lại cho khối
-    │   │                           liên hệ ở lien-he.html)
-    │   ├── gioi-thieu.css
-    │   ├── san-pham.css
-    │   ├── san-pham-chi-tiet.css
-    │   ├── blog.css
-    │   ├── blog-tin-tuc.css
-    │   ├── blog-khac.css
-    │   └── lien-he.css
-    │
-    ├── js/
-    │   └── main.js                 Toàn bộ JS: sticky header, mobile nav,
-    │                               scroll animation, lightbox blog,
-    │                               gallery sản phẩm, lọc danh mục, form
-    │
-    └── images/
-        ├── common/                 Logo, lá trang trí, banner dùng chung
-        ├── home/                   Ảnh trang chủ
-        ├── about/                  Ảnh trang giới thiệu
-        ├── products/               Ảnh sản phẩm
-        └── blog/
-            ├── gallery/            Ảnh thư viện blog
-            └── news/               Ảnh tin tức
-```
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Quy ước
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-- **Mỗi trang load 2 file CSS**: `style.css` (chung) + file CSS riêng của trang.
-  `lien-he.html` load thêm `index.css` vì dùng lại khối form liên hệ.
-- **Chỉ 1 file JS** (`main.js`) cho tất cả các trang; các module tự kiểm tra
-  phần tử có tồn tại không trước khi chạy nên không lỗi khi thiếu.
-- **Đặt ảnh mới**: bỏ vào đúng thư mục con trong `assets/images/`, tên file
-  không dấu, không khoảng trắng, dùng gạch ngang (`ten-anh.png`).
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Responsive
+## Learning Laravel
 
-Breakpoints dùng thống nhất: `1440 / 1280 / 1024 / 900 / 768 / 600 / 480 / 375 / 320px`.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
 
-Đã kiểm tra bằng trình duyệt thật (Chromium) ở 12 độ rộng từ 320px đến 1920px:
-không trang nào bị cuộn ngang, không lỗi JS.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-Riêng phần kích thước nút bấm cho màn hình cảm ứng nằm trong block
-`@media (hover: none) and (pointer: coarse)` — chỉ áp dụng cho điện thoại và
-máy tính bảng, **không ảnh hưởng giao diện desktop**.
+## Laravel Sponsors
 
-## Ghi chú khi bảo trì
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-- Bản gốc là site tải về bằng HTTrack; các dấu vết của công cụ crawl
-  (comment `Mirrored from...`, file `index-2.html` trùng lặp, ảnh
-  `img/common/vector.html` thực chất là trang 404) đã được gỡ bỏ.
-- Ảnh trong `assets/images/` chưa nén. Nếu cần tối ưu tốc độ tải, nên nén
-  lại các file PNG lớn (`about/`, `home/`, `blog/` đang ~1–3MB mỗi thư mục)
-  hoặc chuyển sang WebP.
+### Premium Partners
+
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

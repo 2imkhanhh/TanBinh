@@ -1,0 +1,250 @@
+/* =============================================
+   san-pham.css - Trang Sản phẩm
+   ============================================= */
+
+/* Bỏ products-footer trên trang sản phẩm */
+.products-page .products-footer {
+    display: none;
+}
+
+/* Ẩn products-header cũ */
+.products-header-hidden {
+    display: none;
+}
+
+/* =============================================
+   Products Divider Header — 2 tiêu đề + thanh dọc
+   ============================================= */
+.products-divider-header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding: clamp(24px, 4vw, 40px) clamp(16px, 4vw, 40px) 8px;
+    margin-bottom: 0;
+}
+
+.products-divider-left {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: clamp(20px, 7vw, 100px);
+}
+
+.products-divider-line {
+    position: absolute;
+    left: 50%;
+    top: clamp(32px, 5vw, 60px);
+    transform: translateX(-50%);
+    width: 1px;
+    height: clamp(60px, 8vw, 100px);
+    background-color: #000;
+}
+.products-title-den,
+.products-title-xanh {
+    cursor: pointer;
+    transform: scaleX(0.7);
+    display: inline-block;
+    transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.products-title-den {
+    color: #000 !important;
+    transform-origin: right center;
+}
+
+.products-title-xanh {
+    color: #000 !important;
+    transform-origin: left center;
+}
+
+.products-title-den.active,
+.products-title-xanh.active {
+    color: #1F652D !important;
+}
+
+/* Danh mục đang được chọn */
+.products-title-den.active,
+.products-title-xanh.active {
+    color: #1F652D !important;
+}
+
+/* Danh mục không được chọn */
+.products-title-den:not(.active),
+.products-title-xanh:not(.active) {
+    color: #000 !important;
+}
+
+/* Ẩn nhóm sản phẩm không được chọn */
+#san-pham-den.products-category-hidden,
+#san-pham-xanh.products-category-hidden {
+    display: none;
+}
+.products-divider-right {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: clamp(20px, 7vw, 100px);
+}
+
+.products-title-den {
+    color: #000 !important;
+    transform: scaleX(0.7);
+    transform-origin: right center;
+    display: inline-block;
+}
+
+.products-title-xanh {
+    color: #1F652D !important;
+    transform: scaleX(0.7);
+    transform-origin: left center;
+    display: inline-block;
+}
+
+#black-tea-grid {
+    margin-bottom: 0;
+}
+
+#san-pham-den .products-container {
+    padding-bottom: 0;
+}
+.product-card {
+    margin-top: clamp(12px, 2vw, 25px);
+}
+
+/* Footer spacing — removed the giant fixed margin */
+.site-footer {
+    margin-top: clamp(40px, 8vw, 80px);
+}
+
+/* =============================================
+   Responsive — 1024px
+   ============================================= */
+@media (max-width: 1024px) {
+    .products-divider-header {
+        padding: clamp(20px, 3vw, 36px) clamp(16px, 3vw, 32px) 12px;
+    }
+
+    .products-divider-left {
+        padding-right: clamp(16px, 5vw, 60px);
+    }
+
+    .products-divider-right {
+        padding-left: clamp(16px, 5vw, 60px);
+    }
+}
+
+/* =============================================
+   Responsive — 768px
+   ============================================= */
+@media (max-width: 768px) {
+    .products-divider-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(10px, 3vw, 18px);
+        padding: 18px 12px 8px;
+    }
+
+    .products-divider-left,
+    .products-divider-right {
+        width: auto;
+        justify-content: center;
+        padding: 0;
+        flex: 1 1 0;
+    }
+
+    .products-divider-line {
+        display: none;
+    }
+
+    .products-title-den,
+    .products-title-xanh {
+        display: inline-block;
+        transform-origin: center center;
+        transform: scaleX(0.7) scaleY(1.1);
+        white-space: nowrap;
+    }
+}
+
+/* =============================================
+   Responsive — 600px
+   ============================================= */
+@media (max-width: 600px) {
+    .products-divider-header {
+        gap: 8px;
+        padding: 20px 12px 6px;
+    }
+
+    .products-title-den,
+    .products-title-xanh {
+        transform: scaleX(0.6) scaleY(1.3);
+    }
+}
+
+/* =============================================
+   Responsive — 480px
+   ============================================= */
+@media (max-width: 480px) {
+    .products-divider-header {
+        gap: 8px;
+        padding: 16px 8px 4px;
+    }
+
+    .products-title-den,
+    .products-title-xanh {
+        font-size: clamp(1.2rem, 5vw, 1.7rem);
+        transform: scaleX(0.55) scaleY(1.2);
+    }
+
+    .site-footer {
+        margin-top: clamp(24px, 5vw, 48px);
+    }
+}
+
+/* =============================================
+   Responsive — 375px
+   ============================================= */
+@media (max-width: 375px) {
+    .products-title-den,
+    .products-title-xanh {
+        transform: scaleX(0.5) scaleY(1.1);
+    }
+}
+
+/* =============================================
+   Responsive — 320px
+   ============================================= */
+@media (max-width: 320px) {
+    .products-divider-header {
+        padding: 12px 4px 2px;
+    }
+
+    .products-title-den,
+    .products-title-xanh {
+        transform: scaleX(0.45) scaleY(1.0);
+    }
+}
+#san-pham-den,
+#san-pham-xanh {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+#san-pham-den .products-container,
+#san-pham-xanh .products-container {
+    padding-top: 0 !important;
+    padding-bottom: 56px !important;
+    margin-top: 0 !important;
+}
+
+#san-pham-den .products-grid,
+#san-pham-xanh .products-grid {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#san-pham-den .products-container,
+#san-pham-xanh .products-container {
+    min-height: 0;
+}
