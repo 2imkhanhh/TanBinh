@@ -399,8 +399,12 @@ textarea {
     align-items: center;
     gap: 12px;
     font-size: var(--text-sm);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: none;
     color: #108140;
     transition: gap 0.3s ease;
+    white-space: nowrap;
 }
 
 .arrow-circle {
@@ -481,10 +485,12 @@ textarea {
 .product-card {
     background: var(--white);
     text-align: center;
-    border-radius: 12px;
-    padding: clamp(16px, 2.5vw, 24px) clamp(12px, 2vw, 16px) 24px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    border-radius: 24px;
+    padding: clamp(20px, 2.5vw, 28px) clamp(16px, 2vw, 24px) 28px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
     transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex;
+    flex-direction: column;
 }
 
 #san-pham-den .product-card,
@@ -498,8 +504,8 @@ textarea {
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
 .product-name {
@@ -517,13 +523,21 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #f7f9f6 0%, #eef3eb 100%);
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 .product-image img {
-    max-width: 85%;
-    max-height: 85%;
+    max-width: 80%;
+    max-height: 80%;
     object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.08);
 }
 
 .product-actions {
@@ -547,25 +561,27 @@ textarea {
 }
 
 .btn-lien-he {
-    display: inline-block;
-    padding: 8px clamp(12px, 2vw, 24px);
-    background-color: transparent;
-    color: var(--olive-btn);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px clamp(16px, 2.5vw, 32px);
+    background-color: var(--olive-btn);
+    color: var(--white);
     font-size: var(--text-sm);
     font-weight: 600;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     border: 1px solid var(--olive-btn);
-    border-radius: 4px;
+    border-radius: 50px;
     white-space: nowrap;
 }
 
 .btn-lien-he:hover {
-    background-color: var(--olive-btn);
-    color: var(--white);
+    background-color: transparent;
+    color: var(--olive-btn);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(191, 168, 90, 0.3);
+    box-shadow: 0 8px 16px rgba(191, 168, 90, 0.2);
 }
 
 .products-footer {

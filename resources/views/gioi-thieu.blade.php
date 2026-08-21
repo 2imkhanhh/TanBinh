@@ -53,7 +53,6 @@
         </div>
     </header>
 
-    <!-- Hero Section (kế thừa từ trang chủ) -->
     <section class="hero" id="hero">
         <div class="hero-bg">
             <img src="assets/images/home/hero-tea-banner.png" alt="Đồi chè Việt Nam">

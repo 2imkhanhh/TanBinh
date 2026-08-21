@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
@@ -59,29 +59,22 @@
             <p class="page-banner-desc">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
         </div>
     </section>
-<div class="products-divider-header">
-
-    <div class="products-divider-left">
-        <span class="products-title-bottom products-title-den active"
-              role="button"
-              tabindex="0"
-              aria-selected="true">
-            CHÈ ĐEN
-        </span>
+    <div class="products-toggle-wrapper">
+        <div class="products-toggle-switch">
+            <span class="products-toggle-btn products-title-den active"
+                  role="button"
+                  tabindex="0"
+                  aria-selected="true">
+                CHÈ ĐEN
+            </span>
+            <span class="products-toggle-btn products-title-xanh"
+                  role="button"
+                  tabindex="0"
+                  aria-selected="false">
+                CHÈ XANH
+            </span>
+        </div>
     </div>
-
-    <div class="products-divider-line"></div>
-
-    <div class="products-divider-right">
-        <span class="products-title-bottom products-title-xanh"
-              role="button"
-              tabindex="0"
-              aria-selected="false">
-            CHÈ XANH
-        </span>
-    </div>
-
-</div>
 
 
 
