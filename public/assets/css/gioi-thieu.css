@@ -455,7 +455,6 @@
     }
 
     .about-aerial-title {
-        font-size: var(--text-2xl);
         text-transform: uppercase;
         letter-spacing: 2px;
     }
@@ -474,13 +473,11 @@
     }
 
     .about-split-title {
-        font-size: var(--text-2xl);
         text-transform: uppercase;
         letter-spacing: 2px;
     }
 
     .about-image-section-title {
-        font-size: var(--text-2xl);
         text-transform: uppercase;
         letter-spacing: 2px;
     }

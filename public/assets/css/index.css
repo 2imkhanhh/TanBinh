@@ -349,7 +349,6 @@
 
 @media (max-width: 900px) {
     .hero-title {
-        font-size: var(--text-hero);
         text-transform: uppercase;
     }
 
@@ -370,7 +369,6 @@
     }
 
     .hero-title {
-        font-size: var(--text-hero);
         letter-spacing: 4px;
         margin-bottom: 18px;
 
@@ -378,7 +376,6 @@
     }
 
     .hero-desc {
-        font-size: clamp(0.72rem, 2.8vw, 0.82rem);
         max-width: min(340px, 88vw);
     }
 
@@ -472,14 +469,11 @@
     }
 
     .hero-title {
-        font-size: var(--text-hero);
-
         margin-bottom: 14px;
         text-transform: uppercase;
     }
 
     .hero-desc {
-        font-size: clamp(0.68rem, 3vw, 0.78rem);
         max-width: min(300px, 90vw);
     }
 
@@ -498,14 +492,11 @@
     }
 
     .hero-title {
-        font-size: var(--text-hero);
-
         margin-bottom: 12px;
         text-transform: uppercase;
     }
 
     .hero-desc {
-        font-size: 0.7rem;
         max-width: min(280px, 92vw);
         line-height: 1.7;
     }
@@ -537,7 +528,6 @@
     }
 
     .xem-them-link {
-        font-size: 0.8rem;
         gap: 8px;
     }
 
@@ -561,7 +551,6 @@
     }
 
     .hero-desc {
-        font-size: 0.68rem;
         max-width: 90vw;
     }
 
@@ -575,7 +564,6 @@
 
     .contact-form input,
     .contact-form textarea {
-        font-size: 0.78rem;
         padding: 8px 12px;
     }
 }
@@ -589,31 +577,12 @@
     }
 
     .hero-title {
-        font-size: var(--text-hero);
-
         letter-spacing: 4px;
         text-transform: uppercase;
     }
 
     .hero-desc {
-        font-size: 0.65rem;
         max-width: 92vw;
-    }
-
-    .intro-title {
-        font-size: var(--text-2xl);
-    }
-
-    .intro-desc {
-        font-size: var(--text-base);
-    }
-
-    .contact-title {
-        font-size: var(--text-2xl);
-    }
-
-    .contact-details li {
-        font-size: var(--text-base);
     }
 }
 

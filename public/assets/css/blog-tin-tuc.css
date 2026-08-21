@@ -187,10 +187,6 @@ body {
     .news-card-body {
         padding: 16px;
     }
-
-    .news-card-title {
-        font-size: clamp(0.9rem, 4vw, 1.1rem);
-    }
 }
 
 /* =============================================
@@ -199,14 +195,6 @@ body {
 @media (max-width: 600px) {
     .news-card-image {
         height: clamp(150px, 52vw, 220px);
-    }
-
-    .news-card-title {
-        font-size: clamp(0.88rem, 4.2vw, 1rem);
-    }
-
-    .news-link {
-        font-size: clamp(0.8rem, 3.5vw, 0.95rem);
     }
 }
 
@@ -225,11 +213,6 @@ body {
     .news-card-body {
         padding: 14px 12px;
     }
-
-    .news-date-badge {
-        font-size: 0.65rem;
-        padding: 5px 10px;
-    }
 }
 
 /* =============================================
@@ -243,14 +226,8 @@ body {
     .news-card-image {
         height: clamp(130px, 56vw, 185px);
     }
-
     .news-card-title {
-        font-size: 0.85rem;
         min-height: unset;
-    }
-
-    .news-link {
-        font-size: 0.78rem;
     }
 }
 
@@ -264,10 +241,6 @@ body {
 
     .news-card-body {
         padding: 12px 10px;
-    }
-
-    .news-card-title {
-        font-size: 0.8rem;
     }
 }
 
