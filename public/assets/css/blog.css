@@ -16,7 +16,6 @@
 }
 
 .page-banner .page-banner-title {
-    font-size: clamp(1.6rem, 4vw, 2.8rem);
     margin-bottom: 0;
 }
 
@@ -228,7 +227,7 @@
 
     color: #fff !important;
     font-size: 42px !important;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     line-height: 1 !important;
 
     cursor: pointer;

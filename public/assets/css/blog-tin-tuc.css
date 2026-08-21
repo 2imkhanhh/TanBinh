@@ -14,7 +14,6 @@ body {
 }
 
 .page-banner .page-banner-title {
-    font-size: clamp(1.6rem, 4vw, 2.8rem);
     margin-bottom: 0;
 }
 
@@ -23,7 +22,7 @@ body {
    ============================================= */
 .news-section {
     position: relative;
-    padding: 80px  130px 0px 130px;
+    padding: 80px 130px 0px 130px;
     background-color: transparent;
     z-index: 2;
 }
@@ -48,9 +47,11 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.blog-gallery-wrapper{
+
+.blog-gallery-wrapper {
     background-color: #D8E7AB;
 }
+
 .news-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
@@ -95,7 +96,7 @@ body {
     color: var(--text-dark);
     line-height: 1.55;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     min-height: calc(1.3rem * 1.55 * 2);

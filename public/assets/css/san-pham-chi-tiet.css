@@ -37,9 +37,9 @@
 }
 
 .chi-tiet-category {
-    font-family: 'Noto Serif Display', serif;
+    font-family: var(--font-serif);
     font-size: clamp(1.4rem, 3vw, 2.2rem);
-    font-weight: 350;
+    font-weight: 400;
     color: #1a1a1a;
     letter-spacing: 2px;
     transform: scaleX(0.75);
@@ -196,7 +196,7 @@
 .chi-tiet-subtitle {
     font-family: 'Inter', sans-serif;
     font-size: clamp(0.8rem, 1.4vw, 1rem);
-    font-weight: 800;
+    font-weight: 600;
     color: #2E563F;
     margin-bottom: 18px;
 }
@@ -224,7 +224,7 @@
 
 .chi-tiet-label {
     color: #2E563F;
-    font-weight: 900;
+    font-weight: 600;
     width: clamp(120px, 20vw, 170px);
     white-space: nowrap;
     padding-right: clamp(8px, 2vw, 16px);
@@ -326,9 +326,9 @@
     }
 
     .chi-tiet-category {
-        font-family: 'Noto Serif Display', serif;
+        font-family: var(--font-serif);
         font-size: clamp(2.1rem, 7vw, 3rem);
-        font-weight: 300;
+        font-weight: 400;
         color: #1F652D !important;
         line-height: 1.05;
         display: inline-block;
@@ -392,7 +392,7 @@
     }
 
     .chi-tiet-label {
-        font-weight: 700;
+        font-weight: 600;
         font-size: 0.72rem;
         color: #1a5c30;
     }
@@ -439,9 +439,9 @@
 }
 /* FIX CHỮ CHÈ ĐEN TRANG CHI TIẾT */
 .chi-tiet-breadcrumb .chi-tiet-category {
-    font-family: 'Noto Serif Display', serif !important;
+    font-family: var(--font-serif) !important;
     font-size: clamp(3.5rem, 4.8vw, 4.2rem) !important;
-    font-weight: 300 !important;
+    font-weight: 400 !important;
     font-style: normal !important;
     color: #1F652D !important;
     line-height: 1.05 !important;

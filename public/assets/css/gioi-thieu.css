@@ -45,16 +45,17 @@
 }
 
 .hero-title {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-family: var(--font-serif);
+    font-size: var(--text-hero);
     font-weight: 350;
     color: var(--white);
-    letter-spacing: 0;
+    letter-spacing: 4px;
     line-height: 1.12;
     margin-bottom: 22px;
     text-align: center;
-    transform: scaleY(1.6);
+
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
 }
 
 .hero-vector {
@@ -76,6 +77,7 @@
     padding: 0;
     position: relative;
     z-index: 2;
+    background-color: var(--white);
 }
 
 .about-split-left {
@@ -84,6 +86,8 @@
     overflow: hidden;
     position: relative;
     min-height: 480px;
+    border-radius: 0 40px 40px 0;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
 }
 
 .about-split-left img {
@@ -104,26 +108,28 @@
     right: 0;
     min-height: clamp(180px, 24vw, 260px);
     padding: clamp(24px, 4vw, 160px) clamp(20px, 5vw, 80px) clamp(24px, 4vw, 50px) 140px;
-    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 100%);
     z-index: 2;
     display: block;
 }
 
 .about-split-title {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    text-transform: uppercase;
+    letter-spacing: 2px;
     font-weight: 350;
     color: var(--white);
     letter-spacing: 0;
     line-height: 1.12;
-    transform: scaleY(1.6);
+
     margin-bottom: 5px;
     display: inline-block;
 }
 
 .about-split-desc {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
     font-weight: 400;
     color: var(--white);
     line-height: 1.8;
@@ -134,11 +140,11 @@
 .about-split-right {
     flex: 0 0 50%;
     width: 50%;
-    background-color: #114113;
+    background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 140px clamp(24px, 5vw, 80px) clamp(40px, 6vw, 80px);
+    padding: 100px clamp(24px, 5vw, 80px);
 }
 
 .about-split-right-text {
@@ -151,12 +157,12 @@
 }
 
 .about-split-right-text p {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
     font-weight: 400;
-    color: var(--white);
+    color: var(--text-color);
     line-height: 1.8;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     text-align: justify;
 }
 
@@ -165,14 +171,15 @@
    ============================================= */
 .about-bar {
     width: 100%;
-    min-height: 200px;
-    background-color: #B1D136;
+    min-height: 240px;
+    background: linear-gradient(135deg, #0a230b 0%, #174d1a 100%);
     position: relative;
     z-index: 2;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: clamp(32px, 5vw, 60px) 0;
+    padding: clamp(60px, 8vw, 100px) 0;
+    margin: 0;
 }
 
 .about-bar-content {
@@ -182,22 +189,22 @@
 }
 
 .about-bar-title {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    font-weight: 350;
-    color: #114113;
-    letter-spacing: 0;
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: 2px;
     line-height: 1.12;
-    transform: scaleY(1.6);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     display: inline-block;
+    text-transform: uppercase;
 }
 
 .about-bar-desc {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
     font-weight: 400;
-    color: #114113;
+    color: var(--white);
     line-height: 1.8;
     margin-top: clamp(12px, 2vw, 20px);
     text-align: center;
@@ -214,16 +221,17 @@
     padding: 0;
     position: relative;
     z-index: 2;
+    background-color: var(--white);
 }
 
 .about-image-section-left {
     flex: 0 0 50%;
     width: 50%;
-    background-color: #3E7C2F;
+    background-color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px 80px 0 150px;
+    padding: 80px 80px 80px 150px;
 }
 
 .about-image-section-text {
@@ -232,24 +240,24 @@
 }
 
 .about-image-section-title {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-    font-weight: 350;
-    color: var(--white);
-    letter-spacing: 0;
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: 400;
+    color: var(--text-color);
+    letter-spacing: 2px;
     line-height: 1.12;
-    transform: scaleY(1.6);
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     display: inline-block;
+    text-transform: uppercase;
 }
 
 .about-image-section-desc {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
     font-weight: 400;
-    color: var(--white);
+    color: var(--text-color);
     line-height: 1.8;
-    margin-top: clamp(16px, 2.5vw, 10px);
+    margin-top: 10px;
     text-align: justify;
 }
 
@@ -259,6 +267,8 @@
     overflow: hidden;
     min-height: 400px;
     position: relative;
+    border-radius: 40px 0 0 40px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
 }
 
 .about-image-section-right img {
@@ -283,7 +293,7 @@
 }
 
 /* Background image as a full-cover element */
-.about-aerial > img:first-child {
+.about-aerial>img:first-child {
     position: absolute;
     top: 0;
     left: 0;
@@ -301,9 +311,10 @@
     position: absolute;
     top: 0;
     bottom: 0;
+    left: 0;
     right: 0;
-    width: 48%;
-    background-color: rgba(10, 24, 10, 0.6);
+    width: 100%;
+    background-color: rgba(10, 24, 10, 0.75);
     z-index: 1;
     pointer-events: none;
 }
@@ -319,7 +330,7 @@
 
 /* Left column — Giá trị cốt lõi heading */
 .about-aerial-left {
-    padding: 180px clamp(60px, 5vw, 80px) clamp(40px, 6vw, 80px) 180px;
+    padding: 140px clamp(60px, 5vw, 80px) 60px 180px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -328,28 +339,37 @@
 
 /* Right column — items + Văn hóa */
 .about-aerial-right {
-    padding: clamp(40px, 6vw, 80px) 160px clamp(40px, 6vw, 80px) 0;
+    padding: 140px 160px 60px 0;
     display: flex;
     flex-direction: column;
     gap: clamp(24px, 4vw, 40px);
-
 }
 
-.about-aerial-text {
-    /* Used for section headings */
-    padding-bottom: 230px;
+/* Row 2 specific padding */
+.about-aerial-van-hoa-left {
+    padding-top: 60px;
+    padding-bottom: 140px;
 }
+
+.about-aerial-van-hoa-right {
+    padding-top: 60px;
+    padding-bottom: 140px;
+}
+
+
 
 .about-aerial-title {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    text-transform: uppercase;
+    letter-spacing: 2px;
     font-weight: 350;
     color: var(--white);
     letter-spacing: 0;
     line-height: 1.12;
-    transform: scaleY(1.6);
+
     display: inline-block;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .about-aerial-image {
@@ -357,7 +377,6 @@
     flex-direction: column;
     gap: clamp(20px, 3vw, 40px);
     margin-left: 0px;
-    padding-top: 90px;
 }
 
 .about-aerial-item {
@@ -376,40 +395,35 @@
 }
 
 .about-aerial-item-text {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
-    font-weight: 600;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 500;
     color: var(--white);
     line-height: 1.8;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
-}
-
-/* Văn hoá section */
-.about-aerial-van-hoa {
-    /* inherits from .about-aerial-text */
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .about-aerial-van-hoa-desc {
     display: flex;
     flex-direction: column;
     gap: 14px;
-    padding-top: 50px;
 }
 
 .about-aerial-van-hoa-desc p {
-    font-family: 'Manrope', sans-serif;
-    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
     font-weight: 400;
     color: var(--white);
     line-height: 1.8;
     text-align: justify;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* =============================================
    Responsive — 1024px
    ============================================= */
 @media (max-width: 1024px) {
+
     .about-split-left,
     .about-split-right {
         flex: 0 0 50%;
@@ -418,6 +432,10 @@
 
     .about-split-left {
         min-height: 400px;
+    }
+
+    .about-aerial-left {
+        min-height: auto;
     }
 
     .about-image-section-left,
@@ -437,7 +455,9 @@
     }
 
     .about-aerial-title {
-        font-size: clamp(1.4rem, 3vw, 2.2rem);
+        font-size: var(--text-2xl);
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
 }
 
@@ -454,39 +474,39 @@
     }
 
     .about-split-title {
-        font-size: clamp(1.4rem, 3vw, 2.2rem);
+        font-size: var(--text-2xl);
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
 
     .about-image-section-title {
-        font-size: clamp(1.4rem, 3vw, 2.2rem);
+        font-size: var(--text-2xl);
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
 
     .about-bar-content {
         padding: 0 clamp(16px, 6vw, 100px);
     }
 
-    .about-bar-title {
-        font-size: clamp(1.2rem, 2.8vw, 1.8rem);
-    }
+
 }
 
 /* =============================================
    Responsive — 768px (tablet/mobile)
    ============================================= */
 @media (max-width: 768px) {
+
     /* Hero */
     .hero {
         min-height: 380px;
         max-height: 620px;
     }
 
-    .hero-title {
-        font-size: clamp(1.4rem, 5.5vw, 2rem);
-        transform: scaleY(1.4);
-    }
+
 
     .hero-desc {
-        font-size: clamp(0.72rem, 2.8vw, 0.82rem);
+
         max-width: min(340px, 88vw);
     }
 
@@ -604,7 +624,7 @@
 
     .about-aerial-item-text,
     .about-aerial-van-hoa-desc p {
-        font-size: 0.78rem;
+
         line-height: 1.7;
     }
 
@@ -613,23 +633,6 @@
         order: 3;
     }
 
-    .about-aerial-culture-heading .about-aerial-title {
-        font-size: clamp(1.4rem, 5vw, 2rem);
-        transform: scaleY(1.4);
-    }
-
-    .about-split-title {
-        font-size: clamp(1.2rem, 5vw, 1.7rem);
-        transform: scaleY(1.3);
-    }
-
-    .about-split-desc,
-    .about-split-right-text p,
-    .about-image-section-desc,
-    .about-aerial-van-hoa-desc p,
-    .about-aerial-item-text {
-        font-size: clamp(0.75rem, 2.8vw, 0.85rem);
-    }
 
     .about-split-right {
         padding: 28px 20px;
@@ -642,10 +645,7 @@
         min-height: unset;
     }
 
-    .about-image-section-title {
-        font-size: clamp(1.2rem, 5vw, 1.7rem);
-        transform: scaleY(1.3);
-    }
+
 
     /* Bar */
     .about-bar {
@@ -656,13 +656,10 @@
         padding: 0 20px;
     }
 
-    .about-bar-title {
-        font-size: clamp(1.2rem, 5vw, 1.6rem);
-        transform: scaleY(1.3);
-    }
+
 
     .about-bar-desc {
-        font-size: clamp(0.75rem, 2.8vw, 0.85rem);
+
         margin-top: 14px;
     }
 
@@ -682,14 +679,13 @@
     }
 
     .about-aerial-left,
-    .about-aerial-right {
+    .about-aerial-right,
+    .about-aerial-van-hoa-left,
+    .about-aerial-van-hoa-right {
         padding: 28px 20px;
     }
 
-    .about-aerial-title {
-        font-size: clamp(1.2rem, 5vw, 1.7rem);
-        transform: scaleY(1.3);
-    }
+
 
     .about-aerial-image {
         gap: clamp(16px, 3vw, 28px);
@@ -706,8 +702,7 @@
     }
 
     .hero-title {
-        font-size: clamp(1.2rem, 6vw, 1.6rem);
-        transform: scaleY(1.3);
+
         margin-bottom: 12px;
     }
 
@@ -719,25 +714,13 @@
         height: 62vw;
     }
 
-    .about-bar-title {
-        font-size: clamp(1.1rem, 5.5vw, 1.4rem);
-        transform: scaleY(1.25);
-    }
 
-    .about-aerial-title {
-        font-size: clamp(1.1rem, 5.5vw, 1.4rem);
-        transform: scaleY(1.25);
-    }
 
-    .about-split-title {
-        font-size: clamp(1.1rem, 5.5vw, 1.4rem);
-        transform: scaleY(1.25);
-    }
 
-    .about-image-section-title {
-        font-size: clamp(1.1rem, 5.5vw, 1.4rem);
-        transform: scaleY(1.25);
-    }
+
+
+
+
 }
 
 /* =============================================
@@ -748,10 +731,7 @@
         min-height: 280px;
     }
 
-    .hero-title {
-        font-size: clamp(1.05rem, 6.5vw, 1.45rem);
-        transform: scaleY(1.25);
-    }
+
 
     .about-split-left {
         height: 70vw;
@@ -785,7 +765,9 @@
     }
 
     .about-aerial-left,
-    .about-aerial-right {
+    .about-aerial-right,
+    .about-aerial-van-hoa-left,
+    .about-aerial-van-hoa-right {
         padding: 20px 16px;
     }
 
@@ -798,53 +780,24 @@
    Responsive — 375px
    ============================================= */
 @media (max-width: 375px) {
-    .hero-title {
-        font-size: clamp(0.95rem, 7vw, 1.25rem);
-        transform: scaleY(1.2);
-    }
+
 
     .about-split-left {
         height: 72vw;
     }
 
-    .about-split-title,
-    .about-image-section-title,
-    .about-aerial-title,
-    .about-bar-title {
-        font-size: clamp(1rem, 5.5vw, 1.2rem);
-        transform: scaleY(1.2);
-    }
-
-    .about-split-desc,
-    .about-split-right-text p,
-    .about-image-section-desc,
-    .about-aerial-van-hoa-desc p,
-    .about-aerial-item-text,
-    .about-bar-desc {
-        font-size: 0.74rem;
-    }
 }
 
 /* =============================================
    Responsive — 320px
    ============================================= */
 @media (max-width: 320px) {
-    .hero-title {
-        font-size: 0.9rem;
-        transform: scaleY(1.15);
-    }
+
 
     .about-split-left {
         height: 75vw;
     }
 
-    .about-split-title,
-    .about-image-section-title,
-    .about-aerial-title,
-    .about-bar-title {
-        font-size: 0.95rem;
-        transform: scaleY(1.15);
-    }
 
     .about-split-text {
         padding: 12px 14px 16px;
@@ -853,7 +806,9 @@
     .about-split-right,
     .about-image-section-left,
     .about-aerial-left,
-    .about-aerial-right {
+    .about-aerial-right,
+    .about-aerial-van-hoa-left,
+    .about-aerial-van-hoa-right {
         padding: 16px 12px;
     }
 
@@ -862,15 +817,8 @@
     }
 }
 
-
-/* =============================================
-   Overflow guard for the full-bleed split rows
-   .fade-in-left / .fade-in-right start at
-   translateX(±30px); without a clip that offset
-   widens the document on tablet & desktop.
-   ============================================= */
 .about-split,
 .about-image-section {
-    overflow-x: hidden;   /* fallback for older Safari */
-    overflow-x: clip;     /* clip does not create a scroll container */
+    overflow-x: hidden;
+    overflow-x: clip;
 }

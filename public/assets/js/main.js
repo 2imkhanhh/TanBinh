@@ -149,45 +149,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================
-    // Active nav link highlight (scroll-spy for index.html only)
+    // Active nav link highlight (URL based)
     // =========================================
-    const sections = document.querySelectorAll('section[id]');
-    const isHomePage = window.location.pathname.endsWith('index.html') ||
-                       window.location.pathname.endsWith('/') ||
-                       window.location.pathname === '';
-
-    if (sections.length > 0 && isHomePage) {
-        // Remember the initially-active link set in HTML
-        const initialActive = document.querySelector('.nav-link.active');
-
-        function updateActiveNav() {
-            const scrollY = window.scrollY + 150;
-            let matched = false;
-
-            sections.forEach(section => {
-                const top    = section.offsetTop;
-                const height = section.offsetHeight;
-                const id     = section.getAttribute('id');
-                if (scrollY >= top && scrollY < top + height) {
-                    matched = true;
-                    navLinks.forEach(link => {
-                        const href = link.getAttribute('href');
-                        const matches =
-                            href === '#' + id ||
-                            (id === 'san-pham-xanh' && href === '#san-pham');
-                        link.classList.toggle('active', matches);
-                    });
-                }
-            });
-
-            // If no section matched, restore the initial active link
-            if (!matched && initialActive) {
-                navLinks.forEach(link => link.classList.remove('active'));
-                initialActive.classList.add('active');
-            }
+    const currentPath = window.location.pathname;
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPath || (href !== '/' && currentPath.startsWith(href))) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
         }
-        window.addEventListener('scroll', updateActiveNav, { passive: true });
-    }
+    });
 
     // =========================================
     // Smooth scroll for internal anchor links

@@ -1,10 +1,3 @@
-/* =============================================
-   index.css - Trang chủ
-   ============================================= */
-
-/* =============================================
-   Hero Section
-   ============================================= */
 .hero {
     position: relative;
     width: 100%;
@@ -46,21 +39,18 @@
 }
 
 .hero-title {
-    font-family: 'Noto Serif Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 350;
+    font-family: var(--font-serif);
+    font-size: var(--text-hero);
+    font-weight: 400;
     color: var(--white);
-    letter-spacing: 0;
-    line-height: 1.12;
+    letter-spacing: 4px;
+    line-height: 1.2;
     margin-bottom: clamp(24px, 4vw, 42px);
     text-align: center;
-    transform: scaleY(1.6);
-    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
 }
 
-/* =============================================
-   Giới thiệu Section
-   ============================================= */
 .intro {
     padding: clamp(60px, 8vw, 100px) 0 clamp(40px, 6vw, 60px);
     background-color: var(--white);
@@ -110,17 +100,18 @@
 }
 
 .intro-title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    font-weight: 700;
-    color: #108140;
-    margin-bottom: 16px;
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    color: var(--green-primary);
+    margin-bottom: 24px;
+    line-height: 1.3;
 }
 
 .intro-desc {
-    font-size: clamp(0.8rem, 1.3vw, 0.85rem);
-    line-height: 1.8;
-    color: #108140;
+    font-size: var(--text-base);
+    line-height: 1.9;
+    color: var(--text-body);
 }
 
 .intro-right {
@@ -132,7 +123,6 @@
     position: relative;
 }
 
-/* Lá trang trí intro — decorative only, hide on small screens */
 .intro-leaf-decoration {
     position: absolute;
     right: 0;
@@ -164,11 +154,8 @@
     padding-right: clamp(20px, 12vw, 180px);
 }
 
-/* =============================================
-   Liên hệ Section (index)
-   ============================================= */
 .contact {
-    padding: clamp(50px, 8vw, 80px) 0 30px;
+    padding: clamp(20px, 4vw, 40px) 0 30px;
     background-color: var(--white);
     position: relative;
     overflow: visible;
@@ -190,16 +177,16 @@
 }
 
 .contact-title {
-    font-family: var(--font-sans);
-    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    font-weight: 700;
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .contact-company {
-    font-size: clamp(0.78rem, 1.3vw, 0.9rem);
-    font-weight: 700;
+    font-size: var(--text-lg);
+    font-weight: 600;
     color: var(--green-primary);
     text-transform: uppercase;
     margin-bottom: 7px;
@@ -211,7 +198,7 @@
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 2px;
-    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
+    font-size: var(--text-base);
     color: var(--text-body);
     line-height: 1.6;
 }
@@ -229,72 +216,76 @@
 .contact-icon {
     flex-shrink: 0;
     margin-top: 3px;
+    color: var(--green-primary);
 }
 
 .contact-form-wrapper {
     flex: 0 0 min(560px, 100%);
-    border: 1px solid #108140;
+    background: var(--white);
     border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
     overflow: hidden;
     min-width: 0;
 }
 
 .contact-form {
-    padding: clamp(24px, 4vw, 45px) clamp(16px, 3vw, 30px) clamp(32px, 6vw, 60px) clamp(16px, 2.5vw, 20px);
+    padding: clamp(32px, 5vw, 48px);
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 16px;
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 10px 16px;
-    background-color: var(--input-bg);
-    font-size: clamp(0.78rem, 1.3vw, 0.85rem);
-    color: var(--text-body);
-    border: none;
-    margin-bottom: 10px;
-    transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 14px 18px;
+    background-color: var(--bg-light);
+    font-size: var(--text-base);
+    color: var(--text-dark);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    outline: none;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    background-color: #dcdcdc;
+    background-color: var(--white);
+    border-color: var(--green-accent);
+    box-shadow: 0 0 0 4px rgba(100, 167, 6, 0.1);
 }
 
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
     color: #999;
-    font-size: clamp(0.75rem, 1.2vw, 0.82rem);
+    font-size: var(--text-sm);
 }
 
 .contact-form textarea {
     resize: vertical;
-    min-height: 200px;
-    border-bottom: none;
+    min-height: 160px;
 }
 
 .contact-form .btn-submit {
-    align-self: flex-end;
-    margin-top: 5px;
-    padding: 6px 20px;
-    background-color: #108140;
+    align-self: flex-start;
+    margin-top: 8px;
+    padding: 12px 32px;
+    background-color: var(--olive-btn);
     color: var(--white);
-    font-size: 0.68rem;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    border: 1px solid #108140;
-    border-radius: 8px;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 4px;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .contact-form .btn-submit:hover {
     background-color: var(--green-dark);
-    box-shadow: 0 2px 8px rgba(62, 183, 70, 0.3);
+    box-shadow: 0 4px 12px rgba(10, 59, 33, 0.3);
+    transform: translateY(-2px);
 }
 
-/* Lá trang trí liên hệ — decorative absolute, pointer-events none */
 .contact-leaf-decoration {
     position: absolute;
     bottom: 0;
@@ -321,9 +312,6 @@
     height: auto;
 }
 
-/* =============================================
-   Responsive — 1200px
-   ============================================= */
 @media (max-width: 1200px) {
     .intro-image {
         width: min(calc(50vw + 60px), 72vw);
@@ -334,9 +322,6 @@
     }
 }
 
-/* =============================================
-   Responsive — 1024px
-   ============================================= */
 @media (max-width: 1024px) {
     .contact-container {
         flex-direction: column;
@@ -362,12 +347,10 @@
     }
 }
 
-/* =============================================
-   Responsive — Tablet landscape (900px)
-   ============================================= */
 @media (max-width: 900px) {
     .hero-title {
-        font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+        font-size: var(--text-hero);
+        text-transform: uppercase;
     }
 
     .contact-container {
@@ -379,6 +362,7 @@
    Responsive — 768px
    ============================================= */
 @media (max-width: 768px) {
+
     /* Hero */
     .hero {
         min-height: 380px;
@@ -386,10 +370,11 @@
     }
 
     .hero-title {
-        font-size: clamp(1.4rem, 5.5vw, 2rem);
-        letter-spacing: 1px;
+        font-size: var(--text-hero);
+        letter-spacing: 4px;
         margin-bottom: 18px;
-        transform: scaleY(1.4);
+
+        text-transform: uppercase;
     }
 
     .hero-desc {
@@ -487,9 +472,10 @@
     }
 
     .hero-title {
-        font-size: clamp(1.2rem, 6vw, 1.7rem);
-        transform: scaleY(1.35);
+        font-size: var(--text-hero);
+
         margin-bottom: 14px;
+        text-transform: uppercase;
     }
 
     .hero-desc {
@@ -512,9 +498,10 @@
     }
 
     .hero-title {
-        font-size: clamp(1.1rem, 6.5vw, 1.5rem);
-        transform: scaleY(1.3);
+        font-size: var(--text-hero);
+
         margin-bottom: 12px;
+        text-transform: uppercase;
     }
 
     .hero-desc {
@@ -568,8 +555,9 @@
     }
 
     .hero-title {
-        font-size: clamp(1rem, 7vw, 1.3rem);
-        transform: scaleY(1.25);
+        font-size: var(--text-hero);
+
+        text-transform: uppercase;
     }
 
     .hero-desc {
@@ -601,9 +589,10 @@
     }
 
     .hero-title {
-        font-size: 0.95rem;
-        transform: scaleY(1.2);
-        letter-spacing: 0;
+        font-size: var(--text-hero);
+
+        letter-spacing: 4px;
+        text-transform: uppercase;
     }
 
     .hero-desc {
@@ -612,25 +601,22 @@
     }
 
     .intro-title {
-        font-size: 1.1rem;
+        font-size: var(--text-2xl);
     }
 
     .intro-desc {
-        font-size: 0.75rem;
+        font-size: var(--text-base);
     }
 
     .contact-title {
-        font-size: 1.1rem;
+        font-size: var(--text-2xl);
     }
 
     .contact-details li {
-        font-size: 0.72rem;
+        font-size: var(--text-base);
     }
 }
 
-/* =============================================
-   Lá trang trí trước footer — giống lien-he
-   ============================================= */
 .contact-bottom-row {
     display: flex;
     align-items: flex-end;
@@ -674,13 +660,12 @@
     }
 }
 
-
-/* Touch targets — contact form (touch screens only) */
 @media (hover: none) and (pointer: coarse) {
+
     .contact-form input,
     .contact-form textarea {
         min-height: 44px;
-        font-size: 16px;   /* stops iOS Safari zooming in on focus */
+        font-size: 16px;
     }
 
     .contact-form textarea {
@@ -694,13 +679,6 @@
     }
 }
 
-/* =============================================
-   Contact block — stacked layout width guard
-   In column direction the flex children were
-   sized to their content (align-items:flex-start),
-   so the long e-mail address pushed the block
-   wider than the viewport on small phones.
-   ============================================= */
 @media (max-width: 768px) {
     .contact-container {
         align-items: stretch;

@@ -67,41 +67,28 @@
             <div class="contact-info">
                 <h2 class="contact-title">Liên hệ</h2>
                 <h3 class="contact-company">CÔNG TY TNHH CHÈ TÂN BÌNH</h3>
-                <ul class="contact-details">
+                                <ul class="contact-details">
                     <li>
                         <span class="contact-icon">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="8" cy="8" r="7.5" stroke="#1B5E20"/>
-                                <circle cx="8" cy="8" r="2" fill="#1B5E20"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                         </span>
-                        <span style="white-space: nowrap;">Xóm Tân Bình, Xã Võ Miếu, Huyện Thanh Sơn, Tỉnh Phú Thọ</span>
+                        <span>Xóm Tân Bình, Xã Võ Miếu, Huyện Thanh Sơn, Tỉnh Phú Thọ</span>
                     </li>
                     <li>
                         <span class="contact-icon">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="8" cy="8" r="7.5" stroke="#1B5E20"/>
-                                <line x1="2" y1="8" x2="14" y2="8" stroke="#1B5E20" stroke-width="0.8"/>
-                                <line x1="8" y1="2" x2="8" y2="14" stroke="#1B5E20" stroke-width="0.8"/>
-                                <ellipse cx="8" cy="8" rx="3" ry="6" stroke="#1B5E20" stroke-width="0.8"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                         </span>
                         <span><a href="https://tanbinhteacoltd.com/" target="_blank">tanbinhteacoltd.com</a></span>
                     </li>
                     <li>
                         <span class="contact-icon">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="2" y="3" width="12" height="10" rx="1" stroke="#1B5E20" stroke-width="0.8"/>
-                                <path d="M2 5L8 9L14 5" stroke="#1B5E20" stroke-width="0.8"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                         </span>
                         <span><a href="mailto:tanbinhteacompany@gmail.com">tanbinhteacompany@gmail.com</a></span>
                     </li>
                     <li>
                         <span class="contact-icon">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3.5 2.5C3.5 2.5 4.5 2 5.5 2C6 2 6.5 2.5 6.5 3.5C6.5 4.5 5.5 6 5 6.5C4.5 7 6 9.5 7.5 10.5C8.5 11 10 10 10.5 9.5C11 9 12 9 12.5 9.5C13 10 14 11 14 11.5C14 12 13.5 13.5 12 13.5C10.5 13.5 7.5 13 5 10.5C2.5 8 2 5 2 3.5C2 2.5 3.5 2.5 3.5 2.5Z" stroke="#1B5E20" stroke-width="0.8"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         </span>
                         <span><a href="tel:+84986843666">(+84) 986 843 666</a></span>
                     </li>
@@ -171,36 +158,26 @@
                 <img src="assets/images/common/logo.png" alt="Tân Bình Tea Logo" class="footer-logo-img">
                 <span class="footer-logo-text">TAN BINH TEA</span>
             </div>
-            <div class="footer-info">
-                <p>Xóm Tân Bình, Xã Võ Miếu, Huyện Thanh Sơn, Tỉnh Phú Thọ</p>
-                <p>tanbinhteacoltd.com</p>
-                <p>tanbinhteacompany@gmail.com</p>
-                <p>(+84) 986 843 666</p>
+                                    <div class="footer-info">
+                <p><span class="footer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>Xóm Tân Bình, Xã Võ Miếu, Huyện Thanh Sơn, Tỉnh Phú Thọ</p>
+                <p><span class="footer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span>tanbinhteacoltd.com</p>
+                <p><span class="footer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></span>tanbinhteacompany@gmail.com</p>
+                <p><span class="footer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></span>(+84) 986 843 666</p>
             </div>
             <div class="footer-right">
                 <div class="footer-legal">
                     <p>MST 2601039326</p>
                     <p>được Sở KH và ĐT Tỉnh Phú Thọ cấp ngày 03/02/2020</p>
                 </div>
-                <div class="footer-social">
+                                <div class="footer-social">
                     <a href="#" aria-label="YouTube" class="social-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="2" y="4" width="20" height="16" rx="4" stroke="white" stroke-width="1.5"/>
-                            <path d="M10 9L15 12L10 15V9Z" fill="white"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
                     </a>
                     <a href="#" aria-label="Facebook" class="social-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="3" y="3" width="18" height="18" rx="3" stroke="white" stroke-width="1.5"/>
-                            <path d="M13 21V13H15.5L16 10H13V8.5C13 7.5 13.5 7 14.5 7H16V4.5C16 4.5 15 4 13.5 4C11 4 10 5.5 10 8V10H8V13H10V21" stroke="white" stroke-width="1.5"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                     </a>
                     <a href="#" aria-label="Instagram" class="social-icon">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5"/>
-                            <circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.5"/>
-                            <circle cx="17.5" cy="6.5" r="1" fill="white"/>
-                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                     </a>
                 </div>
             </div>
