@@ -1,6 +1,3 @@
-/* =============================================
-   CSS Reset & Base Styles
-   ============================================= */
 *,
 *::before,
 *::after {
@@ -27,7 +24,6 @@
     --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-    /* Typography System (Responsive via clamp) */
     --text-xs: clamp(0.65rem, 1vw, 0.75rem);
     --text-sm: clamp(0.75rem, 1.2vw, 0.85rem);
     --text-base: clamp(0.85rem, 1.4vw, 1.05rem);
@@ -84,9 +80,6 @@ textarea {
     outline: none;
 }
 
-/* =============================================
-   Header
-   ============================================= */
 .header {
     position: fixed;
     top: 0;
@@ -181,14 +174,10 @@ textarea {
     display: none;
 }
 
-/* =============================================
-   Blog Nav Dropdown (shared across all pages)
-   ============================================= */
 .nav-item-dropdown {
     position: relative;
 }
 
-/* Override the generic ::after hide for the dropdown chevron */
 .nav-item-dropdown>.nav-link::after {
     content: '';
     display: inline-block;
@@ -289,7 +278,7 @@ textarea {
     position: relative;
     width: 48px;
     height: 48px;
-    padding: 0; 
+    padding: 0;
     box-sizing: border-box;
     flex-shrink: 0;
     z-index: 1001;
@@ -310,7 +299,7 @@ textarea {
     width: 24px;
     height: 2px;
     background-color: var(--text-dark);
-    border-radius: 0; /* Bỏ bo góc để nét sắc cạnh trên màn scale */
+    border-radius: 0;
     transition: all 0.3s ease;
 }
 
@@ -339,9 +328,6 @@ textarea {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* =============================================
-   Page Banner (Sub Pages)
-   ============================================= */
 .page-banner {
     position: relative;
     width: 100%;
@@ -415,9 +401,6 @@ textarea {
     text-align: center;
 }
 
-/* =============================================
-   Shared: Xem thêm / Arrow
-   ============================================= */
 .xem-them-link {
     display: inline-flex;
     align-items: center;
@@ -446,9 +429,6 @@ textarea {
     transform: translateX(4px);
 }
 
-/* =============================================
-   Shared: Products (dùng ở index và san-pham)
-   ============================================= */
 .products {
     padding: 60px 0 0;
     background-color: #ffffff;
@@ -539,6 +519,7 @@ textarea {
     color: var(--text-dark);
     margin-bottom: 16px;
     text-align: left;
+    flex-grow: 1;
 }
 
 .product-image {
@@ -621,9 +602,6 @@ textarea {
     padding-top: 0;
 }
 
-/* =============================================
-   Footer
-   ============================================= */
 .site-footer {
     position: relative;
     background: linear-gradient(to right, #B1D136 0%, #9EC334 15%, #6FA032 45%, #24682D 87%, #0B552C 100%);
@@ -742,9 +720,6 @@ textarea {
     transform: translateY(-3px);
 }
 
-/* =============================================
-   Scroll to Top
-   ============================================= */
 .scroll-top {
     position: fixed;
     bottom: 30px;
@@ -776,9 +751,6 @@ textarea {
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* =============================================
-   Animations - Optimized for Performance
-   ============================================= */
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
@@ -837,18 +809,12 @@ textarea {
     }
 }
 
-/* =============================================
-   Responsive — Large Desktop (1440px+)
-   ============================================= */
 @media (min-width: 1440px) {
     :root {
         --max-width: 1320px;
     }
 }
 
-/* =============================================
-   Responsive — Laptop (1200px)
-   ============================================= */
 @media (max-width: 1200px) {
     .header-container {
         padding: 0 28px;
@@ -868,9 +834,6 @@ textarea {
     }
 }
 
-/* =============================================
-   Responsive — Tablet (1024px)
-   ============================================= */
 @media (max-width: 1024px) {
     .header-container {
         padding: 0 20px;
@@ -903,9 +866,6 @@ textarea {
     }
 }
 
-/* =============================================
-   Responsive — Mobile (768px)
-   ============================================= */
 @media (max-width: 768px) {
     :root {
         --header-height: 60px;
@@ -950,6 +910,7 @@ textarea {
         top: var(--header-height);
         left: 0;
         width: 100%;
+        height: calc(100vh - var(--header-height));
         background-color: var(--white);
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         transform: translateY(-100%);
@@ -957,7 +918,6 @@ textarea {
         visibility: hidden;
         transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), visibility 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         z-index: 999;
-        max-height: calc(100vh - var(--header-height));
         overflow-y: auto;
     }
 
@@ -1068,9 +1028,7 @@ textarea {
         max-height: 560px;
     }
 
-    .page-banner-title {
-        /* let var(--text-hero) handle scaling natively */
-    }
+    .page-banner-title {}
 
     .page-banner-desc {
         font-size: clamp(0.72rem, 2.8vw, 0.82rem);
@@ -1091,13 +1049,11 @@ textarea {
         padding-top: 16px;
     }
 
-    /* products-title-top: reduce scaleX on mobile to prevent overflow */
     .products-title-top {
         font-size: var(--text-3xl);
         transform: scaleX(1.3) scaleY(1.6);
     }
 
-    /* products-title-bottom: reduce padding-top on mobile */
     .products-title-bottom {
         padding-top: clamp(14px, 3vw, 22px);
         transform: scaleY(1.4);
@@ -1188,9 +1144,6 @@ textarea {
     }
 }
 
-/* =============================================
-   Responsive — Small Mobile (600px)
-   ============================================= */
 @media (max-width: 600px) {
     .products-title-top {
         font-size: var(--text-3xl);
@@ -1208,9 +1161,6 @@ textarea {
     }
 }
 
-/* =============================================
-   Responsive — Small Mobile (480px)
-   ============================================= */
 @media (max-width: 480px) {
     .products-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1276,9 +1226,6 @@ textarea {
     }
 }
 
-/* =============================================
-   Responsive — Extra Small (375px)
-   ============================================= */
 @media (max-width: 375px) {
     :root {
         --header-height: 56px;
@@ -1309,9 +1256,6 @@ textarea {
     }
 }
 
-/* =============================================
-   Responsive — Tiny (320px)
-   ============================================= */
 @media (max-width: 320px) {
     .products-grid {
         grid-template-columns: 1fr;
@@ -1344,15 +1288,7 @@ textarea {
     }
 }
 
-
-/* =============================================
-   Touch targets — phones & tablets only
-   Applies to coarse pointers (touch screens) so
-   desktop layout stays exactly as designed.
-   ============================================= */
 @media (hover: none) and (pointer: coarse) {
-
-    /* Footer social icons: 28px -> 40px hit area, icon size unchanged */
     .footer-social .social-icon {
         width: 40px;
         height: 40px;
@@ -1368,7 +1304,6 @@ textarea {
         gap: 4px;
     }
 
-    /* Primary call-to-action buttons */
     .btn-lien-he {
         min-height: 42px;
         display: inline-flex;
@@ -1376,7 +1311,6 @@ textarea {
         justify-content: center;
     }
 
-    /* "Xem thêm ->" style links */
     .product-arrow,
     .product-link {
         min-height: 40px;
@@ -1384,7 +1318,6 @@ textarea {
         align-items: center;
     }
 
-    /* Email / phone / website links in the contact block */
     .contact-details li a,
     .contact-item a,
     .footer-info a {
@@ -1392,7 +1325,6 @@ textarea {
         padding: 10px 0;
     }
 
-    /* Nav + dropdown rows in the mobile menu */
     .nav-list .nav-link,
     .blog-dropdown .blog-dropdown-link {
         min-height: 44px;
