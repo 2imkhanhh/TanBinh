@@ -149,8 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================
-    // Active nav link highlight (URL based)
+    // Active nav link highlight (URL based) - handled by Laravel Blade
     // =========================================
+    /*
     const currentPath = window.location.pathname;
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
@@ -160,6 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.classList.remove('active');
         }
     });
+    */
 
     // =========================================
     // Smooth scroll for internal anchor links

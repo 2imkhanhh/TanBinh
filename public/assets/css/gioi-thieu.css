@@ -149,6 +149,12 @@
 
 .about-split-right-text {
     max-width: 540px;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 400;
+    color: var(--text-color);
+    line-height: 1.8;
+    text-align: justify;
 }
 
 .about-split-right.fade-in-right.visible {
@@ -190,8 +196,8 @@
 
 .about-bar-title {
     font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    font-weight: 400;
+    font-size: var(--text-3xl);
+    font-weight: 350;
     color: var(--white);
     letter-spacing: 2px;
     line-height: 1.12;
@@ -241,8 +247,8 @@
 
 .about-image-section-title {
     font-family: var(--font-serif);
-    font-size: var(--text-2xl);
-    font-weight: 400;
+    font-size: var(--text-3xl);
+    font-weight: 350;
     color: var(--text-color);
     letter-spacing: 2px;
     line-height: 1.12;
@@ -407,6 +413,13 @@
     display: flex;
     flex-direction: column;
     gap: 14px;
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.8;
+    text-align: justify;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .about-aerial-van-hoa-desc p {
@@ -417,6 +430,7 @@
     line-height: 1.8;
     text-align: justify;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
 }
 
 /* =============================================

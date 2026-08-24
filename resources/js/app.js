@@ -1,10 +1,27 @@
+import '../css/app.css';
 import './bootstrap';
-import { createApp } from 'vue';
 
-const app = createApp({});
+import { createInertiaApp } from '@inertiajs/vue3';
+import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import { createApp, h } from 'vue';
+import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
-// Định nghĩa các component Vue ở đây khi bạn làm trang Admin
-// app.component('example-component', ExampleComponent);
+const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
-// Thay đổi '#app' thành id của phần tử root mà bạn muốn mount Vue
-app.mount('#app');
+createInertiaApp({
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name) =>
+        resolvePageComponent(
+            `./Pages/${name}.vue`,
+            import.meta.glob('./Pages/**/*.vue'),
+        ),
+    setup({ el, App, props, plugin }) {
+        return createApp({ render: () => h(App, props) })
+            .use(plugin)
+            .use(ZiggyVue)
+            .mount(el);
+    },
+    progress: {
+        color: '#4B5563',
+    },
+});

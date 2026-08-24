@@ -396,7 +396,7 @@ textarea {
     font-weight: 600;
     color: var(--white);
     line-height: 1.8;
-    max-width: min(450px, 90vw);
+    max-width: min(540px, 90vw);
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
     text-align: center;
 }
