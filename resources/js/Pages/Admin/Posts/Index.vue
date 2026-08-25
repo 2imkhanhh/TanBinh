@@ -11,7 +11,11 @@ const showConfirm = inject('confirm');
 defineOptions({ layout: AdminLayout });
 
 const props = defineProps({
-    posts: Array
+    posts: Array,
+    categories: {
+        type: Array,
+        default: () => []
+    }
 });
 
 const searchKeyword = ref('');
@@ -35,6 +39,7 @@ const form = useForm({
     title_en: '',
     slug: '',
     type: 'tin-tuc',
+    category_id: '',
     excerpt_vi: '',
     excerpt_en: '',
     content_vi: '',
@@ -62,6 +67,7 @@ const openEditModal = (post) => {
     form.title_en = post.title_en || '';
     form.slug = post.slug || '';
     form.type = post.type || 'tin-tuc';
+    form.category_id = post.category_id || '';
     form.excerpt_vi = post.excerpt_vi || '';
     form.excerpt_en = post.excerpt_en || '';
     form.content_vi = post.content_vi || '';
@@ -96,7 +102,7 @@ const generateSlug = () => {
     str = str.replace(/(\s+)/g, '-');
     str = str.replace(/^-+/g, '');
     str = str.replace(/-+$/g, '');
-    if(!form.slug) form.slug = str;
+    form.slug = str;
 };
 
 const submit = () => {
@@ -149,6 +155,7 @@ const deletePost = async (id) => {
                         <th width="60">STT</th>
                         <th width="100">Ảnh bìa</th>
                         <th>Tiêu đề</th>
+                        <th>Danh mục</th>
                         <th>Phân loại</th>
                         <th>Trạng thái</th>
                         <th width="120" class="text-right">Thao tác</th>
@@ -165,6 +172,10 @@ const deletePost = async (id) => {
                         </td>
                         <td class="font-medium text-dark">
                             <div class="text-truncate" style="max-width: 300px;">{{ post.title_vi }}</div>
+                        </td>
+                        <td>
+                            <span v-if="post.category">{{ post.category.name?.vi || post.category.name }}</span>
+                            <span v-else class="text-gray">---</span>
                         </td>
                         <td>
                             <span v-if="post.type === 'hinh-anh'">Hình ảnh</span>
@@ -220,7 +231,7 @@ const deletePost = async (id) => {
                 <div v-show="activeTab === 'vi'">
                     <div class="form-group">
                         <label>Tiêu đề bài viết <span class="required">*</span></label>
-                        <input v-model="form.title_vi" @blur="generateSlug" type="text" class="form-control" :required="activeTab === 'vi'">
+                        <input v-model="form.title_vi" @input="generateSlug" type="text" class="form-control" :required="activeTab === 'vi'">
                     </div>
                     
                     <div class="form-group">
@@ -256,6 +267,17 @@ const deletePost = async (id) => {
                     <div class="form-group flex-1">
                         <label>Đường dẫn (Slug) <span class="required">*</span></label>
                         <input v-model="form.slug" type="text" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group flex-1">
+                        <label>Danh mục</label>
+                        <select v-model="form.category_id" class="form-control">
+                            <option value="">-- Không chọn --</option>
+                            <option v-for="cat in categories" :key="cat.id" :value="cat.id">
+                                {{ cat.name?.vi || cat.name }}
+                            </option>
+                        </select>
                     </div>
                     <div class="form-group flex-1">
                         <label>Phân loại <span class="required">*</span></label>

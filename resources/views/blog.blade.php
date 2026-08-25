@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Hình ảnh - ' . ($settings['site_title'] ?? 'Tân Bình Tea'))
+@section('title', 'Hình ảnh')
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/css/blog.css') }}">

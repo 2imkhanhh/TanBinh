@@ -18,7 +18,10 @@ const activeLang = ref('vi');
 
 // Helper to ensure each setting has an object with vi and en
 const getSetting = (key) => {
-    return props.settings[key] || { vi: '', en: '' };
+    let val = props.settings[key];
+    if (!val) return { vi: '', en: '' };
+    if (typeof val === 'string') return { vi: val, en: val };
+    return { vi: val.vi || '', en: val.en || '' };
 };
 
 const getSettingStr = (key) => {
@@ -108,12 +111,11 @@ const submit = () => {
 
 <template>
 
-    <Head title="Cấu hình nội dung" />
+    <Head title="Nội dung" />
 
     <div class="page-header flex justify-between items-center mb-6">
         <div>
-            <h1 class="text-2xl font-bold text-gray-800">Cấu hình nội dung</h1>
-            <p class="text-gray-500">Quản lý toàn bộ nội dung hiển thị trên website</p>
+            <h1 class="text-2xl font-bold text-gray-800">Nội dung</h1>
         </div>
     </div>
 
@@ -228,13 +230,13 @@ const submit = () => {
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Mô tả Hero Banner</label>
                             <div class="h-64 mb-12">
-                                <QuillEditor v-model:content="form.home_intro_desc[activeLang]" contentType="html"
+                                <QuillEditor :key="activeLang" v-model:content="form.home_intro_desc[activeLang]" contentType="html"
                                     theme="snow" />
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="text-lg font-semibold mb-4 border-b pb-2 mt-8">Phần Giới thiệu (Trang chủ)</h3>
+                    <h3 class="text-lg font-semibold mb-4 border-b pb-2 mt-8">Phần Giới thiệu</h3>
                     <div class="space-y-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Hình ảnh phần giới thiệu</label>
@@ -287,7 +289,7 @@ const submit = () => {
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nội dung Banner</label>
                             <div class="h-64 mb-12">
-                                <QuillEditor v-model:content="form.about_hero_desc[activeLang]" contentType="html"
+                                <QuillEditor :key="activeLang" v-model:content="form.about_hero_desc[activeLang]" contentType="html"
                                     theme="snow" />
                             </div>
                         </div>
@@ -306,7 +308,7 @@ const submit = () => {
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nội dung giới thiệu chi
                                 tiết</label>
                             <div class="h-64 mb-12">
-                                <QuillEditor v-model:content="form.about_long[activeLang]" contentType="html"
+                                <QuillEditor :key="activeLang" v-model:content="form.about_long[activeLang]" contentType="html"
                                     theme="snow" />
                             </div>
                         </div>
@@ -348,7 +350,7 @@ const submit = () => {
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Văn hóa công ty</label>
                             <div class="h-64 mb-12">
-                                <QuillEditor v-model:content="form.company_culture[activeLang]" contentType="html"
+                                <QuillEditor :key="activeLang" v-model:content="form.company_culture[activeLang]" contentType="html"
                                     theme="snow" />
                             </div>
                         </div>

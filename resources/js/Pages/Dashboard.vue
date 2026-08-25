@@ -27,7 +27,6 @@ defineProps({
     <div class="page-header">
         <div>
             <h1 class="title">Tổng quan</h1>
-            <p class="subtitle">Chào mừng bạn trở lại với trang quản trị Tân Bình.</p>
         </div>
     </div>
 

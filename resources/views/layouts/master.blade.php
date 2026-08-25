@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ $settings['site_title'] ?? 'Công ty TNHH Xuất Nhập Khẩu Chè Tân Bình' }}">
+    <link rel="icon" type="image/png" href="{{ isset($settings['logo']) && $settings['logo'] ? asset($settings['logo']) : asset('assets/images/common/logo.png') }}">
     <title>@yield('title', $settings['site_title'] ?? 'Tân Bình Tea')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -26,23 +27,21 @@
             <nav class="nav" id="main-nav">
                 <ul class="nav-list">
                     <li><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
-                            id="nav-home">Trang chủ</a></li>
+                            id="nav-home">{{ app()->getLocale() == 'vi' ? 'Trang chủ' : 'Home' }}</a></li>
                     <li><a href="{{ route('about') }}"
-                            class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" id="nav-about">Giới
-                            thiệu</a></li>
+                            class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" id="nav-about">{{ app()->getLocale() == 'vi' ? 'Giới thiệu' : 'About Us' }}</a></li>
                     <li><a href="{{ route('products') }}"
                             class="nav-link {{ request()->routeIs('products') || request()->routeIs('product.detail') ? 'active' : '' }}"
-                            id="nav-products">Sản phẩm</a></li>
+                            id="nav-products">{{ app()->getLocale() == 'vi' ? 'Sản phẩm' : 'Products' }}</a></li>
                     <li><a href="{{ route('contact') }}"
-                            class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" id="nav-contact">Liên
-                            hệ</a></li>
+                            class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" id="nav-contact">{{ app()->getLocale() == 'vi' ? 'Liên hệ' : 'Contact' }}</a></li>
                     <li class="nav-item-dropdown">
                         <a href="{{ route('blog') }}"
                             class="nav-link {{ request()->routeIs('blog*') ? 'active' : '' }}" id="nav-blog">Blog</a>
                         <ul class="blog-dropdown">
-                            <li><a href="{{ route('blog') }}" class="blog-dropdown-link">Hình ảnh</a></li>
-                            <li><a href="{{ route('blog.tin-tuc') }}" class="blog-dropdown-link">Tin tức</a></li>
-                            <li><a href="{{ route('blog.khac') }}" class="blog-dropdown-link">Khác</a></li>
+                            <li><a href="{{ route('blog') }}" class="blog-dropdown-link">{{ app()->getLocale() == 'vi' ? 'Hình ảnh' : 'Gallery' }}</a></li>
+                            <li><a href="{{ route('blog.tin-tuc') }}" class="blog-dropdown-link">{{ app()->getLocale() == 'vi' ? 'Tin tức' : 'News' }}</a></li>
+                            <li><a href="{{ route('blog.khac') }}" class="blog-dropdown-link">{{ app()->getLocale() == 'vi' ? 'Khác' : 'Others' }}</a></li>
                         </ul>
                     </li>
                 </ul>

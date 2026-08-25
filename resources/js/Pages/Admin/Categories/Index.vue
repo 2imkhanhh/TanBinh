@@ -75,7 +75,7 @@ const generateSlug = () => {
     str = str.replace(/(\s+)/g, '-');
     str = str.replace(/^-+/g, '');
     str = str.replace(/-+$/g, '');
-    if(!form.slug) form.slug = str;
+    form.slug = str;
 };
 
 const submit = () => {
@@ -186,7 +186,7 @@ const deleteCategory = async (id) => {
                 <div v-show="activeTab === 'vi'">
                     <div class="form-group">
                         <label>Tên danh mục <span class="required">*</span></label>
-                        <input v-model="form.name_vi" @blur="generateSlug" type="text" class="form-control" :required="activeTab === 'vi'" />
+                        <input v-model="form.name_vi" @input="generateSlug" type="text" class="form-control" :required="activeTab === 'vi'" />
                     </div>
                 </div>
 

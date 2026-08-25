@@ -28,6 +28,7 @@
     min-height: 120px;
     position: relative;
     overflow: visible;
+    background-color: var(--white);
 }
 
 .contact-bottom-leaf-decoration {

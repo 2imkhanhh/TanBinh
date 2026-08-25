@@ -12,6 +12,7 @@ class PostController extends Controller
 {
     public function index()
     {
+        $categories = Category::where('type', 'post')->get();
         $posts = Post::with('category')->latest()->get()->map(function($post) {
             $post->title_vi = $post->getTranslation('title', 'vi', false);
             $post->title_en = $post->getTranslation('title', 'en', false);
@@ -40,7 +41,8 @@ class PostController extends Controller
         });
 
         return Inertia::render('Admin/Posts/Index', [
-            'posts' => $posts
+            'posts' => $posts,
+            'categories' => $categories
         ]);
     }
 
@@ -50,6 +52,7 @@ class PostController extends Controller
             'title_vi' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:posts,slug',
             'type' => 'required|in:hinh-anh,tin-tuc,khac',
+            'category_id' => 'nullable|exists:categories,id',
             'image' => 'nullable|image|max:2048'
         ]);
 
@@ -69,6 +72,7 @@ class PostController extends Controller
         
         $post->slug = $request->slug;
         $post->type = $request->type;
+        $post->category_id = $request->category_id;
         $post->is_active = $request->boolean('is_active', true);
         $post->save();
 
@@ -115,6 +119,7 @@ class PostController extends Controller
             'title_vi' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:posts,slug,' . $post->id,
             'type' => 'required|in:hinh-anh,tin-tuc,khac',
+            'category_id' => 'nullable|exists:categories,id',
             'image' => 'nullable|image|max:2048'
         ]);
 
@@ -133,6 +138,7 @@ class PostController extends Controller
         
         $post->slug = $request->slug;
         $post->type = $request->type;
+        $post->category_id = $request->category_id;
         $post->is_active = $request->boolean('is_active', true);
         $post->save();
 

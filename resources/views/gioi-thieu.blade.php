@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', app()->getLocale() == 'vi' ? 'Giới thiệu - Tân Bình Tea' : 'About Us - Tan Binh Tea')
+@section('title', app()->getLocale() == 'vi' ? 'Giới thiệu' : 'About Us')
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/css/gioi-thieu.css') }}">

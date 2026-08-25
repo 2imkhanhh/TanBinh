@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', app()->getLocale() == 'vi' ? 'Liên hệ - Tân Bình Tea' : 'Contact - Tan Binh Tea')
+@section('title', app()->getLocale() == 'vi' ? 'Liên hệ' : 'Contact')
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">

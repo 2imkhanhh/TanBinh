@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', (is_array($product->name) ? ($product->name[app()->getLocale()] ?? $product->name['vi']) : $product->name) . ' - Tân Bình Tea')
+@section('title', is_array($product->name) ? ($product->name[app()->getLocale()] ?? $product->name['vi']) : $product->name)
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/css/san-pham-chi-tiet.css') }}">

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', (is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title) . ' - Tân Bình Tea')
+@section('title', is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title)
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/css/blog.css') }}">

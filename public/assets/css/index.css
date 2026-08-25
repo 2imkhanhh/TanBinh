@@ -221,9 +221,10 @@
 
 .contact-form-wrapper {
     flex: 0 0 min(560px, 100%);
-    background: var(--white);
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
     border-radius: 12px;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     overflow: hidden;
     min-width: 0;
 }
@@ -239,7 +240,7 @@
 .contact-form textarea {
     width: 100%;
     padding: 14px 18px;
-    background-color: var(--bg-light);
+    background-color: #ffffff;
     font-size: var(--text-base);
     color: var(--text-dark);
     border: 1px solid var(--border-light);
@@ -275,14 +276,15 @@
     font-size: var(--text-sm);
     font-weight: 600;
     letter-spacing: 1px;
-    border: none;
+    border: 1px solid var(--olive-btn);
     border-radius: 4px;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .contact-form .btn-submit:hover {
-    background-color: var(--green-dark);
-    box-shadow: 0 4px 12px rgba(10, 59, 33, 0.3);
+    background-color: transparent;
+    color: var(--olive-btn);
+    box-shadow: 0 8px 16px rgba(191, 168, 90, 0.2);
     transform: translateY(-2px);
 }
 
@@ -595,6 +597,7 @@
     top: -0px;
     min-height: 120px;
     overflow: visible;
+    background-color: var(--white);
 }
 
 .contact-bottom-leaf-decoration {
