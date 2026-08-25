@@ -314,7 +314,7 @@ const deletePost = async (id) => {
         <template #footer>
             <button type="button" @click="closeModal" class="btn-default">Hủy</button>
             <button type="submit" form="postForm" class="btn-primary" :disabled="form.processing">
-                {{ form.processing ? 'Đang xử lý...' : (isEditing ? 'Cập nhật' : 'Lưu lại') }}
+                {{ form.processing ? 'Đang lưu...' : 'Lưu' }}
             </button>
         </template>
     </AdminModal>

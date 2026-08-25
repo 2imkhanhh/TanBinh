@@ -227,7 +227,7 @@ const deleteCategory = async (id) => {
         <template #footer>
             <button type="button" @click="closeModal" class="btn-default">Hủy</button>
             <button type="submit" form="categoryForm" class="btn-primary" :disabled="form.processing">
-                {{ form.processing ? 'Đang xử lý...' : (isEditing ? 'Cập nhật' : 'Lưu lại') }}
+                {{ form.processing ? 'Đang lưu...' : 'Lưu' }}
             </button>
         </template>
     </AdminModal>

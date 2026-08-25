@@ -230,8 +230,8 @@ const submit = () => {
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Mô tả Hero Banner</label>
                             <div class="h-64 mb-12">
-                                <QuillEditor :key="activeLang" v-model:content="form.home_intro_desc[activeLang]" contentType="html"
-                                    theme="snow" />
+                                <QuillEditor :key="activeLang" v-model:content="form.home_intro_desc[activeLang]"
+                                    contentType="html" theme="snow" />
                             </div>
                         </div>
                     </div>
@@ -289,8 +289,8 @@ const submit = () => {
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nội dung Banner</label>
                             <div class="h-64 mb-12">
-                                <QuillEditor :key="activeLang" v-model:content="form.about_hero_desc[activeLang]" contentType="html"
-                                    theme="snow" />
+                                <QuillEditor :key="activeLang" v-model:content="form.about_hero_desc[activeLang]"
+                                    contentType="html" theme="snow" />
                             </div>
                         </div>
                     </div>
@@ -308,8 +308,8 @@ const submit = () => {
                             <label class="block text-sm font-medium text-gray-700 mb-1">Nội dung giới thiệu chi
                                 tiết</label>
                             <div class="h-64 mb-12">
-                                <QuillEditor :key="activeLang" v-model:content="form.about_long[activeLang]" contentType="html"
-                                    theme="snow" />
+                                <QuillEditor :key="activeLang" v-model:content="form.about_long[activeLang]"
+                                    contentType="html" theme="snow" />
                             </div>
                         </div>
 
@@ -350,8 +350,8 @@ const submit = () => {
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1">Văn hóa công ty</label>
                             <div class="h-64 mb-12">
-                                <QuillEditor :key="activeLang" v-model:content="form.company_culture[activeLang]" contentType="html"
-                                    theme="snow" />
+                                <QuillEditor :key="activeLang" v-model:content="form.company_culture[activeLang]"
+                                    contentType="html" theme="snow" />
                             </div>
                         </div>
                     </div>
@@ -453,12 +453,11 @@ const submit = () => {
             </div>
 
             <div class="bg-gray-50 px-6 py-4 flex items-center justify-end gap-4 border-t">
-                <span v-if="page.props.flash?.success" class="text-green-600 text-sm font-medium">{{
-                    page.props.flash.success }}</span>
+
                 <button type="submit"
                     class="px-6 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
                     :disabled="form.processing">
-                    {{ form.processing ? 'Đang lưu...' : 'Lưu thay đổi' }}
+                    {{ form.processing ? 'Đang lưu...' : 'Lưu' }}
                 </button>
             </div>
         </form>
