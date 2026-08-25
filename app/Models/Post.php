@@ -11,7 +11,7 @@ class Post extends Model implements HasMedia
 {
     use HasTranslations, InteractsWithMedia;
 
-    protected $fillable = ['category_id', 'title', 'slug', 'excerpt', 'content', 'is_active'];
+    protected $fillable = ['type', 'title', 'slug', 'excerpt', 'content', 'is_active'];
     
     public $translatable = ['title', 'excerpt', 'content'];
 

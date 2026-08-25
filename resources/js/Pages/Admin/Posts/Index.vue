@@ -9,8 +9,7 @@ const showConfirm = inject('confirm');
 defineOptions({ layout: AdminLayout });
 
 const props = defineProps({
-    posts: Array,
-    categories: Array
+    posts: Array
 });
 
 const searchKeyword = ref('');
@@ -33,7 +32,7 @@ const form = useForm({
     title_vi: '',
     title_en: '',
     slug: '',
-    category_id: '',
+    type: 'tin-tuc',
     excerpt_vi: '',
     excerpt_en: '',
     content_vi: '',
@@ -60,7 +59,7 @@ const openEditModal = (post) => {
     form.title_vi = post.title_vi || '';
     form.title_en = post.title_en || '';
     form.slug = post.slug || '';
-    form.category_id = post.category_id || '';
+    form.type = post.type || 'tin-tuc';
     form.excerpt_vi = post.excerpt_vi || '';
     form.excerpt_en = post.excerpt_en || '';
     form.content_vi = post.content_vi || '';
@@ -148,7 +147,7 @@ const deletePost = async (id) => {
                         <th width="60">STT</th>
                         <th width="100">Ảnh bìa</th>
                         <th>Tiêu đề</th>
-                        <th>Danh mục</th>
+                        <th>Phân loại</th>
                         <th>Trạng thái</th>
                         <th width="120" class="text-right">Thao tác</th>
                     </tr>
@@ -165,7 +164,11 @@ const deletePost = async (id) => {
                         <td class="font-medium text-dark">
                             <div class="text-truncate" style="max-width: 300px;">{{ post.title_vi }}</div>
                         </td>
-                        <td>{{ post.category ? post.category.name_vi : '' }}</td>
+                        <td>
+                            <span v-if="post.type === 'hinh-anh'">Hình ảnh</span>
+                            <span v-else-if="post.type === 'khac'">Khác</span>
+                            <span v-else>Tin tức</span>
+                        </td>
                         <td>
                             <span :class="['status-dot', post.is_active ? 'active' : 'inactive']"></span>
                             {{ post.is_active ? 'Hiển thị' : 'Ẩn' }}
@@ -253,10 +256,11 @@ const deletePost = async (id) => {
                         <input v-model="form.slug" type="text" class="form-control" required>
                     </div>
                     <div class="form-group flex-1">
-                        <label>Danh mục <span class="required">*</span></label>
-                        <select v-model="form.category_id" class="form-control" required>
-                            <option value="">--- Chọn danh mục ---</option>
-                            <option v-for="c in categories" :key="c.id" :value="c.id">{{ c.name_vi }}</option>
+                        <label>Phân loại <span class="required">*</span></label>
+                        <select v-model="form.type" class="form-control" required>
+                            <option value="tin-tuc">Tin tức</option>
+                            <option value="hinh-anh">Hình ảnh</option>
+                            <option value="khac">Khác</option>
                         </select>
                     </div>
                 </div>
@@ -264,14 +268,18 @@ const deletePost = async (id) => {
                 <div class="form-row">
                     <div class="form-group flex-1">
                         <label>Hình ảnh đại diện</label>
-                        <input type="file" @change="handleImage" class="form-control" style="padding: 0.4rem 1rem;">
-                        <div class="mt-2" v-if="currentImageUrl" style="margin-top: 0.5rem;">
-                            <img :src="currentImageUrl" style="height: 64px; width: 64px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;" />
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; margin-top: 0.25rem;">
+                            <div v-if="currentImageUrl" style="flex-shrink: 0;">
+                                <img :src="currentImageUrl" style="height: 64px; width: 64px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;" />
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <input type="file" @change="handleImage" class="form-control" style="padding: 0.4rem 1rem;">
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group flex-1" style="display: flex; align-items: flex-end; padding-bottom: 0.5rem;">
+                    <div class="form-group flex-1" style="display: flex; flex-direction: column; justify-content: center; gap: 0.75rem; padding-top: 1.5rem;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-bottom: 0;">
-                            <input type="checkbox" v-model="form.is_active" style="width: 18px; height: 18px;">
+                            <input type="checkbox" v-model="form.is_active" style="width: 18px; height: 18px; outline: none; box-shadow: none;" class="focus:ring-0 focus:ring-offset-0">
                             <span>Trạng thái hiển thị</span>
                         </label>
                     </div>

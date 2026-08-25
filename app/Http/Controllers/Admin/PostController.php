@@ -19,18 +19,28 @@ class PostController extends Controller
             $post->excerpt_en = $post->getTranslation('excerpt', 'en', false);
             $post->content_vi = $post->getTranslation('content', 'vi', false);
             $post->content_en = $post->getTranslation('content', 'en', false);
-            $post->image_url = $post->getFirstMediaUrl('posts');
+            
+            $imageUrl = $post->getFirstMediaUrl('posts');
+            if (empty($imageUrl)) {
+                if ($post->type === 'hinh-anh') {
+                    $imageUrl = asset('assets/images/blog/gallery/gallery-01.png');
+                } else {
+                    $fallbackImages = [
+                        'news-green-tea-health.png',
+                        'news-green-land.png',
+                        'news-fair-2026.png',
+                        'news-brew-guide.png'
+                    ];
+                    $imageUrl = asset('assets/images/blog/news/' . $fallbackImages[$post->id % 4]);
+                }
+            }
+            $post->image_url = $imageUrl;
+            
             return $post;
         });
 
-        $categories = Category::where('type', 'post')->get()->map(function($category) {
-            $category->name_vi = $category->getTranslation('name', 'vi', false);
-            return $category;
-        });
-
         return Inertia::render('Admin/Posts/Index', [
-            'posts' => $posts,
-            'categories' => $categories
+            'posts' => $posts
         ]);
     }
 
@@ -39,7 +49,7 @@ class PostController extends Controller
         $request->validate([
             'title_vi' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:posts,slug',
-            'category_id' => 'required|exists:categories,id',
+            'type' => 'required|in:hinh-anh,tin-tuc,khac',
             'image' => 'nullable|image|max:2048'
         ]);
 
@@ -58,7 +68,7 @@ class PostController extends Controller
         ]);
         
         $post->slug = $request->slug;
-        $post->category_id = $request->category_id;
+        $post->type = $request->type;
         $post->is_active = $request->boolean('is_active', true);
         $post->save();
 
@@ -71,22 +81,31 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        $categories = Category::where('type', 'post')->get()->map(function($category) {
-            $category->name_vi = $category->getTranslation('name', 'vi', false);
-            return $category;
-        });
-
         $post->title_vi = $post->getTranslation('title', 'vi', false);
         $post->title_en = $post->getTranslation('title', 'en', false);
         $post->excerpt_vi = $post->getTranslation('excerpt', 'vi', false);
         $post->excerpt_en = $post->getTranslation('excerpt', 'en', false);
         $post->content_vi = $post->getTranslation('content', 'vi', false);
         $post->content_en = $post->getTranslation('content', 'en', false);
-        $post->image_url = $post->getFirstMediaUrl('posts');
+        
+        $imageUrl = $post->getFirstMediaUrl('posts');
+        if (empty($imageUrl)) {
+            if ($post->type === 'hinh-anh') {
+                $imageUrl = asset('assets/images/blog/gallery/gallery-01.png');
+            } else {
+                $fallbackImages = [
+                    'news-green-tea-health.png',
+                    'news-green-land.png',
+                    'news-fair-2026.png',
+                    'news-brew-guide.png'
+                ];
+                $imageUrl = asset('assets/images/blog/news/' . $fallbackImages[$post->id % 4]);
+            }
+        }
+        $post->image_url = $imageUrl;
 
         return Inertia::render('Admin/Posts/Edit', [
-            'post' => $post,
-            'categories' => $categories
+            'post' => $post
         ]);
     }
 
@@ -95,7 +114,7 @@ class PostController extends Controller
         $request->validate([
             'title_vi' => 'required|string|max:255',
             'slug' => 'required|string|max:255|unique:posts,slug,' . $post->id,
-            'category_id' => 'required|exists:categories,id',
+            'type' => 'required|in:hinh-anh,tin-tuc,khac',
             'image' => 'nullable|image|max:2048'
         ]);
 
@@ -113,7 +132,7 @@ class PostController extends Controller
         ]);
         
         $post->slug = $request->slug;
-        $post->category_id = $request->category_id;
+        $post->type = $request->type;
         $post->is_active = $request->boolean('is_active', true);
         $post->save();
 

@@ -11,8 +11,13 @@ class Product extends Model implements HasMedia
 {
     use HasTranslations, InteractsWithMedia;
 
-    protected $fillable = ['category_id', 'name', 'slug', 'short_description', 'content', 'is_active'];
+    protected $fillable = ['category_id', 'name', 'slug', 'short_description', 'content', 'is_active', 'is_featured'];
     
+    protected $casts = [
+        'is_active' => 'boolean',
+        'is_featured' => 'boolean',
+    ];
+
     public $translatable = ['name', 'short_description', 'content'];
 
     public function category()

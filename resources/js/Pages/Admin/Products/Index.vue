@@ -39,6 +39,7 @@ const form = useForm({
     content_vi: '',
     content_en: '',
     is_active: true,
+    is_featured: false,
     image: null,
     _method: 'POST'
 });
@@ -66,6 +67,7 @@ const openEditModal = (product) => {
     form.content_vi = product.content_vi || '';
     form.content_en = product.content_en || '';
     form.is_active = product.is_active;
+    form.is_featured = product.is_featured || false;
     form.image = null;
     form._method = 'PUT';
     currentImageUrl.value = product.image_url || '';
@@ -150,6 +152,7 @@ const deleteProduct = async (id) => {
                         <th>Tên sản phẩm</th>
                         <th>Danh mục</th>
                         <th>Trạng thái</th>
+                        <th>Nổi bật</th>
                         <th width="120" class="text-right">Thao tác</th>
                     </tr>
                 </thead>
@@ -163,10 +166,14 @@ const deleteProduct = async (id) => {
                             </div>
                         </td>
                         <td class="font-medium text-dark">{{ product.name_vi }}</td>
-                        <td>{{ product.category ? product.category.name_vi : '' }}</td>
+                        <td>{{ product.category_name_vi }}</td>
                         <td>
                             <span :class="['status-dot', product.is_active ? 'active' : 'inactive']"></span>
                             {{ product.is_active ? 'Hiển thị' : 'Ẩn' }}
+                        </td>
+                        <td>
+                            <span :class="['status-dot', product.is_featured ? 'active' : 'inactive']"></span>
+                            {{ product.is_featured ? 'Nổi bật' : 'Không' }}
                         </td>
                         <td class="text-right">
                             <div class="actions">
@@ -186,7 +193,7 @@ const deleteProduct = async (id) => {
                         </td>
                     </tr>
                     <tr v-if="products.length === 0">
-                        <td colspan="6" class="text-center py-4 text-gray">Không có sản phẩm nào.</td>
+                        <td colspan="7" class="text-center py-4 text-gray">Không có sản phẩm nào.</td>
                     </tr>
                 </tbody>
             </table>
@@ -262,15 +269,23 @@ const deleteProduct = async (id) => {
                 <div class="form-row">
                     <div class="form-group flex-1">
                         <label>Hình ảnh đại diện</label>
-                        <input type="file" @change="handleImage" class="form-control" style="padding: 0.4rem 1rem;">
-                        <div class="mt-2" v-if="currentImageUrl" style="margin-top: 0.5rem;">
-                            <img :src="currentImageUrl" style="height: 64px; width: 64px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;" />
+                        <div style="display: flex; gap: 1rem; align-items: flex-start; margin-top: 0.25rem;">
+                            <div v-if="currentImageUrl" style="flex-shrink: 0;">
+                                <img :src="currentImageUrl" style="height: 64px; width: 64px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;" />
+                            </div>
+                            <div style="flex-grow: 1;">
+                                <input type="file" @change="handleImage" class="form-control" style="padding: 0.4rem 1rem;">
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group flex-1" style="display: flex; align-items: flex-end; padding-bottom: 0.5rem;">
+                    <div class="form-group flex-1" style="display: flex; flex-direction: column; justify-content: center; gap: 0.75rem; padding-top: 1.5rem;">
                         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-bottom: 0;">
-                            <input type="checkbox" v-model="form.is_active" style="width: 18px; height: 18px;">
+                            <input type="checkbox" v-model="form.is_active" style="width: 18px; height: 18px; outline: none; box-shadow: none;" class="focus:ring-0 focus:ring-offset-0">
                             <span>Trạng thái hiển thị</span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-bottom: 0;">
+                            <input type="checkbox" v-model="form.is_featured" style="width: 18px; height: 18px; outline: none; box-shadow: none;" class="focus:ring-0 focus:ring-offset-0">
+                            <span>Sản phẩm nổi bật (Hiển thị trang chủ)</span>
                         </label>
                     </div>
                 </div>

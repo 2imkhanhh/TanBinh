@@ -19,10 +19,10 @@ class FrontendController extends Controller
     public function index()
     {
         $settings = $this->getSettings();
-        $blackProducts = Product::where('is_active', true)->whereHas('category', function($q) {
+        $blackProducts = Product::where('is_active', true)->where('is_featured', true)->whereHas('category', function($q) {
             $q->where('slug', 'che-den');
         })->latest()->take(4)->get();
-        $greenProducts = Product::where('is_active', true)->whereHas('category', function($q) {
+        $greenProducts = Product::where('is_active', true)->where('is_featured', true)->whereHas('category', function($q) {
             $q->where('slug', 'che-xanh');
         })->latest()->take(4)->get();
         $posts = Post::where('is_active', true)->latest()->take(3)->get();

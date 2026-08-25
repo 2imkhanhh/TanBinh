@@ -19,7 +19,17 @@ class ProductController extends Controller
             $product->short_desc_en = $product->getTranslation('short_description', 'en', false);
             $product->content_vi = $product->getTranslation('content', 'vi', false);
             $product->content_en = $product->getTranslation('content', 'en', false);
-            $product->image_url = $product->getFirstMediaUrl('products');
+            $product->is_featured = $product->is_featured;
+            $product->category_name_vi = $product->category ? $product->category->getTranslation('name', 'vi', false) : '';
+            $imageUrl = $product->getFirstMediaUrl('products');
+            if (empty($imageUrl)) {
+                $img = 'product-tea-generic.png';
+                if ($product->slug == 'vietnam-black-tea-pekoe') {
+                    $img = 'product-black-tea-pekoe.png';
+                }
+                $imageUrl = asset('assets/images/products/' . $img);
+            }
+            $product->image_url = $imageUrl;
             return $product;
         });
 
@@ -60,6 +70,7 @@ class ProductController extends Controller
         $product->slug = $request->slug;
         $product->category_id = $request->category_id;
         $product->is_active = $request->boolean('is_active', true);
+        $product->is_featured = $request->boolean('is_featured', false);
         $product->save();
 
         if ($request->hasFile('image')) {
@@ -82,7 +93,16 @@ class ProductController extends Controller
         $product->short_desc_en = $product->getTranslation('short_description', 'en', false);
         $product->content_vi = $product->getTranslation('content', 'vi', false);
         $product->content_en = $product->getTranslation('content', 'en', false);
-        $product->image_url = $product->getFirstMediaUrl('products');
+        $product->is_featured = $product->is_featured;
+        $imageUrl = $product->getFirstMediaUrl('products');
+        if (empty($imageUrl)) {
+            $img = 'product-tea-generic.png';
+            if ($product->slug == 'vietnam-black-tea-pekoe') {
+                $img = 'product-black-tea-pekoe.png';
+            }
+            $imageUrl = asset('assets/images/products/' . $img);
+        }
+        $product->image_url = $imageUrl;
 
         return Inertia::render('Admin/Products/Edit', [
             'product' => $product,
@@ -115,6 +135,7 @@ class ProductController extends Controller
         $product->slug = $request->slug;
         $product->category_id = $request->category_id;
         $product->is_active = $request->boolean('is_active', true);
+        $product->is_featured = $request->boolean('is_featured', false);
         $product->save();
 
         if ($request->hasFile('image')) {
