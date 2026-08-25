@@ -32,18 +32,17 @@ const editId = ref(null);
 const currentImageUrl = ref('');
 
 const form = useForm({
-    name_vi: '',
-    name_en: '',
-    slug: '',
-    category_id: '',
-    short_desc_vi: '',
-    short_desc_en: '',
-    content_vi: '',
-    content_en: '',
-    is_active: true,
-    is_featured: false,
-    image: null,
-    _method: 'POST'
+    name_vi: '', name_en: '', slug: '', category_id: '',
+    type_vi: '', type_en: '', style_vi: '', style_en: '',
+    age_vi: '', age_en: '', drink_style_vi: '', drink_style_en: '',
+    processing_type_vi: '', processing_type_en: '', packaging_vi: '', packaging_en: '',
+    specialty_vi: '', specialty_en: '', grade_vi: '', grade_en: '',
+    shelf_life_vi: '', shelf_life_en: '', weight_vi: '', weight_en: '',
+    origin_vi: '', origin_en: '', brand_name_vi: '', brand_name_en: '',
+    model_number_vi: '', model_number_en: '', payment_terms_vi: '', payment_terms_en: '',
+    advantage_vi: '', advantage_en: '', leaf_origin_vi: '', leaf_origin_en: '',
+    material_vi: '', material_en: '',
+    is_active: true, is_featured: false, image: null, _method: 'POST'
 });
 
 const openCreateModal = () => {
@@ -64,10 +63,40 @@ const openEditModal = (product) => {
     form.name_en = product.name_en || '';
     form.slug = product.slug || '';
     form.category_id = product.category_id || '';
-    form.short_desc_vi = product.short_desc_vi || '';
-    form.short_desc_en = product.short_desc_en || '';
-    form.content_vi = product.content_vi || '';
-    form.content_en = product.content_en || '';
+    form.type_vi = product.type_vi || '';
+    form.type_en = product.type_en || '';
+    form.style_vi = product.style_vi || '';
+    form.style_en = product.style_en || '';
+    form.age_vi = product.age_vi || '';
+    form.age_en = product.age_en || '';
+    form.drink_style_vi = product.drink_style_vi || '';
+    form.drink_style_en = product.drink_style_en || '';
+    form.processing_type_vi = product.processing_type_vi || '';
+    form.processing_type_en = product.processing_type_en || '';
+    form.packaging_vi = product.packaging_vi || '';
+    form.packaging_en = product.packaging_en || '';
+    form.specialty_vi = product.specialty_vi || '';
+    form.specialty_en = product.specialty_en || '';
+    form.grade_vi = product.grade_vi || '';
+    form.grade_en = product.grade_en || '';
+    form.shelf_life_vi = product.shelf_life_vi || '';
+    form.shelf_life_en = product.shelf_life_en || '';
+    form.weight_vi = product.weight_vi || '';
+    form.weight_en = product.weight_en || '';
+    form.origin_vi = product.origin_vi || '';
+    form.origin_en = product.origin_en || '';
+    form.brand_name_vi = product.brand_name_vi || '';
+    form.brand_name_en = product.brand_name_en || '';
+    form.model_number_vi = product.model_number_vi || '';
+    form.model_number_en = product.model_number_en || '';
+    form.payment_terms_vi = product.payment_terms_vi || '';
+    form.payment_terms_en = product.payment_terms_en || '';
+    form.advantage_vi = product.advantage_vi || '';
+    form.advantage_en = product.advantage_en || '';
+    form.leaf_origin_vi = product.leaf_origin_vi || '';
+    form.leaf_origin_en = product.leaf_origin_en || '';
+    form.material_vi = product.material_vi || '';
+    form.material_en = product.material_en || '';
     form.is_active = product.is_active;
     form.is_featured = product.is_featured || false;
     form.image = null;
@@ -225,14 +254,24 @@ const deleteProduct = async (id) => {
                         <input v-model="form.name_vi" @input="generateSlug" type="text" class="form-control" :required="activeTab === 'vi'">
                     </div>
                     
-                    <div class="form-group">
-                        <label>Mô tả ngắn</label>
-                        <textarea v-model="form.short_desc_vi" rows="3" class="form-control"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nội dung chi tiết</label>
-                        <QuillEditor v-model:content="form.content_vi" contentType="html" theme="snow" toolbar="full" style="height: 300px;" />
+                    <div class="specs-grid">
+                        <div class="form-group"><label>Loại sản phẩm</label><input v-model="form.type_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Kiểu</label><input v-model="form.style_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Độ tuổi</label><input v-model="form.age_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Phong cách</label><input v-model="form.drink_style_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Loại xử lý</label><input v-model="form.processing_type_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Bao bì</label><input v-model="form.packaging_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Đặc sản</label><input v-model="form.specialty_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Lớp</label><input v-model="form.grade_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Thời hạn sử dụng</label><input v-model="form.shelf_life_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Trọng lượng</label><input v-model="form.weight_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Nơi xuất xứ</label><input v-model="form.origin_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Tên thương hiệu</label><input v-model="form.brand_name_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Số mô hình</label><input v-model="form.model_number_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Điều khoản thanh toán</label><input v-model="form.payment_terms_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Lợi thế</label><input v-model="form.advantage_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Nguồn gốc lá trà</label><input v-model="form.leaf_origin_vi" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Chất liệu</label><input v-model="form.material_vi" type="text" class="form-control"></div>
                     </div>
                 </div>
 
@@ -242,14 +281,24 @@ const deleteProduct = async (id) => {
                         <input v-model="form.name_en" type="text" class="form-control">
                     </div>
                     
-                    <div class="form-group">
-                        <label>Mô tả ngắn</label>
-                        <textarea v-model="form.short_desc_en" rows="3" class="form-control"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Nội dung chi tiết</label>
-                        <QuillEditor v-model:content="form.content_en" contentType="html" theme="snow" toolbar="full" style="height: 300px;" />
+                    <div class="specs-grid">
+                        <div class="form-group"><label>Loại sản phẩm</label><input v-model="form.type_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Kiểu</label><input v-model="form.style_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Độ tuổi</label><input v-model="form.age_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Phong cách</label><input v-model="form.drink_style_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Loại xử lý</label><input v-model="form.processing_type_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Bao bì</label><input v-model="form.packaging_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Đặc sản</label><input v-model="form.specialty_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Lớp</label><input v-model="form.grade_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Thời hạn sử dụng</label><input v-model="form.shelf_life_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Trọng lượng</label><input v-model="form.weight_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Nơi xuất xứ</label><input v-model="form.origin_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Tên thương hiệu</label><input v-model="form.brand_name_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Số mô hình</label><input v-model="form.model_number_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Điều khoản thanh toán</label><input v-model="form.payment_terms_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Lợi thế</label><input v-model="form.advantage_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Nguồn gốc lá trà</label><input v-model="form.leaf_origin_en" type="text" class="form-control"></div>
+                        <div class="form-group"><label>Chất liệu</label><input v-model="form.material_en" type="text" class="form-control"></div>
                     </div>
                 </div>
 
@@ -304,6 +353,30 @@ const deleteProduct = async (id) => {
 </template>
 
 <style scoped>
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+.specs-grid .form-group {
+    margin-bottom: 0;
+}
+.specs-grid .form-group label {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+.specs-grid .form-group input {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+}
+
 .page-header {
     display: flex;
     justify-content: space-between;

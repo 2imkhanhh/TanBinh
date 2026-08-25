@@ -15,10 +15,11 @@ class ProductController extends Controller
         $products = Product::with('category')->latest()->get()->map(function($product) {
             $product->name_vi = $product->getTranslation('name', 'vi', false);
             $product->name_en = $product->getTranslation('name', 'en', false);
-            $product->short_desc_vi = $product->getTranslation('short_description', 'vi', false);
-            $product->short_desc_en = $product->getTranslation('short_description', 'en', false);
-            $product->content_vi = $product->getTranslation('content', 'vi', false);
-            $product->content_en = $product->getTranslation('content', 'en', false);
+            $fields = ['type', 'style', 'age', 'drink_style', 'processing_type', 'packaging', 'specialty', 'grade', 'shelf_life', 'weight', 'origin', 'brand_name', 'model_number', 'payment_terms', 'advantage', 'leaf_origin', 'material'];
+            foreach ($fields as $field) {
+                $product->{$field . '_vi'} = $product->getTranslation($field, 'vi', false);
+                $product->{$field . '_en'} = $product->getTranslation($field, 'en', false);
+            }
             $product->is_featured = $product->is_featured;
             $product->category_name_vi = $product->category ? $product->category->getTranslation('name', 'vi', false) : '';
             $imageUrl = $product->getFirstMediaUrl('products');
@@ -58,14 +59,13 @@ class ProductController extends Controller
             'vi' => $request->name_vi,
             'en' => $request->name_en ?? ''
         ]);
-        $product->setTranslations('short_description', [
-            'vi' => $request->short_desc_vi ?? '',
-            'en' => $request->short_desc_en ?? ''
-        ]);
-        $product->setTranslations('content', [
-            'vi' => $request->content_vi ?? '',
-            'en' => $request->content_en ?? ''
-        ]);
+        $fields = ['type', 'style', 'age', 'drink_style', 'processing_type', 'packaging', 'specialty', 'grade', 'shelf_life', 'weight', 'origin', 'brand_name', 'model_number', 'payment_terms', 'advantage', 'leaf_origin', 'material'];
+        foreach ($fields as $field) {
+            $product->setTranslations($field, [
+                'vi' => $request->{$field . '_vi'} ?? '',
+                'en' => $request->{$field . '_en'} ?? ''
+            ]);
+        }
         
         $product->slug = $request->slug;
         $product->category_id = $request->category_id;
@@ -89,10 +89,13 @@ class ProductController extends Controller
 
         $product->name_vi = $product->getTranslation('name', 'vi', false);
         $product->name_en = $product->getTranslation('name', 'en', false);
-        $product->short_desc_vi = $product->getTranslation('short_description', 'vi', false);
-        $product->short_desc_en = $product->getTranslation('short_description', 'en', false);
-        $product->content_vi = $product->getTranslation('content', 'vi', false);
-        $product->content_en = $product->getTranslation('content', 'en', false);
+        
+        $fields = ['type', 'style', 'age', 'drink_style', 'processing_type', 'packaging', 'specialty', 'grade', 'shelf_life', 'weight', 'origin', 'brand_name', 'model_number', 'payment_terms', 'advantage', 'leaf_origin', 'material'];
+        foreach ($fields as $field) {
+            $product->{$field . '_vi'} = $product->getTranslation($field, 'vi', false);
+            $product->{$field . '_en'} = $product->getTranslation($field, 'en', false);
+        }
+        
         $product->is_featured = $product->is_featured;
         $imageUrl = $product->getFirstMediaUrl('products');
         if (empty($imageUrl)) {
@@ -123,14 +126,13 @@ class ProductController extends Controller
             'vi' => $request->name_vi,
             'en' => $request->name_en ?? ''
         ]);
-        $product->setTranslations('short_description', [
-            'vi' => $request->short_desc_vi ?? '',
-            'en' => $request->short_desc_en ?? ''
-        ]);
-        $product->setTranslations('content', [
-            'vi' => $request->content_vi ?? '',
-            'en' => $request->content_en ?? ''
-        ]);
+        $fields = ['type', 'style', 'age', 'drink_style', 'processing_type', 'packaging', 'specialty', 'grade', 'shelf_life', 'weight', 'origin', 'brand_name', 'model_number', 'payment_terms', 'advantage', 'leaf_origin', 'material'];
+        foreach ($fields as $field) {
+            $product->setTranslations($field, [
+                'vi' => $request->{$field . '_vi'} ?? '',
+                'en' => $request->{$field . '_en'} ?? ''
+            ]);
+        }
         
         $product->slug = $request->slug;
         $product->category_id = $request->category_id;
