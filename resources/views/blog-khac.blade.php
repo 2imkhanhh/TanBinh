@@ -42,11 +42,15 @@
                 @forelse($posts as $index => $post)
                     <article class="news-card">
                         <div class="news-card-image">
-                            <img src="{{ $post->getFirstMediaUrl('posts') ?: asset('assets/images/blog/news/' . ($fallbackImages[$index % 4])) }}" alt="{{ is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title }}">
+                            <a href="{{ route('blog.detail', $post->slug) }}" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                                <img src="{{ $post->getFirstMediaUrl('posts') ?: asset('assets/images/blog/news/' . ($fallbackImages[$index % 4])) }}" alt="{{ is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title }}">
+                            </a>
                         </div>
                         <div class="news-card-body">
                             <div class="news-card-middle">
-                                <h3 class="news-card-title">{{ is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title }}</h3>
+                                <a href="{{ route('blog.detail', $post->slug) }}" style="text-decoration: none; color: inherit;">
+                                    <h3 class="news-card-title">{{ is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title }}</h3>
+                                </a>
                             </div>
                             <a href="{{ route('blog.detail', $post->slug) }}" class="news-link">{{ app()->getLocale() == 'vi' ? 'Xem chi tiết' : 'Read more' }}</a>
                             <span class="news-date-badge">{{ $post->created_at->format('d/m/Y') }}</span>

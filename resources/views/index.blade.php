@@ -76,11 +76,15 @@
                     @endphp
                     <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}">
                         <p class="product-name">
-                            {{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}
+                            <a href="{{ route('product.detail', $product->slug) }}" style="text-decoration: none; color: inherit;">
+                                {{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}
+                            </a>
                         </p>
                         <div class="product-image">
-                            <img src="{{ $product->getFirstMediaUrl('products') ?: asset('assets/images/products/' . $img) }}"
-                                alt="{{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}">
+                            <a href="{{ route('product.detail', $product->slug) }}" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                                <img src="{{ $product->getFirstMediaUrl('products') ?: asset('assets/images/products/' . $img) }}"
+                                    alt="{{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}">
+                            </a>
                         </div>
                         <div class="product-actions">
                             <a href="{{ route('product.detail', $product->slug) }}" class="product-arrow">
@@ -125,11 +129,15 @@
                 @foreach ($greenProducts as $product)
                     <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}">
                         <p class="product-name">
-                            {{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}
+                            <a href="{{ route('product.detail', $product->slug) }}" style="text-decoration: none; color: inherit;">
+                                {{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}
+                            </a>
                         </p>
                         <div class="product-image">
-                            <img src="{{ $product->getFirstMediaUrl('products') ?: asset('assets/images/products/product-tea-generic.png') }}"
-                                alt="{{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}">
+                            <a href="{{ route('product.detail', $product->slug) }}" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                                <img src="{{ $product->getFirstMediaUrl('products') ?: asset('assets/images/products/product-tea-generic.png') }}"
+                                    alt="{{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}">
+                            </a>
                         </div>
                         <div class="product-actions">
                             <a href="{{ route('product.detail', $product->slug) }}" class="product-arrow">
