@@ -9,13 +9,13 @@
     <!-- Page Banner -->
     <section class="page-banner" id="page-banner">
         <div class="page-banner-bg">
-            <img src="{{ asset('assets/images/home/hero-tea-banner.png') }}" alt="Đồi chè Việt Nam">
+            <img src="{{ isset($settings['product_hero_image']) && $settings['product_hero_image'] ? asset($settings['product_hero_image']) : asset('assets/images/home/hero-tea-banner.png') }}" alt="Đồi chè Việt Nam">
         </div>
         <div class="page-banner-content">
-            <h1 class="page-banner-title">{{ app()->getLocale() == 'vi' ? 'SẢN PHẨM' : 'PRODUCTS' }}</h1>
+            <h1 class="page-banner-title">{!! nl2br(e($settings['product_hero_title'] ?? (app()->getLocale() == 'vi' ? 'SẢN PHẨM' : 'PRODUCTS'))) !!}</h1>
             <img src="{{ asset('assets/images/common/deco-vector-divider.png') }}" alt="" class="page-banner-vector">
             <p class="page-banner-desc">
-                {{ $settings['about_short'][app()->getLocale()] ?? 'Khám phá các sản phẩm chè đen và chè xanh chất lượng cao từ Tân Bình Tea.' }}
+                {!! $settings['product_hero_desc'] ?? (app()->getLocale() == 'vi' ? 'Khám phá các sản phẩm chè đen và chè xanh chất lượng cao từ Tân Bình Tea.' : 'Discover high-quality black and green tea products from Tan Binh Tea.') !!}
             </p>
         </div>
     </section>

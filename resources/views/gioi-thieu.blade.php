@@ -9,13 +9,13 @@
     <!-- Hero Section (kế thừa từ trang chủ) -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <img src="{{ asset('assets/images/home/hero-tea-banner.png') }}" alt="Đồi chè Việt Nam">
+            <img src="{{ isset($settings['about_hero_image']) && $settings['about_hero_image'] ? asset($settings['about_hero_image']) : asset('assets/images/home/hero-tea-banner.png') }}" alt="Đồi chè Việt Nam">
         </div>
         <div class="hero-content">
-            <h1 class="hero-title">{{ app()->getLocale() == 'vi' ? 'CHÚNG TÔI LÀ' : 'WHO WE ARE' }}</h1>
+            <h1 class="hero-title">{!! nl2br(e($settings['about_hero_title'] ?? (app()->getLocale() == 'vi' ? 'CHÚNG TÔI LÀ' : 'WHO WE ARE'))) !!}</h1>
             <img src="{{ asset('assets/images/common/deco-vector-divider.png') }}" alt="" class="hero-vector">
             <div class="hero-desc">
-                {!! $settings['home_intro_desc'] ?? 'Trong suốt quá trình hình thành và phát triển, chúng tôi hướng đến mục tiêu không chỉ là một thương hiệu chè, mà còn là cầu nối đưa hương vị Việt Nam vươn xa ra thế giới. Từng búp chè nhỏ bé mang theo khát vọng lớn, để bạn bè quốc tế biết đến, yêu mến và trân trọng những giá trị mộc mạc nhưng đầy tự hào của<br>dân tộc Việt Nam.' !!}
+                {!! $settings['about_hero_desc'] ?? 'Trong suốt quá trình hình thành và phát triển, chúng tôi hướng đến mục tiêu không chỉ là một thương hiệu chè, mà còn là cầu nối đưa hương vị Việt Nam vươn xa ra thế giới. Từng búp chè nhỏ bé mang theo khát vọng lớn, để bạn bè quốc tế biết đến, yêu mến và trân trọng những giá trị mộc mạc nhưng đầy tự hào của<br>dân tộc Việt Nam.' !!}
             </div>
         </div>
     </section>
@@ -70,18 +70,27 @@
             </div>
             <div class="about-aerial-right">
                 <div class="about-aerial-image">
-                    <div class="about-aerial-item">
-                        <img src="{{ asset('assets/images/about/about-core-value-icon.png') }}" alt="Giá trị cốt lõi 1">
-                        <p class="about-aerial-item-text">{{ app()->getLocale() == 'vi' ? 'Tận tâm với chất lượng: Chúng tôi tin rằng, chỉ có sự chỉn chu và chân thành mới tạo nên một sản phẩm thực sự xứng đáng.' : 'Dedicated to quality: We believe that only care and sincerity can create a truly worthy product.' }}</p>
-                    </div>
-                    <div class="about-aerial-item">
-                        <img src="{{ asset('assets/images/about/about-core-value-icon.png') }}" alt="Giá trị cốt lõi 2">
-                        <p class="about-aerial-item-text">{{ app()->getLocale() == 'vi' ? 'Lấy chữ tín làm gốc: Mỗi cam kết của Công ty TNHH Chè Tân Bình đều xuất phát từ lòng tôn trọng với khách hàng, đối tác và cộng đồng.' : 'Prestige as the root: Every commitment comes from respect for customers, partners, and the community.' }}</p>
-                    </div>
-                    <div class="about-aerial-item">
-                        <img src="{{ asset('assets/images/about/about-core-value-icon.png') }}" alt="Giá trị cốt lõi 3">
-                        <p class="about-aerial-item-text">{{ app()->getLocale() == 'vi' ? 'Gìn giữ bản sắc truyền thống: Chúng tôi gìn giữ và phát huy hương vị truyền thống của nông sản vùng đất tổ Vua Hùng. Cùng với đó là tinh thần sẵn sàng đổi mới để bắt kịp thời đại.' : 'Preserving traditional identity: We preserve and promote the traditional flavors of agricultural products while being ready to innovate.' }}</p>
-                    </div>
+                    @if(isset($settings['core_values']) && is_array($settings['core_values']) && count($settings['core_values']) > 0)
+                        @foreach($settings['core_values'] as $value)
+                            <div class="about-aerial-item">
+                                <img src="{{ asset('assets/images/about/about-core-value-icon.png') }}" alt="Giá trị cốt lõi {{ $loop->iteration }}">
+                                <p class="about-aerial-item-text">{{ $value }}</p>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="about-aerial-item">
+                            <img src="{{ asset('assets/images/about/about-core-value-icon.png') }}" alt="Giá trị cốt lõi 1">
+                            <p class="about-aerial-item-text">Tận tâm với chất lượng: Chúng tôi tin rằng, chỉ có sự chỉn chu và chân thành mới tạo nên một sản phẩm thực sự xứng đáng.</p>
+                        </div>
+                        <div class="about-aerial-item">
+                            <img src="{{ asset('assets/images/about/about-core-value-icon.png') }}" alt="Giá trị cốt lõi 2">
+                            <p class="about-aerial-item-text">Lấy chữ tín làm gốc: Mỗi cam kết của Công ty TNHH Chè Tân Bình đều xuất phát từ lòng tôn trọng với khách hàng, đối tác và cộng đồng.</p>
+                        </div>
+                        <div class="about-aerial-item">
+                            <img src="{{ asset('assets/images/about/about-core-value-icon.png') }}" alt="Giá trị cốt lõi 3">
+                            <p class="about-aerial-item-text">{{ app()->getLocale() == 'vi' ? 'Gìn giữ bản sắc truyền thống: Chúng tôi gìn giữ và phát huy hương vị truyền thống của nông sản vùng đất tổ Vua Hùng. Cùng với đó là tinh thần sẵn sàng đổi mới để bắt kịp thời đại.' : 'Preserving traditional identity: We preserve and promote the traditional flavors of agricultural products while being ready to innovate.' }}</p>
+                        </div>
+                    @endif
                 </div>
             </div>
 

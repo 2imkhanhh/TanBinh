@@ -20,7 +20,7 @@
     <header class="header" id="header">
         <div class="header-container">
             <a href="{{ route('home') }}" class="logo" id="logo">
-                <img src="{{ asset('assets/images/common/logo.png') }}" alt="Tân Bình Tea Logo">
+                <img src="{{ isset($settings['logo']) && $settings['logo'] ? asset($settings['logo']) : asset('assets/images/common/logo.png') }}" alt="Tân Bình Tea Logo">
                 <span class="logo-text">TAN BINH TEA</span>
             </a>
             <nav class="nav" id="main-nav">

@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', $settings['site_title'][app()->getLocale()] ?? 'Tân Bình Tea')
+@section('title', $settings['site_title'] ?? 'Tân Bình Tea')
 
 @push('css')
     <link rel="stylesheet" href="{{ asset('assets/css/index.css') }}">
@@ -9,18 +9,15 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-bg">
-            <img src="{{ asset('assets/images/home/hero-tea-banner.png') }}" alt="Đồi chè Việt Nam">
+            <img src="{{ isset($settings['home_hero_image']) && $settings['home_hero_image'] ? asset($settings['home_hero_image']) : asset('assets/images/home/hero-tea-banner.png') }}" alt="Đồi chè Việt Nam">
         </div>
         <div class="hero-content">
             <h1 class="hero-title">{!! nl2br(e($settings['home_intro_title'] ?? "TRÀ VIỆT NAM\nLÀ NGHỆ SĨ")) !!}</h1>
-            <p class="hero-desc">
-                {!! nl2br(
-                    e(
-                        $settings['home_intro_desc'] ??
-                            'Trong suốt quá trình hình thành và phát triển, chúng tôi hướng đến mục tiêu không chỉ là một thương hiệu chè, mà còn là cầu nối đưa hương vị Việt Nam vươn xa ra thế giới. Từng búp chè nhỏ bé mang theo khát vọng lớn, để bạn bè quốc tế biết đến, yêu mến và trân trọng những giá trị mộc mạc nhưng đầy tự hào của dân tộc Việt Nam',
-                    ),
-                ) !!}
-            </p>
+            <div class="hero-desc">
+                {!! $settings['home_intro_desc'] ??
+                            'Trong suốt quá trình hình thành và phát triển, chúng tôi hướng đến mục tiêu không chỉ là một thương hiệu chè, mà còn là cầu nối đưa hương vị Việt Nam vươn xa ra thế giới. Từng búp chè nhỏ bé mang theo khát vọng lớn, để bạn bè quốc tế biết đến, yêu mến và trân trọng những giá trị mộc mạc nhưng đầy tự hào của dân tộc Việt Nam'
+                !!}
+            </div>
         </div>
     </section>
 
@@ -29,13 +26,13 @@
         <div class="intro-container">
             <div class="intro-left">
                 <div class="intro-image">
-                    <img src="{{ asset('assets/images/home/intro-tea-harvest.jpg') }}" alt="Thu hái chè tại Phú Thọ">
+                    <img src="{{ isset($settings['home_about_image']) && $settings['home_about_image'] ? asset($settings['home_about_image']) : asset('assets/images/home/intro-tea-harvest.jpg') }}" alt="Thu hái chè tại Phú Thọ">
                 </div>
                 <div class="intro-text-block">
-                    <h2 class="intro-title">{{ app()->getLocale() == 'vi' ? 'Giới thiệu' : 'About Us' }}</h2>
-                    <p class="intro-desc">
-                        {{ $settings['about_short'] ?? 'Công ty TNHH Xuất Nhập Khẩu Chè Tân Bình với gần 100 cán bộ kỹ thuật và công nhân lành nghề trong sản xuất, chế biến chè...' }}
-                    </p>
+                    <h2 class="intro-title">{{ $settings['home_about_title'] ?? (app()->getLocale() == 'vi' ? 'Giới thiệu' : 'About Us') }}</h2>
+                    <div class="intro-desc">
+                        {!! nl2br(e($settings['home_about_desc'] ?? ($settings['about_short'] ?? 'Công ty TNHH Xuất Nhập Khẩu Chè Tân Bình với gần 100 cán bộ kỹ thuật và công nhân lành nghề trong sản xuất, chế biến chè...'))) !!}
+                    </div>
                 </div>
             </div>
             <div class="intro-right">
