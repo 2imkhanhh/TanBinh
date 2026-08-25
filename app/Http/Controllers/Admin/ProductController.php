@@ -15,23 +15,21 @@ class ProductController extends Controller
         $products = Product::with('category')->latest()->get()->map(function($product) {
             $product->name_vi = $product->getTranslation('name', 'vi', false);
             $product->name_en = $product->getTranslation('name', 'en', false);
+            $product->short_desc_vi = $product->getTranslation('short_description', 'vi', false);
+            $product->short_desc_en = $product->getTranslation('short_description', 'en', false);
+            $product->content_vi = $product->getTranslation('content', 'vi', false);
+            $product->content_en = $product->getTranslation('content', 'en', false);
             $product->image_url = $product->getFirstMediaUrl('products');
             return $product;
         });
 
-        return Inertia::render('Admin/Products/Index', [
-            'products' => $products
-        ]);
-    }
-
-    public function create()
-    {
         $categories = Category::where('type', 'product')->get()->map(function($category) {
             $category->name_vi = $category->getTranslation('name', 'vi', false);
             return $category;
         });
-        
-        return Inertia::render('Admin/Products/Create', [
+
+        return Inertia::render('Admin/Products/Index', [
+            'products' => $products,
             'categories' => $categories
         ]);
     }

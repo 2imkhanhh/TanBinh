@@ -15,23 +15,21 @@ class PostController extends Controller
         $posts = Post::with('category')->latest()->get()->map(function($post) {
             $post->title_vi = $post->getTranslation('title', 'vi', false);
             $post->title_en = $post->getTranslation('title', 'en', false);
+            $post->excerpt_vi = $post->getTranslation('excerpt', 'vi', false);
+            $post->excerpt_en = $post->getTranslation('excerpt', 'en', false);
+            $post->content_vi = $post->getTranslation('content', 'vi', false);
+            $post->content_en = $post->getTranslation('content', 'en', false);
             $post->image_url = $post->getFirstMediaUrl('posts');
             return $post;
         });
 
-        return Inertia::render('Admin/Posts/Index', [
-            'posts' => $posts
-        ]);
-    }
-
-    public function create()
-    {
         $categories = Category::where('type', 'post')->get()->map(function($category) {
             $category->name_vi = $category->getTranslation('name', 'vi', false);
             return $category;
         });
-        
-        return Inertia::render('Admin/Posts/Create', [
+
+        return Inertia::render('Admin/Posts/Index', [
+            'posts' => $posts,
             'categories' => $categories
         ]);
     }

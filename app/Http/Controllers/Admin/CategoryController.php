@@ -18,19 +18,13 @@ class CategoryController extends Controller
             return $category;
         });
 
-        return Inertia::render('Admin/Categories/Index', [
-            'categories' => $categories
-        ]);
-    }
-
-    public function create()
-    {
         $parents = Category::whereNull('parent_id')->get()->map(function($category) {
             $category->name_vi = $category->getTranslation('name', 'vi', false);
             return $category;
         });
-        
-        return Inertia::render('Admin/Categories/Create', [
+
+        return Inertia::render('Admin/Categories/Index', [
+            'categories' => $categories,
             'parents' => $parents
         ]);
     }
