@@ -3,6 +3,8 @@ import { ref, inject, watch } from 'vue';
 import { Head, router, useForm } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import AdminModal from '@/Components/Admin/AdminModal.vue';
+import { QuillEditor } from '@vueup/vue-quill';
+import '@vueup/vue-quill/dist/vue-quill.snow.css';
 
 const showConfirm = inject('confirm');
 
@@ -230,7 +232,7 @@ const deleteProduct = async (id) => {
 
                     <div class="form-group">
                         <label>Nội dung chi tiết</label>
-                        <textarea v-model="form.content_vi" rows="6" class="form-control"></textarea>
+                        <QuillEditor v-model:content="form.content_vi" contentType="html" theme="snow" toolbar="full" style="height: 300px;" />
                     </div>
                 </div>
 
@@ -247,7 +249,7 @@ const deleteProduct = async (id) => {
 
                     <div class="form-group">
                         <label>Nội dung chi tiết</label>
-                        <textarea v-model="form.content_en" rows="6" class="form-control"></textarea>
+                        <QuillEditor v-model:content="form.content_en" contentType="html" theme="snow" toolbar="full" style="height: 300px;" />
                     </div>
                 </div>
 

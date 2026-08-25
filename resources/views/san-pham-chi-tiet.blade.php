@@ -63,7 +63,7 @@
                 
                 @if($product->content && (is_array($product->content) ? ($product->content[app()->getLocale()] ?? '') : $product->content) != '')
                     <div class="chi-tiet-content-html mb-6">
-                        {!! nl2br(e(is_array($product->content) ? ($product->content[app()->getLocale()] ?? $product->content['vi'] ?? '') : $product->content)) !!}
+                        {!! is_array($product->content) ? ($product->content[app()->getLocale()] ?? $product->content['vi'] ?? '') : $product->content !!}
                     </div>
                 @endif
                 

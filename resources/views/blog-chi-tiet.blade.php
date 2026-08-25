@@ -73,7 +73,7 @@
 
             <div class="blog-detail-body">
                 @if($post->content && (is_array($post->content) ? ($post->content[app()->getLocale()] ?? '') : $post->content) != '')
-                    {!! nl2br(e(is_array($post->content) ? ($post->content[app()->getLocale()] ?? $post->content['vi'] ?? '') : $post->content)) !!}
+                    {!! is_array($post->content) ? ($post->content[app()->getLocale()] ?? $post->content['vi'] ?? '') : $post->content !!}
                 @else
                     <p>{{ app()->getLocale() == 'vi' ? 'Nội dung đang được cập nhật.' : 'Content is being updated.' }}</p>
                 @endif
