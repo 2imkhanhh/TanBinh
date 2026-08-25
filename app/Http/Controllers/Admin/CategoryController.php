@@ -12,7 +12,8 @@ class CategoryController extends Controller
     public function index()
     {
         // Get translations to send to Vue properly
-        $categories = Category::with('parent')->latest()->get()->map(function($category) {
+        $categories = Category::with('parent')->latest()->paginate(10);
+        $categories->getCollection()->transform(function($category) {
             $category->name_vi = $category->getTranslation('name', 'vi', false);
             $category->name_en = $category->getTranslation('name', 'en', false);
             return $category;

@@ -12,7 +12,8 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with('category')->latest()->get()->map(function($product) {
+        $products = Product::with('category')->latest()->paginate(10);
+        $products->getCollection()->transform(function($product) {
             $product->name_vi = $product->getTranslation('name', 'vi', false);
             $product->name_en = $product->getTranslation('name', 'en', false);
             $fields = ['type', 'style', 'age', 'drink_style', 'processing_type', 'packaging', 'specialty', 'grade', 'shelf_life', 'weight', 'origin', 'brand_name', 'model_number', 'payment_terms', 'advantage', 'leaf_origin', 'material'];

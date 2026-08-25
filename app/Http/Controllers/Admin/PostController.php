@@ -13,7 +13,8 @@ class PostController extends Controller
     public function index()
     {
         $categories = Category::where('type', 'post')->get();
-        $posts = Post::with('category')->latest()->get()->map(function($post) {
+        $posts = Post::with('category')->latest()->paginate(10);
+        $posts->getCollection()->transform(function($post) {
             $post->title_vi = $post->getTranslation('title', 'vi', false);
             $post->title_en = $post->getTranslation('title', 'en', false);
             $post->excerpt_vi = $post->getTranslation('excerpt', 'vi', false);
@@ -32,7 +33,8 @@ class PostController extends Controller
                         'news-fair-2026.png',
                         'news-brew-guide.png'
                     ];
-                    $imageUrl = asset('assets/images/blog/news/' . $fallbackImages[$post->id % 4]);
+                    $randomIndex = $post->id % count($fallbackImages);
+                    $imageUrl = asset('assets/images/blog/news/' . $fallbackImages[$randomIndex]);
                 }
             }
             $post->image_url = $imageUrl;

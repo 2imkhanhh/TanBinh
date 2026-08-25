@@ -80,6 +80,9 @@
                     </div>
                 @endforeach
             </div>
+            <div class="mt-4" style="display: flex; justify-content: center; margin-top: 2rem;">
+                {{ $blackProducts->links('vendor.pagination.custom') }}
+            </div>
         </div>
     </section>
 
@@ -119,6 +122,9 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <div class="mt-4" style="display: flex; justify-content: center; margin-top: 2rem;">
+                {{ $greenProducts->links('vendor.pagination.custom') }}
             </div>
         </div>
     </section>

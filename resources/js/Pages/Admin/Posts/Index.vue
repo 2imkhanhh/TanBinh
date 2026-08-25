@@ -1,6 +1,6 @@
 <script setup>
 import { ref, inject, watch } from 'vue';
-import { Head, router, useForm } from '@inertiajs/vue3';
+import { Head, Link, router, useForm } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import AdminModal from '@/Components/Admin/AdminModal.vue';
 import { QuillEditor } from '@vueup/vue-quill';
@@ -162,8 +162,8 @@ const deletePost = async (id) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(post, index) in posts" :key="post.id">
-                        <td>{{ index + 1 }}</td>
+                    <tr v-for="(post, index) in posts.data" :key="post.id">
+                        <td>{{ (posts.current_page - 1) * posts.per_page + index + 1 }}</td>
                         <td>
                             <div class="thumb thumb-wide">
                                 <img v-if="post.image_url" :src="post.image_url" alt="Post" />
@@ -203,11 +203,22 @@ const deletePost = async (id) => {
                             </div>
                         </td>
                     </tr>
-                    <tr v-if="posts.length === 0">
+                    <tr v-if="posts.data && posts.data.length === 0">
                         <td colspan="6" class="text-center py-4 text-gray">Không có bài viết nào.</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination-wrap" v-if="posts.links && posts.links.length > 3">
+            <div class="pagination">
+                <template v-for="(link, i) in posts.links" :key="i">
+                    <Link v-if="link.url" :href="link.url" class="page-link" :class="{ 'active': link.active }"
+                        v-html="link.label"></Link>
+                    <span v-else class="page-link disabled" v-html="link.label"></span>
+                </template>
+            </div>
         </div>
     </div>
 
@@ -321,6 +332,50 @@ const deletePost = async (id) => {
 </template>
 
 <style scoped>
+
+.pagination-wrap {
+    padding: 1.5rem;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: center;
+}
+.pagination {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+.page-link:hover:not(.disabled) {
+    background: #f1f5f9;
+    color: #0f172a;
+    transform: translateY(-2px);
+}
+.page-link.active {
+    background: #108140;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(16, 129, 64, 0.35);
+}
+.page-link.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+}
+
 .page-header {
     display: flex;
     justify-content: space-between;

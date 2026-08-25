@@ -40,10 +40,10 @@ class FrontendController extends Controller
         $settings = $this->getSettings();
         $blackProducts = Product::where('is_active', true)->whereHas('category', function($q) {
             $q->where('slug', 'che-den');
-        })->get();
+        })->paginate(12, ['*'], 'black_page');
         $greenProducts = Product::where('is_active', true)->whereHas('category', function($q) {
             $q->where('slug', 'che-xanh');
-        })->get();
+        })->paginate(12, ['*'], 'green_page');
         return view('san-pham', compact('settings', 'blackProducts', 'greenProducts'));
     }
 
@@ -70,7 +70,7 @@ class FrontendController extends Controller
     public function blogTinTuc()
     {
         $settings = $this->getSettings();
-        $posts = Post::where('is_active', true)->where('type', 'tin-tuc')->latest()->paginate(9);
+        $posts = Post::where('is_active', true)->where('type', 'tin-tuc')->latest()->paginate(8);
         return view('blog-tin-tuc', compact('settings', 'posts'));
     }
 

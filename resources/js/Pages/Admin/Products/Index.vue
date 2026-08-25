@@ -1,6 +1,6 @@
 <script setup>
 import { ref, inject, watch } from 'vue';
-import { Head, router, useForm } from '@inertiajs/vue3';
+import { Head, Link, router, useForm } from '@inertiajs/vue3';
 import AdminLayout from '@/Layouts/AdminLayout.vue';
 import AdminModal from '@/Components/Admin/AdminModal.vue';
 import { QuillEditor } from '@vueup/vue-quill';
@@ -188,8 +188,8 @@ const deleteProduct = async (id) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(product, index) in products" :key="product.id">
-                        <td>{{ index + 1 }}</td>
+                    <tr v-for="(product, index) in products.data" :key="product.id">
+                        <td>{{ (products.current_page - 1) * products.per_page + index + 1 }}</td>
                         <td>
                             <div class="thumb">
                                 <img v-if="product.image_url" :src="product.image_url" alt="Product" />
@@ -223,11 +223,22 @@ const deleteProduct = async (id) => {
                             </div>
                         </td>
                     </tr>
-                    <tr v-if="products.length === 0">
+                    <tr v-if="products.data.length === 0">
                         <td colspan="7" class="text-center py-4 text-gray">Không có sản phẩm nào.</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination-wrap" v-if="products.links && products.links.length > 3">
+            <div class="pagination">
+                <template v-for="(link, i) in products.links" :key="i">
+                    <Link v-if="link.url" :href="link.url" class="page-link" :class="{ 'active': link.active }"
+                        v-html="link.label"></Link>
+                    <span v-else class="page-link disabled" v-html="link.label"></span>
+                </template>
+            </div>
         </div>
     </div>
 
@@ -353,6 +364,50 @@ const deleteProduct = async (id) => {
 </template>
 
 <style scoped>
+
+.pagination-wrap {
+    padding: 1.5rem;
+    border-top: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: center;
+}
+.pagination {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+.page-link:hover:not(.disabled) {
+    background: #f1f5f9;
+    color: #0f172a;
+    transform: translateY(-2px);
+}
+.page-link.active {
+    background: #108140;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(16, 129, 64, 0.35);
+}
+.page-link.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+    cursor: default;
+}
+
 
 .specs-grid {
     display: grid;
