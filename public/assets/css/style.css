@@ -272,6 +272,10 @@ textarea {
     color: #000000;
 }
 
+.lang-switch-mobile-wrapper {
+    display: none;
+}
+
 /* Hamburger (mobile) */
 .hamburger {
     display: none;
@@ -1017,9 +1021,37 @@ textarea {
     .blog-dropdown-link:active {
         background-color: rgba(177, 209, 54, 0.2);
     }
-
     .lang-switch {
         display: none;
+    }
+
+    .lang-switch-mobile-wrapper {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .lang-switch-mobile {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.85rem;
+    }
+
+    .lang-switch-mobile .lang-link {
+        font-weight: 600;
+        color: #000000;
+        transition: color 0.3s ease;
+    }
+
+    .lang-switch-mobile .lang-link.active {
+        color: #64a706;
+    }
+
+    .lang-switch-mobile span {
+        color: #000000;
     }
 
     /* Page Banner */

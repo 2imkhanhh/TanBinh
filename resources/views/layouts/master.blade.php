@@ -44,6 +44,13 @@
                             <li><a href="{{ route('blog.khac') }}" class="blog-dropdown-link">{{ app()->getLocale() == 'vi' ? 'Khác' : 'Others' }}</a></li>
                         </ul>
                     </li>
+                    <li class="lang-switch-mobile-wrapper">
+                        <div class="lang-switch-mobile">
+                            <a href="{{ route('lang.switch', 'vi') }}" class="lang-link {{ app()->getLocale() == 'vi' ? 'active' : '' }}">VN</a>
+                            <span>/</span>
+                            <a href="{{ route('lang.switch', 'en') }}" class="lang-link {{ app()->getLocale() == 'en' ? 'active' : '' }}">EN</a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
             <div class="lang-switch" id="lang-switch">
