@@ -14,7 +14,7 @@
     </section>
 
     <!-- Breadcrumb / Back -->
-    <div class="chi-tiet-breadcrumb">
+    <div class="chi-tiet-breadcrumb" data-aos="fade-down">
         <a href="{{ route('products') }}" class="chi-tiet-back">
             <span class="arrow-circle">
                 <svg width="120" height="36" viewBox="-35 0 90 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +31,7 @@
     <section class="chi-tiet-section">
         <div class="chi-tiet-container">
 
-            <div class="chi-tiet-gallery">
+            <div class="chi-tiet-gallery" data-aos="fade-right">
                 <div class="chi-tiet-main-img">
                     <div class="chi-tiet-main-slider">
                         <div class="chi-tiet-main-track">
@@ -69,7 +69,7 @@
             </div>
 
             <!-- Cột phải: thông tin -->
-            <div class="chi-tiet-info">
+            <div class="chi-tiet-info" data-aos="fade-left">
                 <h1 class="chi-tiet-name">{{ is_array($product->name) ? ($product->name[app()->getLocale()] ?? $product->name['vi']) : $product->name }}</h1>
                 <p class="chi-tiet-subtitle">{{ app()->getLocale() == 'vi' ? 'Chi tiết sản phẩm' : 'Product Details' }}</p>
                 <div class="chi-tiet-divider"></div>

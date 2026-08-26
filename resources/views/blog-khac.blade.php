@@ -12,7 +12,7 @@
         <div class="page-banner-bg">
             <img src="{{ asset('assets/images/common/banner-tea-field.png') }}" alt="Đồi chè Việt Nam">
         </div>
-        <div class="page-banner-content">
+        <div class="page-banner-content" data-aos="zoom-in" data-aos-duration="1000">
             <h1 class="page-banner-title">BLOG</h1>
         </div>
     </section>
@@ -40,7 +40,7 @@
                     ];
                 @endphp
                 @forelse($posts as $index => $post)
-                    <article class="news-card">
+                    <article class="news-card" data-aos="fade-up" data-aos-delay="{{ ($index % 4) * 100 }}">
                         <div class="news-card-image">
                             <a href="{{ route('blog.detail', $post->slug) }}" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
                                 <img src="{{ $post->getFirstMediaUrl('posts') ?: asset('assets/images/blog/news/' . ($fallbackImages[$index % 4])) }}" alt="{{ is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title }}">
@@ -58,7 +58,7 @@
                     </article>
                 @empty
                     <!-- Fallback data -->
-                    <article class="news-card">
+                    <article class="news-card" data-aos="fade-up" data-aos-delay="0">
                         <div class="news-card-image">
                             <img src="{{ asset('assets/images/blog/news/news-green-tea-health.png') }}" alt="Tin tức trà">
                         </div>
@@ -70,7 +70,7 @@
                             <span class="news-date-badge">27/04/2025</span>
                         </div>
                     </article>
-                    <article class="news-card">
+                    <article class="news-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="news-card-image">
                             <img src="{{ asset('assets/images/blog/news/news-green-land.png') }}" alt="Tin tức trà">
                         </div>
@@ -82,7 +82,7 @@
                             <span class="news-date-badge">20/04/2025</span>
                         </div>
                     </article>
-                    <article class="news-card">
+                    <article class="news-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="news-card-image">
                             <img src="{{ asset('assets/images/blog/news/news-fair-2026.png') }}" alt="Tin tức trà">
                         </div>
@@ -94,7 +94,7 @@
                             <span class="news-date-badge">15/04/2025</span>
                         </div>
                     </article>
-                    <article class="news-card">
+                    <article class="news-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="news-card-image">
                             <img src="{{ asset('assets/images/blog/news/news-brew-guide.png') }}" alt="Tin tức trà">
                         </div>

@@ -11,7 +11,7 @@
         <div class="page-banner-bg">
             <img src="{{ isset($settings['product_hero_image']) && $settings['product_hero_image'] ? asset($settings['product_hero_image']) : asset('assets/images/home/hero-tea-banner.png') }}" alt="Đồi chè Việt Nam">
         </div>
-        <div class="page-banner-content">
+        <div class="page-banner-content" data-aos="zoom-in" data-aos-duration="1000">
             <h1 class="page-banner-title">{!! nl2br(e($settings['product_hero_title'] ?? (app()->getLocale() == 'vi' ? 'SẢN PHẨM' : 'PRODUCTS'))) !!}</h1>
             <img src="{{ asset('assets/images/common/deco-vector-divider.png') }}" alt="" class="page-banner-vector">
             <p class="page-banner-desc">
@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    <div class="products-toggle-wrapper">
+    <div class="products-toggle-wrapper" data-aos="fade-up">
         <div class="products-toggle-switch">
             <span class="products-toggle-btn products-title-den active"
                   role="button"
@@ -54,7 +54,7 @@
                             $img = 'product-black-tea-pekoe.png';
                         }
                     @endphp
-                    <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}">
+                    <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <p class="product-name">
                             <a href="{{ route('product.detail', $product->slug) }}" style="text-decoration: none; color: inherit;">
                                 {{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}
@@ -97,7 +97,7 @@
             </div>
             <div class="products-grid" id="green-tea-grid">
                 @foreach ($greenProducts as $product)
-                    <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}">
+                    <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <p class="product-name">
                             <a href="{{ route('product.detail', $product->slug) }}" style="text-decoration: none; color: inherit;">
                                 {{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}

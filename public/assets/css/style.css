@@ -501,15 +501,6 @@ textarea {
     flex-direction: column;
 }
 
-#san-pham-den .product-card,
-#san-pham-xanh .product-card,
-#san-pham-den .products-grid,
-#san-pham-xanh .products-grid {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-    will-change: auto !important;
-}
 
 .product-card:hover {
     transform: translateY(-12px);

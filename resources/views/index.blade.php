@@ -11,7 +11,7 @@
         <div class="hero-bg">
             <img src="{{ isset($settings['home_hero_image']) && $settings['home_hero_image'] ? asset($settings['home_hero_image']) : asset('assets/images/home/hero-tea-banner.png') }}" alt="Đồi chè Việt Nam">
         </div>
-        <div class="hero-content">
+        <div class="hero-content" data-aos="zoom-in" data-aos-duration="1000">
             <h1 class="hero-title">{!! nl2br(e($settings['home_intro_title'] ?? "TRÀ VIỆT NAM\nLÀ NGHỆ SĨ")) !!}</h1>
             <div class="hero-desc">
                 {!! $settings['home_intro_desc'] ??
@@ -25,10 +25,10 @@
     <section class="intro" id="gioi-thieu">
         <div class="intro-container">
             <div class="intro-left">
-                <div class="intro-image">
+                <div class="intro-image" data-aos="fade-right">
                     <img src="{{ isset($settings['home_about_image']) && $settings['home_about_image'] ? asset($settings['home_about_image']) : asset('assets/images/home/intro-tea-harvest.jpg') }}" alt="Thu hái chè tại Phú Thọ">
                 </div>
-                <div class="intro-text-block">
+                <div class="intro-text-block" data-aos="fade-left">
                     <h2 class="intro-title">{{ $settings['home_about_title'] ?? (app()->getLocale() == 'vi' ? 'Giới thiệu' : 'About Us') }}</h2>
                     <div class="intro-desc">
                         {!! nl2br(e($settings['home_about_desc'] ?? ($settings['about_short'] ?? 'Công ty TNHH Xuất Nhập Khẩu Chè Tân Bình với gần 100 cán bộ kỹ thuật và công nhân lành nghề trong sản xuất, chế biến chè...'))) !!}
@@ -60,7 +60,7 @@
     <!-- Sản phẩm Chè Đen -->
     <section class="products" id="san-pham">
         <div class="products-container">
-            <div class="products-header">
+            <div class="products-header" data-aos="fade-up">
                 <h2 class="products-title">
                     <span class="products-title-top">{{ app()->getLocale() == 'vi' ? 'Sản phẩm' : 'Products' }}</span>
                     <span class="products-title-bottom">{{ app()->getLocale() == 'vi' ? 'CHÈ ĐEN' : 'BLACK TEA' }}</span>
@@ -74,7 +74,7 @@
                             $img = 'product-black-tea-pekoe.png';
                         }
                     @endphp
-                    <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}">
+                    <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <p class="product-name">
                             <a href="{{ route('product.detail', $product->slug) }}" style="text-decoration: none; color: inherit;">
                                 {{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}
@@ -100,7 +100,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="products-footer">
+            <div class="products-footer" data-aos="zoom-in" data-aos-offset="0">
                 <a href="{{ route('products') }}" class="xem-them-link" id="btn-xem-them-black">
                     <span>{{ app()->getLocale() == 'vi' ? 'Xem thêm' : 'See more' }}</span>
                     <span class="arrow-circle">
@@ -119,7 +119,7 @@
     <!-- Sản phẩm Chè Xanh -->
     <section class="products products-green" id="san-pham-xanh">
         <div class="products-container">
-            <div class="products-header">
+            <div class="products-header" data-aos="fade-up">
                 <h2 class="products-title">
                     <span class="products-title-top">{{ app()->getLocale() == 'vi' ? 'Sản phẩm' : 'Products' }}</span>
                     <span class="products-title-bottom">{{ app()->getLocale() == 'vi' ? 'CHÈ XANH' : 'GREEN TEA' }}</span>
@@ -127,7 +127,7 @@
             </div>
             <div class="products-grid" id="green-tea-grid">
                 @foreach ($greenProducts as $product)
-                    <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}">
+                    <div class="product-card" id="product-{{ Str::afterLast($product->slug, '-') }}" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                         <p class="product-name">
                             <a href="{{ route('product.detail', $product->slug) }}" style="text-decoration: none; color: inherit;">
                                 {{ is_array($product->name) ? $product->name[app()->getLocale()] ?? $product->name['vi'] : $product->name }}
@@ -153,7 +153,7 @@
                     </div>
                 @endforeach
             </div>
-            <div class="products-footer">
+            <div class="products-footer" data-aos="zoom-in" data-aos-offset="0">
                 <a href="{{ route('products') }}" class="xem-them-link" id="btn-xem-them-green">
                     <span>{{ app()->getLocale() == 'vi' ? 'Xem thêm' : 'See more' }}</span>
                     <span class="arrow-circle">
@@ -172,7 +172,7 @@
     <!-- Liên hệ Section -->
     <section class="contact" id="lien-he">
         <div class="contact-container">
-            <div class="contact-info">
+            <div class="contact-info" data-aos="fade-right">
                 <h2 class="contact-title">{{ app()->getLocale() == 'vi' ? 'Liên hệ' : 'Contact' }}</h2>
                 <h3 class="contact-company">
                     {{ app()->getLocale() == 'vi' ? 'CÔNG TY TNHH CHÈ TÂN BÌNH' : 'TAN BINH TEA CO., LTD' }}</h3>
@@ -227,7 +227,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="contact-form-wrapper">
+            <div class="contact-form-wrapper" data-aos="fade-left" data-aos-delay="200">
                 <form class="contact-form" id="contact-form" action="{{ route('contact.submit') }}" method="POST">
                     @csrf
                     <input type="text" name="fullname" placeholder="{{ app()->getLocale() == 'vi' ? 'Họ tên' : 'Name' }}"

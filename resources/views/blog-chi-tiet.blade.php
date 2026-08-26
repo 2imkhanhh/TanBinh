@@ -131,7 +131,7 @@
         <div class="page-banner-bg">
             <img src="{{ asset('assets/images/common/banner-tea-field.png') }}" alt="Đồi chè Việt Nam">
         </div>
-        <div class="page-banner-content">
+        <div class="page-banner-content" data-aos="zoom-in" data-aos-duration="1000">
             <h1 class="page-banner-title">BLOG</h1>
         </div>
     </section>
@@ -144,7 +144,7 @@
             <img src="{{ asset('assets/images/common/leaf-vertical-bottom.png') }}" alt="" class="blog-leaf-bottom">
         </div>
 
-        <section class="blog-detail-content">
+        <section class="blog-detail-content" data-aos="fade-up">
             <h1 class="blog-detail-title">{{ is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title }}</h1>
             <div class="blog-separator"></div>
             <div class="blog-detail-meta">
@@ -155,12 +155,12 @@
             </div>
             
             @if($post->getFirstMediaUrl('posts'))
-                <div class="blog-detail-image-wrapper">
+                <div class="blog-detail-image-wrapper" data-aos="fade-up" data-aos-delay="200">
                     <img src="{{ $post->getFirstMediaUrl('posts') }}" alt="{{ is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title }}" class="blog-detail-image">
                 </div>
             @endif
 
-            <div class="blog-detail-body">
+            <div class="blog-detail-body" data-aos="fade-up" data-aos-delay="300">
                 @if($post->content && (is_array($post->content) ? ($post->content[app()->getLocale()] ?? '') : $post->content) != '')
                     {!! is_array($post->content) ? ($post->content[app()->getLocale()] ?? $post->content['vi'] ?? '') : $post->content !!}
                 @else

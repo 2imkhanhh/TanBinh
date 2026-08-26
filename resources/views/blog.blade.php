@@ -12,7 +12,7 @@
         <div class="page-banner-bg">
             <img src="{{ asset('assets/images/common/banner-tea-field.png') }}" alt="Đồi chè Việt Nam">
         </div>
-        <div class="page-banner-content">
+        <div class="page-banner-content" data-aos="zoom-in" data-aos-duration="1000">
             <h1 class="page-banner-title">BLOG</h1>
         </div>
     </section>
@@ -36,7 +36,7 @@
                     ];
                 @endphp
                 @forelse($posts as $index => $post)
-                    <div class="blog-gallery-item">
+                    <div class="blog-gallery-item" data-aos="zoom-in-up" data-aos-delay="{{ ($index % 3) * 100 }}">
                         <img src="{{ $post->getFirstMediaUrl('posts') ?: asset('assets/images/blog/gallery/' . $fallbackImages[$index % count($fallbackImages)]) }}" alt="{{ is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title }}">
                     </div>
                 @empty

@@ -12,7 +12,7 @@
         <div class="page-banner-bg">
             <img src="{{ isset($settings['contact_hero_image']) && $settings['contact_hero_image'] ? asset($settings['contact_hero_image']) : asset('assets/images/home/hero-tea-banner.png') }}" alt="Búp chè xanh">
         </div>
-        <div class="page-banner-content">
+        <div class="page-banner-content" data-aos="zoom-in" data-aos-duration="1000">
             <h1 class="page-banner-title">{!! nl2br(e($settings['contact_hero_title'] ?? (app()->getLocale() == 'vi' ? 'LIÊN HỆ' : 'CONTACT'))) !!}</h1>
             <img src="{{ asset('assets/images/common/deco-vector-divider.png') }}" alt="" class="page-banner-vector">
             <p class="page-banner-desc">
@@ -24,7 +24,7 @@
     <!-- Liên hệ Section -->
     <section class="contact" id="lien-he">
         <div class="contact-container">
-            <div class="contact-info">
+            <div class="contact-info" data-aos="fade-right">
                 <h2 class="contact-title">{{ app()->getLocale() == 'vi' ? 'Liên hệ' : 'Contact' }}</h2>
                 <h3 class="contact-company">CÔNG TY TNHH CHÈ TÂN BÌNH</h3>
                 <ul class="contact-details">
@@ -54,7 +54,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="contact-form-wrapper">
+            <div class="contact-form-wrapper" data-aos="fade-left" data-aos-delay="200">
                 <form class="contact-form" id="contact-form" action="{{ route('contact.submit') }}" method="POST">
                     @csrf
                     <input type="text" name="fullname" placeholder="{{ app()->getLocale() == 'vi' ? 'Họ tên' : 'Name' }}" id="input-name" required>
@@ -74,7 +74,7 @@
     </section>
 
     <!-- Bản đồ -->
-    <section class="map-section">
+    <section class="map-section" data-aos="fade-up">
         {!! $settings['contact_map_iframe'] ?? '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.8!2d105.07613128296941!3d21.161940695684375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31347d952a2ea13d%3A0x3d1528d039367989!2zVsO1IE1p4bq_dSwgVGhhbmggU8ahbiwgUGjDuiBUaOG7jQ!5e0!3m2!1svi!2s!4v1786446008842!5m2!1svi!2s" width="100%" height="450" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>' !!}
     </section>
 @endsection

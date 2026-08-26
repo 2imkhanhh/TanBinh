@@ -524,6 +524,13 @@ document.addEventListener("DOMContentLoaded", function () {
             "products-category-hidden",
             isDen
         );
+        
+        // Refresh AOS animations since elements are toggled from hidden to visible
+        setTimeout(() => {
+            if (typeof AOS !== 'undefined') {
+                AOS.refresh();
+            }
+        }, 50);
     }
 
     denButton.addEventListener("click", function () {
