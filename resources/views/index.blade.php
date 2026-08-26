@@ -228,13 +228,14 @@
                 </ul>
             </div>
             <div class="contact-form-wrapper">
-                <form class="contact-form" id="contact-form">
-                    <input type="text" placeholder="{{ app()->getLocale() == 'vi' ? 'Họ tên' : 'Name' }}"
+                <form class="contact-form" id="contact-form" action="{{ route('contact.submit') }}" method="POST">
+                    @csrf
+                    <input type="text" name="fullname" placeholder="{{ app()->getLocale() == 'vi' ? 'Họ tên' : 'Name' }}"
                         id="input-name" required>
-                    <input type="email" placeholder="Email" id="input-email" required>
-                    <input type="tel" placeholder="{{ app()->getLocale() == 'vi' ? 'Số điện thoại' : 'Phone' }}"
+                    <input type="email" name="email" placeholder="Email" id="input-email" required>
+                    <input type="tel" name="phone" placeholder="{{ app()->getLocale() == 'vi' ? 'Số điện thoại' : 'Phone' }}"
                         id="input-phone">
-                    <textarea placeholder="{{ app()->getLocale() == 'vi' ? 'Lời nhắn' : 'Message' }}" id="input-message" rows="5"></textarea>
+                    <textarea name="content" placeholder="{{ app()->getLocale() == 'vi' ? 'Lời nhắn' : 'Message' }}" id="input-message" rows="5" required></textarea>
                     <button type="submit" class="btn-submit"
                         id="btn-submit">{{ app()->getLocale() == 'vi' ? 'GỬI' : 'SEND' }}</button>
                 </form>

@@ -315,14 +315,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = true;
             }
 
-            setTimeout(() => {
-                alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.');
-                contactForm.reset();
+            const formData = new FormData(contactForm);
+            
+            fetch(contactForm.getAttribute('action') || '/lien-he', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Network error');
+                return response.json();
+            })
+            .then(data => {
+                if (data.type === 'success') {
+                    alert(data.message);
+                    contactForm.reset();
+                } else {
+                    alert('Có lỗi xảy ra, vui lòng thử lại.');
+                }
+            })
+            .catch(error => {
+                alert('Có lỗi xảy ra, vui lòng thử lại sau.');
+                console.error('Error:', error);
+            })
+            .finally(() => {
                 if (submitBtn) {
                     submitBtn.textContent = 'GỬI';
                     submitBtn.disabled = false;
                 }
-            }, 1000);
+            });
         });
     }
 

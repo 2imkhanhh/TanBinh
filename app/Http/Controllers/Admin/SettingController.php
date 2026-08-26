@@ -23,6 +23,20 @@ class SettingController extends Controller
         ]);
     }
 
+    public function email()
+    {
+        $settingsData = Setting::all();
+        $settings = [];
+        foreach($settingsData as $setting) {
+            $val = $setting->getTranslations('value');
+            $settings[$setting->key] = is_array($val) ? ($val['vi'] ?? '') : $val;
+        }
+
+        return Inertia::render('Admin/Settings/Email', [
+            'settings' => (object)$settings
+        ]);
+    }
+
     public function store(Request $request)
     {
         $data = $request->except(['_token', '_method']);

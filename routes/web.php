@@ -8,8 +8,8 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PostController;
-
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Admin\DashboardController;
 
 // Language Switch Route
 Route::get('/lang/{locale}', function ($locale) {
@@ -30,12 +30,10 @@ Route::get('/blog-tin-tuc', [FrontendController::class, 'blogTinTuc'])->name('bl
 Route::get('/blog-khac', [FrontendController::class, 'blogKhac'])->name('blog.khac');
 Route::get('/blog/{slug}', [FrontendController::class, 'blogDetail'])->name('blog.detail');
 Route::get('/lien-he', [FrontendController::class, 'contact'])->name('contact');
-
+Route::post('/lien-he', [FrontendController::class, 'submitContact'])->name('contact.submit');
 
 // Admin Dashboard Route (Inertia)
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 // Admin Routes Group
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
@@ -43,6 +41,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('categories', CategoryController::class);
     Route::resource('products', ProductController::class);
     Route::resource('posts', PostController::class);
+    Route::resource('contacts', \App\Http\Controllers\Admin\ContactController::class)->only(['index', 'update', 'destroy']);
+    Route::get('/email-settings', [SettingController::class, 'email'])->name('settings.email');
 });
 
 // Auth & Profile Routes
@@ -52,4 +52,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

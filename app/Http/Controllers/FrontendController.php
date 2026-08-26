@@ -93,4 +93,70 @@ class FrontendController extends Controller
         $settings = $this->getSettings();
         return view('lien-he', compact('settings'));
     }
+
+    public function submitContact(\Illuminate\Http\Request $request)
+    {
+        $request->validate([
+            'fullname' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'content' => 'required|string|max:1000'
+        ]);
+
+        $contact = \App\Models\Contact::create([
+            'fullname' => $request->fullname,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'content' => $request->content,
+            'status' => 'pending'
+        ]);
+
+        try {
+            $mailHost = \App\Models\Setting::where('key', 'mail_host')->first()?->value;
+            $mailPort = \App\Models\Setting::where('key', 'mail_port')->first()?->value;
+            $mailEncryption = \App\Models\Setting::where('key', 'mail_encryption')->first()?->value;
+            $mailUsername = \App\Models\Setting::where('key', 'mail_username')->first()?->value;
+            $mailPassword = \App\Models\Setting::where('key', 'mail_password')->first()?->value;
+
+            $mailReceiveStr = \App\Models\Setting::where('key', 'mail_receive_address')->first()?->value;
+
+            if (!empty($mailUsername) && !empty($mailPassword)) {
+                config([
+                    'mail.mailers.smtp.transport' => 'smtp',
+                    'mail.mailers.smtp.host' => $mailHost ?: 'smtp.gmail.com',
+                    'mail.mailers.smtp.port' => $mailPort ?: 587,
+                    'mail.mailers.smtp.encryption' => $mailEncryption ?: 'tls',
+                    'mail.mailers.smtp.username' => $mailUsername,
+                    'mail.mailers.smtp.password' => $mailPassword,
+                    'mail.from.address' => $mailUsername,
+                    'mail.from.name' => \App\Models\Setting::where('key', 'company_name')->first()?->value ?: config('app.name'),
+                ]);
+
+                app()->forgetInstance('mail.manager');
+            }
+
+            $adminEmails = [];
+            if (!empty($mailReceiveStr)) {
+                $adminEmails = array_map('trim', explode(',', $mailReceiveStr));
+                $adminEmails = array_filter($adminEmails, function ($email) {
+                    return filter_var($email, FILTER_VALIDATE_EMAIL);
+                });
+            }
+
+            if (empty($adminEmails)) {
+                $adminEmails = !empty($mailUsername) ? [$mailUsername] : [config('mail.from.address')];
+            }
+
+            if (!empty($adminEmails)) {
+                \Illuminate\Support\Facades\Mail::to($adminEmails)->send(new \App\Mail\ContactNotification($contact));
+            }
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Gửi email thông báo liên hệ thất bại: ' . $e->getMessage());
+        }
+
+        if ($request->ajax()) {
+            return response()->json(['type' => 'success', 'message' => 'Cảm ơn bạn đã liên hệ, chúng tôi sẽ phản hồi sớm nhất!']);
+        }
+
+        return redirect()->back()->with('success', 'Cảm ơn bạn đã liên hệ, chúng tôi sẽ phản hồi sớm nhất!');
+    }
 }
