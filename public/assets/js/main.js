@@ -288,6 +288,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
     // Contact form handler
     // =========================================
+    // Global showToast function
+    window.showToast = function(message, type = 'success') {
+        const toastContainer = document.getElementById('toast-container');
+        if (!toastContainer) return;
+        
+        const toast = document.createElement('div');
+        toast.className = `toast-item ${type}`;
+        
+        const iconSvg = type === 'success' 
+            ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>'
+            : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>';
+
+        toast.innerHTML = `
+            <div class="toast-icon">${iconSvg}</div>
+            <span class="toast-message">${message}</span>
+            <button class="toast-close" onclick="this.parentElement.classList.remove('toast-visible'); setTimeout(() => this.parentElement.remove(), 400);">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="toast-progress ${type}"></div>
+        `;
+        
+        toastContainer.prepend(toast);
+        
+        // Trigger animation
+        setTimeout(() => toast.classList.add('toast-visible'), 50);
+        
+        // Remove after 5s to match CSS animation
+        setTimeout(() => {
+            toast.classList.remove('toast-visible');
+            setTimeout(() => toast.remove(), 400);
+        }, 5000);
+    };
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -300,18 +336,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = emailEl ? emailEl.value.trim() : '';
 
             if (!name || !email) {
-                alert('Vui lòng nhập họ tên và email.');
+                window.showToast('Vui lòng nhập họ tên và email.', 'error');
                 return;
             }
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert('Vui lòng nhập email hợp lệ.');
+                window.showToast('Vui lòng nhập email hợp lệ.', 'error');
                 return;
             }
 
+            let originalText = 'GỬI';
             if (submitBtn) {
-                submitBtn.textContent = 'ĐANG GỬI...';
+                originalText = submitBtn.textContent;
+                submitBtn.textContent = (originalText.trim() === 'SEND') ? 'SENDING...' : 'ĐANG GỬI...';
                 submitBtn.disabled = true;
             }
 
@@ -330,19 +368,19 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(data => {
                 if (data.type === 'success') {
-                    alert(data.message);
+                    window.showToast(data.message, 'success');
                     contactForm.reset();
                 } else {
-                    alert('Có lỗi xảy ra, vui lòng thử lại.');
+                    window.showToast(data.message || 'Có lỗi xảy ra, vui lòng thử lại.', 'error');
                 }
             })
             .catch(error => {
-                alert('Có lỗi xảy ra, vui lòng thử lại sau.');
+                window.showToast('Có lỗi xảy ra, vui lòng thử lại sau.', 'error');
                 console.error('Error:', error);
             })
             .finally(() => {
                 if (submitBtn) {
-                    submitBtn.textContent = 'GỬI';
+                    submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                 }
             });

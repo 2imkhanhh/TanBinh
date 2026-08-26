@@ -151,8 +151,132 @@
         </div>
     </footer>
 
+    <!-- Global Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
     <script src="{{ asset('assets/js/main.js') }}"></script>
     @stack('js')
+
+    <!-- Toast CSS -->
+    <style>
+        .toast-container {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 0.75rem;
+            max-width: 420px;
+            width: 100%;
+            pointer-events: none;
+        }
+        
+        .toast-item {
+            pointer-events: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.25rem;
+            border-radius: 14px;
+            background: #ffffff;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .toast-item.toast-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .toast-icon {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+        }
+        
+        .toast-item.success .toast-icon {
+            background: #e6f4ea;
+            color: #108140;
+        }
+        
+        .toast-item.error .toast-icon {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+        
+        .toast-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .toast-message {
+            flex: 1;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #1e293b;
+            line-height: 1.4;
+        }
+        
+        .toast-close {
+            flex-shrink: 0;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .toast-close:hover {
+            background: #f1f5f9;
+            color: #475569;
+        }
+        
+        .toast-close svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            animation: progress 5s linear forwards;
+        }
+        
+        .toast-progress.success {
+            background: linear-gradient(90deg, #108140, #0d6e35);
+        }
+        
+        .toast-progress.error {
+            background: linear-gradient(90deg, #f87171, #dc2626);
+        }
+        
+        @keyframes progress {
+            from {
+                width: 100%;
+            }
+            to {
+                width: 0%;
+            }
+        }
+    </style>
 </body>
 
 </html>

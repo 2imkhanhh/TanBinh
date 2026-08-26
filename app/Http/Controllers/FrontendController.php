@@ -111,28 +111,9 @@ class FrontendController extends Controller
         ]);
 
         try {
-            $mailHost = \App\Models\Setting::where('key', 'mail_host')->first()?->value;
-            $mailPort = \App\Models\Setting::where('key', 'mail_port')->first()?->value;
-            $mailEncryption = \App\Models\Setting::where('key', 'mail_encryption')->first()?->value;
-            $mailUsername = \App\Models\Setting::where('key', 'mail_username')->first()?->value;
-            $mailPassword = \App\Models\Setting::where('key', 'mail_password')->first()?->value;
-
+            // Email settings are now loaded globally via AppServiceProvider
             $mailReceiveStr = \App\Models\Setting::where('key', 'mail_receive_address')->first()?->value;
-
-            if (!empty($mailUsername) && !empty($mailPassword)) {
-                config([
-                    'mail.mailers.smtp.transport' => 'smtp',
-                    'mail.mailers.smtp.host' => $mailHost ?: 'smtp.gmail.com',
-                    'mail.mailers.smtp.port' => $mailPort ?: 587,
-                    'mail.mailers.smtp.encryption' => $mailEncryption ?: 'tls',
-                    'mail.mailers.smtp.username' => $mailUsername,
-                    'mail.mailers.smtp.password' => $mailPassword,
-                    'mail.from.address' => $mailUsername,
-                    'mail.from.name' => \App\Models\Setting::where('key', 'company_name')->first()?->value ?: config('app.name'),
-                ]);
-
-                app()->forgetInstance('mail.manager');
-            }
+            $mailUsername = \App\Models\Setting::where('key', 'mail_username')->first()?->value;
 
             $adminEmails = [];
             if (!empty($mailReceiveStr)) {

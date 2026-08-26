@@ -20,7 +20,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
         .header {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            background: linear-gradient(135deg, #108140 0%, #0d6e35 100%);
             padding: 30px;
             text-align: center;
             color: #ffffff;
@@ -62,12 +62,12 @@
             font-size: 16px;
         }
         .message-box {
-            background-color: #eff6ff;
-            border-left: 4px solid #3b82f6;
+            background-color: #f0fdf4;
+            border-left: 4px solid #108140;
             border-radius: 4px;
             padding: 16px;
             margin-top: 10px;
-            color: #1e3a8a;
+            color: #14532d;
             white-space: pre-wrap;
             font-size: 15px;
         }
@@ -97,13 +97,13 @@
                 <div class="info-row" style="margin-top: 16px;">
                     <div class="info-label">Email</div>
                     <div class="info-value">
-                        <a href="mailto:{{ $contact->email }}" style="color: #3b82f6; text-decoration: none;">{{ $contact->email }}</a>
+                        <a href="mailto:{{ $contact->email }}" style="color: #108140; text-decoration: none;">{{ $contact->email }}</a>
                     </div>
                 </div>
                 <div class="info-row" style="margin-top: 16px;">
                     <div class="info-label">Số điện thoại</div>
                     <div class="info-value">
-                        <a href="tel:{{ $contact->phone }}" style="color: #3b82f6; text-decoration: none;">{{ $contact->phone ?: 'Không cung cấp' }}</a>
+                        <a href="tel:{{ $contact->phone }}" style="color: #108140; text-decoration: none;">{{ $contact->phone ?: 'Không cung cấp' }}</a>
                     </div>
                 </div>
                 <div class="info-row" style="margin-top: 16px;">

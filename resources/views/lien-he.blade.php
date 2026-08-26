@@ -55,18 +55,15 @@
                 </ul>
             </div>
             <div class="contact-form-wrapper">
-                @if(session('success'))
-                    <div class="alert alert-success" style="color: #108140; margin-bottom: 15px; font-weight: bold;">
-                        {{ session('success') }}
-                    </div>
-                @endif
                 <form class="contact-form" id="contact-form" action="{{ route('contact.submit') }}" method="POST">
                     @csrf
                     <input type="text" name="fullname" placeholder="{{ app()->getLocale() == 'vi' ? 'Họ tên' : 'Name' }}" id="input-name" required>
                     <input type="email" name="email" placeholder="Email" id="input-email" required>
                     <input type="tel" name="phone" placeholder="{{ app()->getLocale() == 'vi' ? 'Số điện thoại' : 'Phone' }}" id="input-phone">
                     <textarea name="content" placeholder="{{ app()->getLocale() == 'vi' ? 'Lời nhắn' : 'Message' }}" id="input-message" rows="5" required></textarea>
-                    <button type="submit" class="btn-submit" id="btn-submit">{{ app()->getLocale() == 'vi' ? 'GỬI' : 'SEND' }}</button>
+                    <button type="submit" class="btn-submit" id="btn-submit">
+                        <span class="btn-text">{{ app()->getLocale() == 'vi' ? 'GỬI' : 'SEND' }}</span>
+                    </button>
                 </form>
             </div>
         </div>
@@ -75,14 +72,6 @@
             <img src="{{ asset('assets/images/common/leaf-deco-large.png') }}" alt="Lá trà trang trí lớn" class="leaf-horizontal">
         </div>
     </section>
-
-    <!-- Lá trang trí trước bản đồ -->
-    <div class="contact-bottom-row">
-        <div class="contact-bottom-leaf-decoration">
-            <img src="{{ asset('assets/images/common/leaf-deco-small.png') }}" alt="" class="leaf-horizontal-top">
-            <img src="{{ asset('assets/images/common/leaf-deco-large.png') }}" alt="" class="leaf-horizontal">
-        </div>
-    </div>
 
     <!-- Bản đồ -->
     <section class="map-section">

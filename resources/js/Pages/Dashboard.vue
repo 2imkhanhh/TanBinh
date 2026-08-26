@@ -100,8 +100,7 @@ defineProps({
                 </div>
             </div>
             <div class="card-body empty-state" v-else>
-                <img src="https://illustrations.popsy.co/amber/freelancer.svg" alt="Empty" class="empty-img" />
-                <p>Chưa có liên hệ mới nào trong hôm nay.</p>
+                <p>Chưa có liên hệ.</p>
             </div>
         </div>
     </div>
