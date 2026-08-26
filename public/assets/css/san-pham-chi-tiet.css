@@ -24,16 +24,16 @@
     display: flex;
     align-items: center;
     flex-shrink: 0;
-    transition: opacity 0.2s;
-}
-
-.chi-tiet-back:hover {
-    opacity: 0.7;
 }
 
 .chi-tiet-back .arrow-circle svg {
     width: clamp(85px, 12vw, 135px);
     height: auto;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.chi-tiet-back:hover .arrow-circle svg {
+    transform: scale(1.15);
 }
 
 .chi-tiet-category {
@@ -157,20 +157,25 @@
 .chi-tiet-thumb {
     width: 155px;
     height: 120px;
-    object-fit: cover;
-    border: 1px solid #d7d694;
+    object-fit: contain;
+    border: 2px solid transparent;
     border-radius: 8px;
     cursor: pointer;
-    opacity: 0.85;
+    opacity: 0.6;
     transition: opacity 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     flex: 0 0 155px;
     background: transparent;
 }
 
-.chi-tiet-thumb:hover,
+.chi-tiet-thumb:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
 .chi-tiet-thumb.active {
     opacity: 1;
-    border-color: #d7d694;
+    border-color: #108140;
+    box-shadow: 0 0 0 2px rgba(16, 129, 64, 0.2);
     transform: translateY(-1px);
 }
 

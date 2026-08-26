@@ -31,28 +31,41 @@
     <section class="chi-tiet-section">
         <div class="chi-tiet-container">
 
-            <!-- Cột trái: ảnh -->
             <div class="chi-tiet-gallery">
                 <div class="chi-tiet-main-img">
                     <div class="chi-tiet-main-slider">
                         <div class="chi-tiet-main-track">
-                            <img src="{{ $product->getFirstMediaUrl('products') ?: asset('assets/images/products/product-black-tea-pekoe.png') }}" alt="{{ is_array($product->name) ? ($product->name[app()->getLocale()] ?? $product->name['vi']) : $product->name }}" id="main-product-img">
-                            <img src="{{ asset('assets/images/products/product-tea-generic.png') }}" alt="{{ is_array($product->name) ? ($product->name[app()->getLocale()] ?? $product->name['vi']) : $product->name }}" class="gallery-slide">
-                            <img src="{{ $product->getFirstMediaUrl('products') ?: asset('assets/images/products/product-black-tea-pekoe.png') }}" alt="{{ is_array($product->name) ? ($product->name[app()->getLocale()] ?? $product->name['vi']) : $product->name }}" class="gallery-slide">
+                            @php
+                                $mediaItems = $product->getMedia('products')->sortBy('order_column')->values();
+                                $hasMedia = count($mediaItems) > 0;
+                            @endphp
+                            
+                            @if($hasMedia)
+                                @foreach($mediaItems as $index => $media)
+                                    <img src="{{ $media->getUrl() }}" alt="{{ is_array($product->name) ? ($product->name[app()->getLocale()] ?? $product->name['vi']) : $product->name }}" class="gallery-slide" id="main-product-img-{{ $index }}">
+                                @endforeach
+                            @else
+                                <img src="{{ asset('assets/images/products/product-tea-generic.png') }}" alt="{{ is_array($product->name) ? ($product->name[app()->getLocale()] ?? $product->name['vi']) : $product->name }}" id="main-product-img">
+                            @endif
                         </div>
                     </div>
+                    @if($hasMedia && count($mediaItems) > 1)
                     <button class="chi-tiet-nav chi-tiet-nav-prev" aria-label="Ảnh trước">
                         <span class="nav-dot"></span>
                     </button>
                     <button class="chi-tiet-nav chi-tiet-nav-next" aria-label="Ảnh sau">
                         <span class="nav-dot"></span>
                     </button>
+                    @endif
                 </div>
+                
+                @if($hasMedia && count($mediaItems) > 1)
                 <div class="chi-tiet-thumbnails">
-                    <img src="{{ $product->getFirstMediaUrl('products') ?: asset('assets/images/products/product-black-tea-pekoe.png') }}" alt="Ảnh 1" class="chi-tiet-thumb active">
-                    <img src="{{ asset('assets/images/products/product-tea-generic.png') }}" alt="Ảnh 2" class="chi-tiet-thumb">
-                    <img src="{{ $product->getFirstMediaUrl('products') ?: asset('assets/images/products/product-black-tea-pekoe.png') }}" alt="Ảnh 3" class="chi-tiet-thumb">
+                    @foreach($mediaItems as $index => $media)
+                        <img src="{{ $media->getUrl() }}" alt="Ảnh {{ $index + 1 }}" class="chi-tiet-thumb {{ $index === 0 ? 'active' : '' }}">
+                    @endforeach
                 </div>
+                @endif
             </div>
 
             <!-- Cột phải: thông tin -->

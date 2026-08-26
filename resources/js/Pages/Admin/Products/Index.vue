@@ -29,7 +29,9 @@ const isModalOpen = ref(false);
 const isEditing = ref(false);
 const activeTab = ref('vi');
 const editId = ref(null);
-const currentImageUrl = ref('');
+const existingImages = ref([]);
+const newImages = ref([]); // array of { url: string, file: File }
+const primaryImage = ref({ type: 'existing', val: null });
 
 const form = useForm({
     name_vi: '', name_en: '', slug: '', category_id: '',
@@ -42,7 +44,9 @@ const form = useForm({
     model_number_vi: '', model_number_en: '', payment_terms_vi: '', payment_terms_en: '',
     advantage_vi: '', advantage_en: '', leaf_origin_vi: '', leaf_origin_en: '',
     material_vi: '', material_en: '',
-    is_active: true, is_featured: false, image: null, _method: 'POST'
+    is_active: true, is_featured: false, 
+    images: [], keep_media_ids: [], primary_type: 'existing', primary_val: null,
+    _method: 'POST'
 });
 
 const openCreateModal = () => {
@@ -51,7 +55,9 @@ const openCreateModal = () => {
     form.clearErrors();
     form._method = 'POST';
     activeTab.value = 'vi';
-    currentImageUrl.value = '';
+    existingImages.value = [];
+    newImages.value = [];
+    primaryImage.value = { type: 'new', val: 0 };
     isModalOpen.value = true;
 };
 
@@ -99,9 +105,18 @@ const openEditModal = (product) => {
     form.material_en = product.material_en || '';
     form.is_active = product.is_active;
     form.is_featured = product.is_featured || false;
-    form.image = null;
+    form.images = [];
+    form.keep_media_ids = [];
     form._method = 'PUT';
-    currentImageUrl.value = product.image_url || '';
+    
+    existingImages.value = product.media_items ? [...product.media_items] : [];
+    newImages.value = [];
+    if (existingImages.value.length > 0) {
+        primaryImage.value = { type: 'existing', val: existingImages.value[0].id };
+    } else {
+        primaryImage.value = { type: 'new', val: 0 };
+    }
+    
     activeTab.value = 'vi';
     isModalOpen.value = true;
 };
@@ -110,8 +125,52 @@ const closeModal = () => {
     isModalOpen.value = false;
 };
 
-const handleImage = (e) => {
-    form.image = e.target.files[0];
+const handleImages = (e) => {
+    const files = Array.from(e.target.files);
+    files.forEach(file => {
+        newImages.value.push({
+            file: file,
+            url: URL.createObjectURL(file)
+        });
+    });
+    
+    // If no primary image is set, set the first new one as primary
+    if ((existingImages.value.length === 0) && newImages.value.length > 0 && primaryImage.value.type !== 'new') {
+        primaryImage.value = { type: 'new', val: 0 };
+    }
+};
+
+const removeExistingImage = (index) => {
+    const img = existingImages.value[index];
+    existingImages.value.splice(index, 1);
+    if (primaryImage.value.type === 'existing' && primaryImage.value.val === img.id) {
+        if (existingImages.value.length > 0) {
+            primaryImage.value = { type: 'existing', val: existingImages.value[0].id };
+        } else if (newImages.value.length > 0) {
+            primaryImage.value = { type: 'new', val: 0 };
+        } else {
+            primaryImage.value = { type: 'existing', val: null };
+        }
+    }
+};
+
+const removeNewImage = (index) => {
+    newImages.value.splice(index, 1);
+    if (primaryImage.value.type === 'new' && primaryImage.value.val === index) {
+        if (existingImages.value.length > 0) {
+            primaryImage.value = { type: 'existing', val: existingImages.value[0].id };
+        } else if (newImages.value.length > 0) {
+            primaryImage.value = { type: 'new', val: 0 };
+        } else {
+            primaryImage.value = { type: 'existing', val: null };
+        }
+    } else if (primaryImage.value.type === 'new' && primaryImage.value.val > index) {
+        primaryImage.value.val -= 1; // Shift index
+    }
+};
+
+const setPrimary = (type, val) => {
+    primaryImage.value = { type, val };
 };
 
 const generateSlug = () => {
@@ -132,6 +191,11 @@ const generateSlug = () => {
 };
 
 const submit = () => {
+    form.keep_media_ids = existingImages.value.map(img => img.id);
+    form.images = newImages.value.map(img => img.file);
+    form.primary_type = primaryImage.value.type;
+    form.primary_val = primaryImage.value.val;
+
     if (isEditing.value) {
         form.post(route('admin.products.update', editId.value), {
             onSuccess: () => closeModal()
@@ -330,13 +394,30 @@ const deleteProduct = async (id) => {
 
                 <div class="form-row">
                     <div class="form-group flex-1">
-                        <label>Hình ảnh đại diện</label>
-                        <div style="display: flex; gap: 1rem; align-items: flex-start; margin-top: 0.25rem;">
-                            <div v-if="currentImageUrl" style="flex-shrink: 0;">
-                                <img :src="currentImageUrl" style="height: 64px; width: 64px; object-fit: cover; border-radius: 8px; border: 1px solid #e2e8f0;" />
+                        <label>Hình ảnh sản phẩm (Chọn 1 ảnh làm đại diện)</label>
+                        <div class="gallery-upload-area">
+                            <input type="file" multiple @change="handleImages" class="form-control" accept="image/*">
+                        </div>
+                        
+                        <div class="gallery-preview">
+                            <div v-for="(img, index) in existingImages" :key="'ex-'+img.id" class="gallery-item" :class="{'is-primary': primaryImage.type === 'existing' && primaryImage.val === img.id}">
+                                <img :src="img.url" />
+                                <div class="gallery-item-actions">
+                                    <button type="button" @click.stop="setPrimary('existing', img.id)" class="btn-primary-set" title="Đặt làm ảnh đại diện">★</button>
+                                    <button type="button" @click.stop="removeExistingImage(index)" class="btn-remove" title="Xoá ảnh">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                    </button>
+                                </div>
                             </div>
-                            <div style="flex-grow: 1;">
-                                <input type="file" @change="handleImage" class="form-control" style="padding: 0.4rem 1rem;">
+                            
+                            <div v-for="(img, index) in newImages" :key="'new-'+index" class="gallery-item" :class="{'is-primary': primaryImage.type === 'new' && primaryImage.val === index}">
+                                <img :src="img.url" />
+                                <div class="gallery-item-actions">
+                                    <button type="button" @click.stop="setPrimary('new', index)" class="btn-primary-set" title="Đặt làm ảnh đại diện">★</button>
+                                    <button type="button" @click.stop="removeNewImage(index)" class="btn-remove" title="Xoá ảnh">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -598,5 +679,96 @@ const deleteProduct = async (id) => {
 
 .text-red {
     color: #ef4444;
+}
+
+.gallery-upload-area {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.gallery-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.gallery-item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    background: #f1f5f9;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.gallery-item.is-primary {
+    border-color: #108140;
+    box-shadow: 0 0 0 2px rgba(16, 129, 64, 0.2);
+}
+
+.gallery-item:hover .gallery-item-actions {
+    opacity: 1;
+}
+
+.gallery-item:hover .btn-primary-set {
+    background: #108140;
+    color: #fff;
+}
+
+.gallery-item-actions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.btn-primary-set {
+    background: #ffcd00;
+    color: #000;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-remove {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-remove:hover {
+    background: #dc2626;
 }
 </style>

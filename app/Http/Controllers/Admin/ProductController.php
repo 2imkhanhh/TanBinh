@@ -23,7 +23,14 @@ class ProductController extends Controller
             }
             $product->is_featured = $product->is_featured;
             $product->category_name_vi = $product->category ? $product->category->getTranslation('name', 'vi', false) : '';
-            $imageUrl = $product->getFirstMediaUrl('products');
+            $mediaItems = $product->getMedia('products')->sortBy('order_column')->values();
+            $product->media_items = $mediaItems->map(function($media) {
+                return [
+                    'id' => $media->id,
+                    'url' => $media->getUrl()
+                ];
+            });
+            $imageUrl = count($mediaItems) > 0 ? $mediaItems[0]->getUrl() : '';
             if (empty($imageUrl)) {
                 $img = 'product-tea-generic.png';
                 if ($product->slug == 'vietnam-black-tea-pekoe') {
@@ -74,8 +81,36 @@ class ProductController extends Controller
         $product->is_featured = $request->boolean('is_featured', false);
         $product->save();
 
-        if ($request->hasFile('image')) {
-            $product->addMediaFromRequest('image')->toMediaCollection('products');
+        if ($request->hasFile('images')) {
+            $allMediaIds = [];
+            foreach ($request->file('images') as $index => $file) {
+                $media = $product->addMedia($file)->toMediaCollection('products');
+                $allMediaIds[] = ['val' => $index, 'media_id' => $media->id];
+            }
+            
+            $primaryVal = $request->input('primary_val', 0);
+            $orderedIds = [];
+            $primaryMediaId = null;
+            
+            foreach ($allMediaIds as $item) {
+                if ($item['val'] == $primaryVal) {
+                    $primaryMediaId = $item['media_id'];
+                }
+            }
+            
+            if ($primaryMediaId) {
+                $orderedIds[] = $primaryMediaId;
+            }
+            
+            foreach ($allMediaIds as $item) {
+                if ($item['media_id'] != $primaryMediaId) {
+                    $orderedIds[] = $item['media_id'];
+                }
+            }
+            
+            foreach ($orderedIds as $index => $id) {
+                \Spatie\MediaLibrary\MediaCollections\Models\Media::where('id', $id)->update(['order_column' => $index + 1]);
+            }
         }
 
         return redirect()->route('admin.products.index')->with('success', 'Đã thêm sản phẩm!');
@@ -141,9 +176,62 @@ class ProductController extends Controller
         $product->is_featured = $request->boolean('is_featured', false);
         $product->save();
 
-        if ($request->hasFile('image')) {
+        if ($request->has('keep_media_ids')) {
+            $keepIds = $request->input('keep_media_ids', []);
+            if (is_string($keepIds)) {
+                $keepIds = explode(',', $keepIds);
+            }
+            $existingMedia = $product->getMedia('products');
+            foreach ($existingMedia as $media) {
+                if (!in_array($media->id, $keepIds)) {
+                    $media->delete();
+                }
+            }
+        } else {
             $product->clearMediaCollection('products');
-            $product->addMediaFromRequest('image')->toMediaCollection('products');
+        }
+
+        $allMediaIds = [];
+        $existingMedia = $product->getMedia('products');
+        foreach ($existingMedia as $media) {
+            $allMediaIds[] = ['type' => 'existing', 'val' => $media->id, 'media_id' => $media->id];
+        }
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $index => $file) {
+                $media = $product->addMedia($file)->toMediaCollection('products');
+                $allMediaIds[] = ['type' => 'new', 'val' => $index, 'media_id' => $media->id];
+            }
+        }
+
+        $primaryType = $request->input('primary_type', 'existing');
+        $primaryVal = $request->input('primary_val');
+        
+        if (count($allMediaIds) > 0) {
+            $orderedIds = [];
+            $primaryMediaId = null;
+            
+            foreach ($allMediaIds as $item) {
+                if ($item['type'] == $primaryType && $item['val'] == $primaryVal) {
+                    $primaryMediaId = $item['media_id'];
+                }
+            }
+
+            if (!$primaryMediaId) {
+                $primaryMediaId = $allMediaIds[0]['media_id'];
+            }
+
+            $orderedIds[] = $primaryMediaId;
+
+            foreach ($allMediaIds as $item) {
+                if ($item['media_id'] != $primaryMediaId) {
+                    $orderedIds[] = $item['media_id'];
+                }
+            }
+
+            foreach ($orderedIds as $index => $id) {
+                \Spatie\MediaLibrary\MediaCollections\Models\Media::where('id', $id)->update(['order_column' => $index + 1]);
+            }
         }
 
         return redirect()->route('admin.products.index')->with('success', 'Đã cập nhật sản phẩm!');
