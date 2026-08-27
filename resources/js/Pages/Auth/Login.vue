@@ -39,8 +39,7 @@ const submit = () => {
         <div class="login-container">
             <div class="login-left">
                 <div class="brand-container">
-                    <img src="/assets/images/common/logo.png" alt="TanBinh Logo" class="brand-logo" />
-                    <span class="brand-name">TAN BINH TEA</span>
+                    <img src="/assets/images/common/logo2.png" alt="TanBinh Logo" class="brand-logo" />
                 </div>
             </div>
             <div class="login-right">
@@ -191,7 +190,7 @@ const submit = () => {
 }
 
 .brand-logo {
-    width: 140px;
+    width: 220px;
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 10px 30px rgba(16, 129, 64, 0.2));

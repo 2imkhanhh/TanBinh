@@ -9,8 +9,7 @@ const isActive = (routePattern) => {
 <template>
     <aside class="sidebar">
         <div class="sidebar-header">
-            <img src="/assets/images/common/logo.png" alt="Logo" class="logo" />
-            <span class="brand-name">TAN BINH TEA</span>
+            <img src="/assets/images/common/logo2.png" alt="Logo" class="logo" />
         </div>
 
         <nav class="sidebar-nav">
@@ -106,19 +105,17 @@ const isActive = (routePattern) => {
 }
 
 .sidebar-header {
-    height: 70px;
+    height: 80px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 4px;
-    padding: 0 1.5rem;
+    padding: 0.75rem 1.5rem;
     border-bottom: 1px solid #f1f5f9;
 }
 
 .logo {
-    width: 38px;
-    height: auto;
+    width: auto;
+    height: 55px;
     object-fit: contain;
 }
 
