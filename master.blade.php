@@ -15,11 +15,11 @@
     <meta name="description" content="@yield('meta_description', $defaultDesc)">
     <meta name="keywords" content="@yield('meta_keywords', 'Trà, Chè, Tân Bình Tea, Trà xanh, Trà đen')">
     
-    <?php if(app()->environment('production')): ?>
+    @if(app()->environment('production'))
         <meta name="robots" content="index, follow">
-    <?php else: ?>
+    @else
         <meta name="robots" content="noindex, nofollow">
-    <?php endif; ?>
+    @endif
     
     <link rel="canonical" href="{{ url()->current() }}">
 
@@ -47,18 +47,18 @@
     <!-- ── Schema.org JSON-LD ── -->
     <script type="application/ld+json">
     {
-      "@@context": "https://schema.org",
-      "@@type": "Organization",
+      "@context": "https://schema.org",
+      "@type": "Organization",
       "name": "{{ $defaultTitle }}",
       "url": "{{ url('/') }}",
       "logo": "{{ $logoUrl }}",
       "contactPoint": {
-        "@@type": "ContactPoint",
+        "@type": "ContactPoint",
         "telephone": "{{ $settings['contact_phone'] ?? '' }}",
         "contactType": "customer service"
       },
       "address": {
-        "@@type": "PostalAddress",
+        "@type": "PostalAddress",
         "streetAddress": "{{ $settings['contact_address'] ?? '' }}",
         "addressCountry": "VN"
       }
@@ -331,7 +331,7 @@
             background: linear-gradient(90deg, #f87171, #dc2626);
         }
         
-        {{ '@' }}keyframes progress {
+        @keyframes progress {
             from {
                 width: 100%;
             }
