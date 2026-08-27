@@ -22,8 +22,7 @@
     <header class="header" id="header">
         <div class="header-container">
             <a href="{{ route('home') }}" class="logo" id="logo">
-                <img src="{{ isset($settings['logo']) && $settings['logo'] ? asset($settings['logo']) : asset('assets/images/common/logo.png') }}" alt="Tân Bình Tea Logo">
-                <span class="logo-text">TAN BINH TEA</span>
+                <img src="{{ isset($settings['logo']) && $settings['logo'] ? asset($settings['logo']) : asset('assets/images/common/logo2.png') }}" alt="Tân Bình Tea Logo">
             </a>
             <nav class="nav" id="main-nav">
                 <ul class="nav-list">

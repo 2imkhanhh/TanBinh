@@ -114,17 +114,17 @@ class SettingController extends Controller
                     'en' => $path
                 ]);
                 $setting->save();
-            } else if (is_array($values) && (isset($values['vi']) || isset($values['en']))) {
+            } else if (is_array($values)) {
                 $setting->setTranslations('value', [
                     'vi' => $values['vi'] ?? '',
                     'en' => $values['en'] ?? ''
                 ]);
                 $setting->save();
-            } else if (!is_array($values) && $values !== null) {
-                // If it's a plain string (not array of vi/en), set it for both
+            } else if (!is_array($values)) {
+                // If it's a plain string (not array of vi/en), set it for both (null becomes empty string)
                 $setting->setTranslations('value', [
-                    'vi' => $values,
-                    'en' => $values
+                    'vi' => $values ?? '',
+                    'en' => $values ?? ''
                 ]);
                 $setting->save();
             }
