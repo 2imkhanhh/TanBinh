@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Noto+Serif+Display:ital,opsz,wght@0,6..36,400;0,6..36,500;0,6..36,600;0,6..36,700;1,6..36,400;1,6..36,500;1,6..36,600;1,6..36,700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v=3">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     @stack('css')
 </head>
@@ -92,9 +92,8 @@
         </div>
         <div class="footer-container">
             <div class="footer-logo">
-                <img src="{{ asset('assets/images/common/logo.png') }}" alt="Tân Bình Tea Logo"
+                <img src="{{ isset($settings['footer_logo']) && $settings['footer_logo'] ? asset($settings['footer_logo']) : asset('assets/images/common/logo.png') }}" alt="Tân Bình Tea Logo"
                     class="footer-logo-img">
-                <span class="footer-logo-text">TAN BINH TEA</span>
             </div>
             <div class="footer-info">
                 <p><span class="footer-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"

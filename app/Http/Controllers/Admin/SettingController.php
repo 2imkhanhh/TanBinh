@@ -92,8 +92,16 @@ class SettingController extends Controller
             }
         }
 
+        // File keys that should not be emptied when null (because no new file was selected)
+        $fileKeys = ['logo', 'footer_logo', 'home_hero_image', 'home_about_image', 'about_hero_image', 'product_hero_image', 'contact_hero_image'];
+
         // Handle normal fields
         foreach ($data as $key => $values) {
+            // Skip overwriting existing files if no new file is uploaded
+            if ($values === null && in_array($key, $fileKeys)) {
+                continue;
+            }
+
             $setting = Setting::firstOrCreate(['key' => $key]);
 
             if ($request->hasFile($key)) {

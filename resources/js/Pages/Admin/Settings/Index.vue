@@ -202,6 +202,17 @@ const submit = () => {
                                     accept="image/*">
                             </div>
                         </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Logo Footer</label>
+                            <div class="flex items-center gap-4">
+                                <img v-if="getSettingStr('footer_logo')" :src="'/' + getSettingStr('footer_logo')"
+                                    class="h-12 object-contain border p-1 rounded" alt="Footer Logo">
+                                <input type="file" @change="e => handleFileChange(e, 'footer_logo')"
+                                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                                    accept="image/*">
+                            </div>
+                        </div>
                     </div>
                 </div>
 

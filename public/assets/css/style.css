@@ -117,7 +117,7 @@ textarea {
 }
 
 .logo img {
-    height: 44px;
+    height: 46px;
     width: auto;
     max-width: 200px;
 }
@@ -640,9 +640,8 @@ textarea {
 }
 
 .footer-logo-img {
-    width: clamp(70px, 10vw, 110px);
+    width: clamp(110px, 15vw, 180px);
     height: auto;
-    filter: brightness(0) invert(1);
 }
 
 .footer-logo-text {
@@ -1013,6 +1012,7 @@ textarea {
     .blog-dropdown-link:active {
         background-color: rgba(177, 209, 54, 0.2);
     }
+
     .lang-switch {
         display: none;
     }
