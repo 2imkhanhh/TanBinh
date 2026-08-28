@@ -36,7 +36,7 @@
                     ];
                 @endphp
                 @forelse($posts as $index => $post)
-                    <div class="blog-gallery-item" data-aos="zoom-in-up" data-aos-delay="{{ ($index % 3) * 100 }}">
+                    <div class="blog-gallery-item" data-aos="fade-up" data-aos-delay="{{ ($index % 4) * 100 }}">
                         <img src="{{ $post->getFirstMediaUrl('posts') ?: asset('assets/images/blog/gallery/' . $fallbackImages[$index % count($fallbackImages)]) }}" alt="{{ is_array($post->title) ? ($post->title[app()->getLocale()] ?? $post->title['vi']) : $post->title }}">
                     </div>
                 @empty
